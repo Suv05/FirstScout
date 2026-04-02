@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const GALLERY_IMAGES = [
   {
@@ -83,56 +86,78 @@ const IMAGE_POSITIONS = [
 ];
 
 export default function FloatingImage() {
-  return (
-    <>
-      {/* ── Floating Image Gallery ── */}
-      <div className="hidden lg:block relative w-[184px] h-[184px] flex-shrink-0">
-        {GALLERY_IMAGES.map((img, i) => (
-          // Wrapper is overflow-visible so the pin badge can float above the image
-          <div
-            key={i}
-            className={`absolute w-[184px] h-[184px] ${img.zIndex} overflow-visible ${IMAGE_POSITIONS[i]}`}
-          >
-            {/* Pin badge — rendered OUTSIDE the clipped image div */}
-            {img.pin && (
-              <div
-                className={`absolute flex items-center gap-1 px-[10px] py-[6px] rounded-[15px] ${img.pin.color} z-20`}
-                style={{ top: "-38px", right: i === 1 ? "10px" : "10px" }}
-              >
-                <span
-                  className={`text-[14px] font-semibold ${img.pin.textColor} whitespace-nowrap`}
-                >
-                  {img.pin.label}
-                </span>
-                {/* Triangle pointer tip */}
-                <div
-                  className={`absolute w-[10px] h-[10px] ${img.pin.color} rotate-45 z-10`}
-                  style={{
-                    bottom: "-4px",
-                    [img.pin.tipSide.startsWith("right") ? "right" : "left"]:
-                      "20px",
-                  }}
-                />
-              </div>
-            )}
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
 
-            {/* Actual image — clipped to its rounded shape */}
+  useEffect(() => {
+    refs.current.forEach((el, i) => {
+      if (!el) return;
+
+      gsap.to(el, {
+        y: i % 2 === 0 ? -6 : 6,
+        duration: 2.5 + i * 0.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+      });
+    });
+  }, []);
+
+  return (
+    <div className="hidden lg:block relative w-[184px] h-[184px] flex-shrink-0 mt-3">
+      {GALLERY_IMAGES.map((img, i) => (
+        <motion.div
+          key={i}
+          ref={(el) => {
+            refs.current[i] = el;
+          }}
+          initial={{ opacity: 0, scale: 0.85, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: i * 0.1,
+            ease: "easeOut",
+          }}
+          className={`absolute w-[184px] h-[184px] ${img.zIndex} overflow-visible ${IMAGE_POSITIONS[i]}`}
+        >
+          {/* Pin badge */}
+          {img.pin && (
             <div
-              className={`relative w-full h-full ${img.rounded} ${img.rotate} overflow-hidden`}
+              className={`absolute flex items-center gap-1 px-[10px] py-[6px] rounded-[15px] ${img.pin.color} z-20`}
+              style={{ top: "-38px", right: "10px" }}
             >
-              <Image
-                src={img.src}
-                alt={img.alt ?? `Creator ${i + 1}`}
-                fill
-                sizes="184px"
-                priority={i === 3} // only center image
-                className="object-cover"
-                draggable={false}
+              <span
+                className={`text-[14px] font-semibold ${img.pin.textColor}`}
+              >
+                {img.pin.label}
+              </span>
+
+              <div
+                className={`absolute w-[10px] h-[10px] ${img.pin.color} rotate-45`}
+                style={{
+                  bottom: "-4px",
+                  [img.pin.tipSide.startsWith("right") ? "right" : "left"]:
+                    "20px",
+                }}
               />
             </div>
+          )}
+
+          {/* Image */}
+          <div
+            className={`relative w-full h-full ${img.rounded} ${img.rotate} overflow-hidden`}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt ?? `Creator ${i + 1}`}
+              fill
+              sizes="184px"
+              priority={i === 3}
+              className="object-cover"
+              draggable={false}
+            />
           </div>
-        ))}
-      </div>
-    </>
+        </motion.div>
+      ))}
+    </div>
   );
 }
