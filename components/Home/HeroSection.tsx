@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import FloatingImage from "./FloatingImage";
 
 const AI_QUERY = encodeURIComponent(
   "Briefly explain CreatorsMela, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
@@ -43,80 +44,6 @@ const AI_LINKS = [
     w: 28,
     h: 33,
   },
-];
-
-const GALLERY_IMAGES = [
-  {
-    src: "/hero-img/image1.avif",
-    alt: "Creator 1",
-    rotate: "rotate-[-7deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[1]",
-    pin: null,
-  },
-  {
-    src: "/hero-img/image2.avif",
-    alt: "Creator 2",
-    rotate: "rotate-[-8deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[2]",
-    pin: { label: "#trend", color: "bg-blue-500", textColor: "text-white" },
-  },
-  {
-    src: "/hero-img/image3.avif",
-    alt: "Creator 3",
-    rotate: "rotate-[-5deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[3]",
-    pin: null,
-  },
-  {
-    src: "/hero-img/image4.avif",
-    alt: "Creator 4",
-    rotate: "rotate-0",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[4]",
-    pin: null,
-  },
-  {
-    src: "/hero-img/image5.avif",
-    alt: "Creator 5",
-    rotate: "rotate-[6deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[5]",
-    pin: null,
-  },
-  {
-    src: "/hero-img/image6.avif",
-    alt: "Creator 6",
-    rotate: "rotate-[7deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[6]",
-    pin: null,
-  },
-  {
-    src: "/hero-img/image7.avif",
-    alt: "Creator 7",
-    rotate: "rotate-[14deg]",
-    rounded: "rounded-[18px]",
-    zIndex: "z-[7]",
-    pin: {
-      label: "#viral",
-      color: "bg-[#d4d4d4]",
-      textColor: "text-[#050505]",
-    },
-  },
-];
-
-/* Positions matching the original expanded layout (desktop) */
-const IMAGE_POSITIONS = [
-  "bottom-[-16px] left-[-334px]", // image1 — far left bottom
-  "top-[-12px]   left-[-217px]", // image2
-  "top-0         left-[-108px]", // image3
-  "top-0         left-0", // image4 — center
-  "top-0         right-[-100px]", // image5
-  "bottom-[-7px] right-[-201px]", // image6
-  "top-[8px]     left-[calc(216.304%-92px)]", // image7 — far right
 ];
 
 export default function HeroSection() {
@@ -234,48 +161,11 @@ export default function HeroSection() {
             </p>
           </div>
         </div>
+      </div>
 
-        {/* ── Floating Image Gallery ── */}
-        <div className="hidden lg:block relative w-[184px] h-[184px] flex-shrink-0">
-          {GALLERY_IMAGES.map((img, i) => (
-            <div
-              key={i}
-              className={`absolute w-[184px] h-[184px] ${img.rounded} ${img.rotate} ${img.zIndex} overflow-hidden ${IMAGE_POSITIONS[i]}`}
-            >
-              <Image
-  src={img.src}
-  alt={img.alt ?? `Creator ${i + 1}`}
-  fill
-  sizes="184px"
-  priority={i === 3} // only center image
-  className="object-cover"
-  draggable={false}
-/>
-              {img.pin && (
-                <>
-                  <div
-                    className={`absolute flex items-center px-[10px] py-[6px] rounded-[15px] ${img.pin.color} z-10`}
-                    style={{ top: "-65px", right: i === 1 ? "82px" : "30px" }}
-                  >
-                    <span
-                      className={`text-[18px] font-medium ${img.pin.textColor} whitespace-pre`}
-                    >
-                      {img.pin.label}
-                    </span>
-                    {/* Triangle tip */}
-                    <div
-                      className={`absolute w-[10px] h-[10px] ${img.pin.color} rotate-[-45deg] z-10`}
-                      style={{
-                        bottom: "-5px",
-                        [i === 1 ? "right" : "left"]: i === 1 ? "25px" : "23px",
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+      {/* Floating Images */}
+      <div className="hidden lg:block">
+        <FloatingImage />
       </div>
 
       {/* ── Ask AI About Us ── */}
