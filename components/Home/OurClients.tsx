@@ -131,7 +131,7 @@ export default function OurClients() {
           className="text-center text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4"
         >
           Our Clients:Leading 
-          <p className="text-gray-700">Brands That Trust Us</p>
+          <p className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">Brands That Trust Us</p>
         </motion.h2>
 
         {/* Subtitle */}
