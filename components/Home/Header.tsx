@@ -1,17 +1,20 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { gsap } from "gsap";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const MotionLink = motion.create(Link); // ✅ wrap Next.js Link with motion
+
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Creators", href: "#" },
-  { label: "Tools", href: "#" },
-  { label: "Blog", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/" },
+  { label: "Creators", href: "/" },
+  { label: "Tools", href: "/" },
+  { label: "Blog", href: "/blog" },
 ];
 
 export default function Header() {
@@ -78,7 +81,6 @@ export default function Header() {
 
           {/* ── Brand ── */}
           <div ref={logoRef} className="flex items-center gap-2 opacity-0">
-            {/* Logo mark */}
             <motion.div
               whileHover={{ rotate: 15, scale: 1.1 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -97,14 +99,13 @@ export default function Header() {
             className="hidden md:flex items-center gap-1 lg:gap-2"
           >
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setActiveLink(link.label)}
                 className="relative px-3 lg:px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors duration-200 group opacity-0"
               >
                 {link.label}
-                {/* animated underline */}
                 <span
                   className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-black origin-left transition-transform duration-300 ${
                     activeLink === link.label
@@ -112,7 +113,7 @@ export default function Header() {
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -154,7 +155,7 @@ export default function Header() {
           >
             <nav className="flex flex-col px-5 py-4 gap-1">
               {navLinks.map((link, i) => (
-                <motion.a
+                <MotionLink               // ✅ use MotionLink instead of motion.link
                   key={link.label}
                   href={link.href}
                   initial={{ opacity: 0, x: -18 }}
@@ -171,7 +172,7 @@ export default function Header() {
                   }`}
                 >
                   {link.label}
-                </motion.a>
+                </MotionLink>
               ))}
 
               <motion.div

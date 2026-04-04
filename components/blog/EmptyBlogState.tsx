@@ -1,216 +1,417 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView, animate, Variants } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Pen, Sparkles, Clock } from "lucide-react";
+import { SplitText } from "gsap/SplitText";
+import { ArrowUpRight, Pen, TrendingUp, Layers } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
-const hints = [
-  { icon: Pen, label: "Deep-dive articles" },
-  { icon: Sparkles, label: "Creator strategies" },
-  { icon: Clock, label: "Coming very soon" },
+// ── Data ────────────────────────────────────────────────────────────────────
+const CARDS = [
+  { tag: "Creator Growth", label: "In Progress", progress: 80 },
+  { tag: "Brand Building", label: "In Progress", progress: 60 },
+  { tag: "Strategy", label: "Drafting", progress: 30 },
 ];
 
+const PILLS = [
+  { icon: Pen, text: "Deep-dive articles" },
+  { icon: TrendingUp, text: "Creator strategies" },
+  { icon: Layers, text: "Design insights" },
+];
+
+// ── Stagger container ────────────────────────────────────────────────────────
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+// ── Animated counter ─────────────────────────────────────────────────────────
+function Counter({ to, suffix = "%" }: { to: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const seen = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!seen || !ref.current) return;
+    const ctrl = animate(0, to, {
+      duration: 1.8,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = Math.round(v) + suffix;
+      },
+    });
+    return () => ctrl.stop();
+  }, [seen, to, suffix]);
+
+  return <span ref={ref}>0{suffix}</span>;
+}
+
+// ── Ghost card ───────────────────────────────────────────────────────────────
+function GhostCard({
+  tag,
+  label,
+  progress,
+  index,
+}: {
+  tag: string;
+  label: string;
+  progress: number;
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const seen = useInView(ref, { once: true });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={fadeUp}
+      className="flex-1 min-w-0 border border-[#D3D1C7] rounded-sm p-5 bg-white/40 backdrop-blur-sm
+                 hover:bg-white/70 hover:border-[#B4B2A9] hover:shadow-sm
+                 transition-all duration-500 group"
+    >
+      {/* Label */}
+      <p className="text-[10px] uppercase tracking-[0.18em] text-[#B4B2A9] mb-4 font-medium">
+        {label}
+      </p>
+
+      {/* Skeleton lines */}
+      <div className="space-y-2 mb-5">
+        {[100, 75, 90, 55].map((w, i) => (
+          <motion.div
+            key={i}
+            className="h-px bg-[#D3D1C7] rounded-full origin-left"
+            initial={{ scaleX: 0 }}
+            animate={seen ? { scaleX: w / 100 } : {}}
+            transition={{
+              duration: 0.9,
+              delay: index * 0.15 + i * 0.08,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            style={{ width: `${w}%` }}
+          />
+        ))}
+      </div>
+
+      {/* Tag badge */}
+      <span
+        className="inline-block text-[10px] border border-[#D3D1C7] rounded-sm px-2.5 py-1
+                       text-[#B4B2A9] tracking-wide group-hover:border-[#B4B2A9] group-hover:text-[#888780]
+                       transition-all duration-300"
+      >
+        {tag}
+      </span>
+
+      {/* Progress bar */}
+      <div className="mt-5">
+        <div className="flex justify-between text-[10px] text-[#B4B2A9] mb-1.5">
+          <span>Progress</span>
+          <Counter to={progress} />
+        </div>
+        <div className="w-full h-px bg-[#E8E6E0]">
+          <motion.div
+            className="h-px bg-[#2C2C2A]"
+            initial={{ width: 0 }}
+            animate={seen ? { width: `${progress}%` } : {}}
+            transition={{
+              duration: 1.4,
+              delay: index * 0.2 + 0.4,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// ── Main component ───────────────────────────────────────────────────────────
 export default function EmptyBlogState() {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
 
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmit] = useState(false);
+  const [invalid, setInvalid] = useState(false);
+
+  // ── GSAP: headline character split + marquee ──────────────────────────────
   useEffect(() => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // Animated dashed line drawing
+      // Split headline into chars
+      if (headlineRef.current) {
+        const split = new SplitText(headlineRef.current, {
+          type: "chars,words",
+        });
+        gsap.from(split.chars, {
+          opacity: 0,
+          y: 40,
+          rotateX: -60,
+          stagger: 0.025,
+          duration: 0.9,
+          ease: "power3.out",
+          transformOrigin: "50% 50% -20px",
+          scrollTrigger: {
+            trigger: headlineRef.current,
+            start: "top 85%",
+          },
+        });
+      }
+
+      // Horizontal divider draw
       if (lineRef.current) {
         gsap.fromTo(
           lineRef.current,
           { scaleX: 0 },
           {
             scaleX: 1,
-            duration: 1.4,
+            duration: 1.2,
             ease: "power3.out",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top 80%",
-            },
+            scrollTrigger: { trigger: lineRef.current, start: "top 88%" },
           },
         );
       }
 
-      // Floating dots in background
-      const dots = gsap.utils.toArray<HTMLElement>(".float-dot");
-      if (dots.length > 0) {
-        dots.forEach((dot, i) => {
-          gsap.to(dot, {
-            y: i % 2 === 0 ? -18 : 18,
-            x: i % 3 === 0 ? 10 : -10,
-            duration: 2.5 + i * 0.4,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: i * 0.3,
-          });
+      // Marquee infinite scroll
+      if (marqueeRef.current) {
+        const track = marqueeRef.current;
+        gsap.to(track, {
+          xPercent: -50,
+          ease: "none",
+          duration: 22,
+          repeat: -1,
         });
       }
+
+      // Floating noise dots
+      gsap.utils.toArray<HTMLElement>(".fs-dot").forEach((dot, i) => {
+        gsap.to(dot, {
+          y: i % 2 === 0 ? -14 : 14,
+          x: i % 3 === 0 ? 8 : -8,
+          duration: 2.8 + i * 0.35,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: i * 0.25,
+        });
+      });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.15 } },
-  };
-
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // ── Email notify ──────────────────────────────────────────────────────────
+  function handleNotify() {
+    if (!email || !email.includes("@")) {
+      setInvalid(true);
+      setTimeout(() => setInvalid(false), 1500);
+      return;
+    }
+    setSubmit(true);
+  }
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-white py-32 px-4 overflow-hidden"
+      className="relative w-full bg-[#F1F0EC] overflow-hidden py-28 px-4 md:px-8"
     >
-      {/* ── Floating background dots ── */}
-      {[...Array(10)].map((_, i) => (
+      {/* ── Ambient noise dots ── */}
+      {Array.from({ length: 9 }).map((_, i) => (
         <div
           key={i}
-          className="float-dot absolute rounded-full opacity-30 pointer-events-none"
+          className="fs-dot absolute rounded-full pointer-events-none"
           style={{
-            width: `${8 + (i % 4) * 6}px`,
-            height: `${8 + (i % 4) * 6}px`,
-            background: i % 2 === 0 ? "#be185d" : "#7c3aed",
-            top: `${10 + ((i * 83) % 80)}%`,
-            left: `${5 + ((i * 97) % 90)}%`,
-            filter: "blur(2px)",
+            width: `${5 + (i % 3) * 4}px`,
+            height: `${5 + (i % 3) * 4}px`,
+            background: i % 2 === 0 ? "#D3D1C7" : "#B4B2A9",
+            top: `${8 + ((i * 79) % 84)}%`,
+            left: `${4 + ((i * 91) % 92)}%`,
+            opacity: 0.6,
           }}
         />
       ))}
 
-      {/* ── Soft glow ── */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[500px] w-[500px] rounded-full bg-pink-200/60 blur-[120px]" />
+      {/* ── Background wordmark ── */}
+      <div
+        aria-hidden
+        className="pointer-events-none select-none absolute bottom-0 left-1/2 -translate-x-1/2
+                   font-black text-[clamp(90px,18vw,180px)] text-black/[0.04]
+                   whitespace-nowrap leading-none tracking-[-3px]"
+        style={{ fontFamily: "'Playfair Display', serif" }}
+      >
+        firstscout
       </div>
 
       {/* ── Content ── */}
       <motion.div
-        variants={containerVariants}
+        variants={stagger}
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        className="relative z-10 max-w-2xl mx-auto flex flex-col items-center text-center gap-8"
+        whileInView="show"
+        viewport={{ once: true, margin: "-60px" }}
+        className="relative z-10 max-w-3xl mx-auto flex flex-col items-center text-center"
       >
-        {/* Icon cluster */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex items-center justify-center w-24 h-24"
-        >
-          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pink-600/30 to-purple-700/30 blur-md" />
-          <div className="relative flex items-center justify-center w-20 h-20 rounded-full border border-pink-200 bg-pink-50">
-            <Sparkles className="w-8 h-8 text-pink-500" />
-          </div>
-          {/* Orbiting dot */}
-          <motion.div
-            className="absolute w-3 h-3 rounded-full bg-pink-500"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-            style={{
-              top: 0,
-              left: "50%",
-              transformOrigin: "0 48px",
-              marginLeft: "-6px",
-            }}
-          />
-        </motion.div>
-
-        {/* Label */}
-        <motion.span
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs uppercase tracking-[0.25em] text-pink-500 font-semibold"
-        >
-          Blog · Coming Soon
-        </motion.span>
-
-        {/* Main message */}
-        <motion.h2
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl sm:text-5xl font-extrabold text-gray-900 font-sans leading-[1.15] tracking-tight"
-        >
-          We&apos;re crafting{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500">
-            something valuable.
+        {/* Eyebrow */}
+        <motion.div variants={fadeUp} className="mb-6">
+          <span
+            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em]
+                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5"
+          >
+            <span className="w-1 h-1 rounded-full bg-[#888780] inline-block animate-pulse" />
+            Blog · Coming soon
           </span>
-        </motion.h2>
-
-        {/* Divider line */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full flex items-center gap-4"
-        >
-          <div className="flex-1 h-px bg-gray-200" />
-          <div className="w-1.5 h-1.5 rounded-full bg-pink-500" />
-          <div className="flex-1 h-px bg-gray-200" />
         </motion.div>
 
-        {/* Sub message */}
+        {/* Headline — GSAP splits this */}
+        <h2
+          ref={headlineRef}
+          className="text-[clamp(42px,7vw,80px)] font-black leading-[1.06] tracking-tight
+                     text-[#1a1a18] mb-6 perspective-[600px]"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          Good writing{" "}
+          <em className="not-italic text-[#5F5E5A]">takes time.</em>
+        </h2>
+
+        {/* Divider */}
+        <motion.div
+          variants={fadeUp}
+          className="w-full flex items-center gap-4 mb-8"
+        >
+          <div ref={lineRef} className="flex-1 h-px bg-[#2C2C2A] origin-left" />
+          <div className="w-1 h-1 rounded-full bg-[#2C2C2A]" />
+          <div className="flex-1 h-px bg-[#D3D1C7]" />
+        </motion.div>
+
+        {/* Sub copy */}
         <motion.p
           variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-gray-500 text-lg leading-relaxed max-w-md"
+          className="text-[#5F5E5A] text-base leading-relaxed max-w-md mb-12"
         >
-          Our first articles are in the works — real insights on creator-led
-          growth, brand building, and what actually moves the needle.
+          We're crafting our first articles — deep-dives on creator-led growth,
+          product design, and the moves that actually matter. Worth the wait.
         </motion.p>
 
-        {/* Hint pills */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="flex flex-wrap justify-center gap-3"
-        >
-          {hints.map(({ icon: Icon, label }) => (
-            <div
-              key={label}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-gray-200 bg-gray-50 text-sm text-gray-600"
-            >
-              <Icon className="w-3.5 h-3.5 text-pink-500" />
-              {label}
-            </div>
+        {/* Ghost article cards */}
+        <motion.div variants={stagger} className="flex gap-4 w-full mb-12">
+          {CARDS.map((c, i) => (
+            <GhostCard key={c.tag} {...c} index={i} />
           ))}
         </motion.div>
 
-        {/* Animated progress bar */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full max-w-xs flex flex-col gap-2"
-        >
-          <div className="flex justify-between text-xs text-gray-400">
-            <span>Articles in progress</span>
-            <span className="text-pink-500">Almost there</span>
+        {/* Overall progress */}
+        <motion.div variants={fadeUp} className="w-full max-w-sm mb-12">
+          <div className="flex justify-between text-[11px] text-[#888780] mb-2">
+            <span>Overall progress</span>
+            <Counter to={68} />
           </div>
-          <div className="w-full h-1.5 rounded-full bg-gray-200 overflow-hidden">
+          <div className="w-full h-px bg-[#D3D1C7]">
             <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-500"
+              className="h-px bg-[#2C2C2A]"
               initial={{ width: 0 }}
-              whileInView={{ width: "72%" }}
+              whileInView={{ width: "68%" }}
               viewport={{ once: true }}
               transition={{
-                duration: 1.6,
+                duration: 1.8,
                 ease: [0.22, 1, 0.36, 1],
-                delay: 0.5,
+                delay: 0.4,
               }}
             />
           </div>
         </motion.div>
+
+        {/* Notify input */}
+        {/* <motion.div variants={fadeUp} className="flex w-full max-w-sm mb-10">
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleNotify()}
+            disabled={submitted}
+            placeholder="your@email.com"
+            className={[
+              "flex-1 border-y border-l border-[#B4B2A9] rounded-l-sm px-4 py-2.5",
+              "text-sm bg-transparent text-[#2C2C2A] placeholder:text-[#B4B2A9]",
+              "focus:outline-none focus:border-[#2C2C2A] transition-colors duration-200",
+              invalid ? "border-red-400" : "",
+            ].join(" ")}
+          />
+          <button
+            onClick={handleNotify}
+            disabled={submitted}
+            className={[
+              "flex items-center gap-1.5 border border-[#2C2C2A] rounded-r-sm px-4 py-2.5",
+              "text-sm font-medium transition-all duration-300",
+              submitted
+                ? "bg-[#3B6D11] border-[#3B6D11] text-white"
+                : "bg-[#2C2C2A] text-[#F1F0EC] hover:bg-[#444441]",
+            ].join(" ")}
+          >
+            {submitted ? "You're on the list!" : (<>Notify me <ArrowUpRight className="w-3.5 h-3.5" /></>)}
+          </button>
+        </motion.div> */}
+
+        {/* Pill tags */}
+        <motion.div
+          variants={fadeUp}
+          className="flex flex-wrap justify-center gap-2.5"
+        >
+          {PILLS.map(({ icon: Icon, text }) => (
+            <div
+              key={text}
+              className="flex items-center gap-2 border border-[#D3D1C7] rounded-full
+                         px-4 py-2 text-[13px] text-[#5F5E5A] hover:border-[#B4B2A9]
+                         hover:text-[#2C2C2A] transition-all duration-300 bg-white/30"
+            >
+              <Icon className="w-3.5 h-3.5 text-[#888780]" />
+              {text}
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
+
+      {/* ── Section bottom border ── */}
+      <div className="absolute bottom-0 left-0 w-full h-px bg-[#B4B2A9]" />
+
+      {/* ── Marquee ticker ── */}
+      <div className="relative z-10 mt-20 border-t border-b border-[#D3D1C7] py-3 overflow-hidden">
+        <div ref={marqueeRef} className="flex gap-0 whitespace-nowrap w-max">
+          {Array.from({ length: 2 }).map((_, ri) => (
+            <div key={ri} className="flex items-center">
+              {[
+                "Deep dives",
+                "Creator stories",
+                "Brand building",
+                "Design thinking",
+                "Growth strategy",
+                "What moves the needle",
+                "Coming soon",
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="flex items-center gap-4 px-8 text-[11px] uppercase
+                                         tracking-[0.2em] text-[#B4B2A9] font-medium"
+                >
+                  {t}
+                  <span className="w-1 h-1 rounded-full bg-[#D3D1C7] inline-block" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
