@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import {Users} from 'lucide-react'
+import { Users } from "lucide-react";
 
 const clients = [
   { name: "Britannia", logo: "/brands/Britannia.svg" },
@@ -47,13 +47,15 @@ function LogoCard({
       className="relative flex-shrink-0 flex items-center justify-center rounded-2xl border border-white/10 bg-black shadow-md hover:shadow-violet-900/40 hover:border-violet-500/30"
       style={{ width: CARD_W, height: 88 }}
     >
-      <Image
-        src={client.logo}
-        alt={client.name}
-        width={120}
-        height={56}
-        className="w-28 h-14 object-contain brightness-90 hover:brightness-110 transition-all duration-300"
-      />
+      {/* Positioned container for fill-mode Image */}
+      <div className="relative w-28 h-14">
+        <Image
+          src={client.logo}
+          alt={client.name}
+          fill
+          className="object-contain brightness-90 hover:brightness-110 transition-all duration-300"
+        />
+      </div>
     </motion.div>
   );
 }
@@ -122,7 +124,6 @@ export default function OurClients() {
           </span>
         </motion.div>
 
-
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -130,8 +131,10 @@ export default function OurClients() {
           transition={{ duration: 0.55, delay: 0.1 }}
           className="text-center text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4"
         >
-          Our Clients:Leading 
-          <p className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">Brands That Trust Us</p>
+          Our Clients:Leading
+          <p className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">
+            Brands That Trust Us
+          </p>
         </motion.h2>
 
         {/* Subtitle */}
