@@ -33,13 +33,13 @@ const TERMS_SECTIONS = [
     id: "t-intro",
     icon: FileText,
     title: "Introduction",
-    content: `Welcome to FirstSkout. By accessing our website or engaging with our services, you agree to comply with these Terms & Conditions. FirstSkout operates as an influencer marketing service unit under a registered entity in India and provides end-to-end campaign execution services.`,
+    content: `Welcome to FirstScout. By accessing our website or engaging with our services, you agree to comply with these Terms & Conditions. FirstScout operates as an influencer marketing service unit under a registered entity in India and provides end-to-end campaign execution services.`,
   },
   {
     id: "t-scope",
     icon: Users,
     title: "Scope of Services",
-    content: `FirstSkout offers a full-service execution partner experience, managing campaigns from start to finish.`,
+    content: `FirstScout offers a full-service execution partner experience, managing campaigns from start to finish.`,
     bullets: [
       "Influencer scouting and onboarding",
       "Campaign strategy and planning",
@@ -53,7 +53,7 @@ const TERMS_SECTIONS = [
     id: "t-nature",
     icon: AlertCircle,
     title: "Nature of Services & Performance",
-    content: `Influencer marketing outcomes depend on multiple external factors such as platform algorithms, audience behavior, and content performance. While FirstSkout applies strategic and operational expertise, specific outcomes (sales, leads, conversions) are not guaranteed.`,
+    content: `Influencer marketing outcomes depend on multiple external factors such as platform algorithms, audience behavior, and content performance. While FirstScout applies strategic and operational expertise, specific outcomes (sales, leads, conversions) are not guaranteed.`,
     bullets: [
       "Efficient coordination",
       "Timely execution",
@@ -69,7 +69,7 @@ const TERMS_SECTIONS = [
     subSections: [
       {
         label: "Refund Policy",
-        text: "Refunds are handled on a case-by-case basis. In case of creator-related issues, FirstSkout will attempt reasonable resolution (replacement, adjustment, etc.). Any refund decision will consider campaign progress and deliverables. Refunds, if applicable, are at the discretion of FirstSkout, ensuring fair handling for all parties.",
+        text: "Refunds are handled on a case-by-case basis. In case of creator-related issues, FirstScout will attempt reasonable resolution (replacement, adjustment, etc.). Any refund decision will consider campaign progress and deliverables. Refunds, if applicable, are at the discretion of FirstScout, ensuring fair handling for all parties.",
       },
     ],
   },
@@ -77,7 +77,7 @@ const TERMS_SECTIONS = [
     id: "t-creator-pay",
     icon: Check,
     title: "Creator Payments",
-    content: `FirstSkout manages and facilitates payments to creators across all campaigns, regardless of geography.`,
+    content: `FirstScout manages and facilitates payments to creators across all campaigns, regardless of geography.`,
     bullets: [
       "Smooth execution",
       "Standardized payment handling",
@@ -93,7 +93,7 @@ const TERMS_SECTIONS = [
     subSections: [
       {
         label: "Extended usage requiring explicit approval",
-        text: "Paid ads, whitelisting, and licensing must be explicitly approved in advance. FirstSkout ensures creator rights are respected and content is not used beyond agreed terms without proper consent. FirstSkout may use content for portfolio and marketing purposes.",
+        text: "Paid ads, whitelisting, and licensing must be explicitly approved in advance. FirstScout ensures creator rights are respected and content is not used beyond agreed terms without proper consent. FirstScout may use content for portfolio and marketing purposes.",
       },
     ],
   },
@@ -101,7 +101,7 @@ const TERMS_SECTIONS = [
     id: "t-role",
     icon: Shield,
     title: "Role & Responsibility",
-    content: `FirstSkout acts as a campaign execution and coordination partner ensuring structured workflows, creator alignment, and smooth communication.`,
+    content: `FirstScout acts as a campaign execution and coordination partner ensuring structured workflows, creator alignment, and smooth communication.`,
     subSections: [
       {
         label: "Not responsible for",
@@ -113,7 +113,7 @@ const TERMS_SECTIONS = [
     id: "t-liability",
     icon: Gavel,
     title: "Limitation of Liability",
-    content: `To the maximum extent permitted by law, FirstSkout shall not be liable for campaign performance outcomes, indirect or consequential losses, or third-party/platform-related issues. Liability, if applicable, is limited to the value of services provided.`,
+    content: `To the maximum extent permitted by law, FirstScout shall not be liable for campaign performance outcomes, indirect or consequential losses, or third-party/platform-related issues. Liability, if applicable, is limited to the value of services provided.`,
   },
   {
     id: "t-termination",
@@ -137,7 +137,7 @@ const TERMS_SECTIONS = [
     id: "t-updates",
     icon: RefreshCw,
     title: "Updates",
-    content: `FirstSkout reserves the right to update these Terms at any time. Continued use implies acceptance.`,
+    content: `FirstScout reserves the right to update these Terms at any time. Continued use implies acceptance.`,
   },
 ];
 
@@ -146,7 +146,7 @@ const PRIVACY_SECTIONS = [
     id: "p-intro",
     icon: Shield,
     title: "Introduction",
-    content: `FirstSkout respects your privacy and is committed to protecting your data. This policy explains how we collect, use, and safeguard your information.`,
+    content: `FirstScout respects your privacy and is committed to protecting your data. This policy explains how we collect, use, and safeguard your information.`,
   },
   {
     id: "p-collect",
@@ -209,11 +209,7 @@ const PRIVACY_SECTIONS = [
     icon: UserCheck,
     title: "Your Rights",
     content: `You can request to:`,
-    bullets: [
-      "Access your data",
-      "Update or correct it",
-      "Delete your data",
-    ],
+    bullets: ["Access your data", "Update or correct it", "Delete your data"],
   },
   {
     id: "p-thirdparty",
@@ -237,7 +233,7 @@ const PRIVACY_SECTIONS = [
     id: "p-contact",
     icon: Mail,
     title: "Contact",
-    content: `For any queries regarding our privacy policy or your data, please reach out to us at hello@firstskout.com`,
+    content: `For any queries regarding our privacy policy or your data, please reach out to us at hello@FirstScout.com`,
     isContact: true,
   },
 ];
@@ -288,12 +284,16 @@ function SidebarItem({
     >
       <span
         className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300 ${
-          isActive ? "bg-[#d4006e] text-white" : "bg-gray-100 group-hover:bg-gray-200"
+          isActive
+            ? "bg-[#d4006e] text-white"
+            : "bg-gray-100 group-hover:bg-gray-200"
         }`}
       >
         <Icon size={13} />
       </span>
-      <span className="text-sm font-medium leading-tight">{index + 1}. {section.title}</span>
+      <span className="text-sm font-medium leading-tight">
+        {index + 1}. {section.title}
+      </span>
       {isActive && (
         <motion.span layoutId="sidebar-arrow" className="ml-auto">
           <ChevronRight size={14} className="text-[#d4006e]" />
@@ -337,19 +337,28 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
             </span>
             <div className="h-px flex-1 bg-gray-100" />
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-3">{section.title}</h3>
+          <h3 className="text-lg font-bold text-gray-900 mb-3">
+            {section.title}
+          </h3>
 
           {/* Main content */}
-          <p className="text-gray-600 text-sm leading-relaxed">{section.content}</p>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            {section.content}
+          </p>
 
           {/* Bullets */}
           {section.bulletsLabel && (
-            <p className="mt-3 text-sm font-semibold text-gray-700">{section.bulletsLabel}</p>
+            <p className="mt-3 text-sm font-semibold text-gray-700">
+              {section.bulletsLabel}
+            </p>
           )}
           {section.bullets && (
             <ul className="mt-2 space-y-1.5">
               {section.bullets.map((b, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                <li
+                  key={i}
+                  className="flex items-center gap-2 text-sm text-gray-600"
+                >
                   <span className="w-4 h-4 rounded-full bg-[#d4006e]/10 flex items-center justify-center flex-shrink-0">
                     <Check size={9} className="text-[#d4006e]" />
                   </span>
@@ -361,11 +370,16 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
 
           {/* Sub-sections */}
           {section.subSections?.map((sub, i) => (
-            <div key={i} className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+            <div
+              key={i}
+              className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100"
+            >
               <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5">
                 {sub.label}
               </p>
-              <p className="text-sm text-gray-600 leading-relaxed">{sub.text}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {sub.text}
+              </p>
             </div>
           ))}
 
@@ -373,11 +387,19 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
           {section.groups && (
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
               {section.groups.map((group, i) => (
-                <div key={i} className="p-3 rounded-xl bg-gray-50 border border-gray-100">
-                  <p className="text-xs font-bold text-[#d4006e] mb-2">{group.label}</p>
+                <div
+                  key={i}
+                  className="p-3 rounded-xl bg-gray-50 border border-gray-100"
+                >
+                  <p className="text-xs font-bold text-[#d4006e] mb-2">
+                    {group.label}
+                  </p>
                   <ul className="space-y-1">
                     {group.items.map((item, j) => (
-                      <li key={j} className="text-xs text-gray-600 flex items-center gap-1.5">
+                      <li
+                        key={j}
+                        className="text-xs text-gray-600 flex items-center gap-1.5"
+                      >
                         <span className="w-1 h-1 rounded-full bg-gray-400 flex-shrink-0" />
                         {item}
                       </li>
@@ -391,11 +413,11 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
           {/* Contact */}
           {section.isContact && (
             <a
-              href="mailto:hello@firstskout.com"
+              href="mailto:hello@FirstScout.com"
               className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#d4006e] text-white text-sm font-semibold hover:bg-[#b0005a] transition-colors duration-200"
             >
               <Mail size={14} />
-              hello@firstskout.com
+              hello@FirstScout.com
             </a>
           )}
         </div>
@@ -488,9 +510,9 @@ export default function Page() {
             className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-4"
             style={{ fontFamily: "'Georgia', serif" }}
           >
-            Legal{" "}
+            Terms &amp;{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#d4006e]">Documents</span>
+              <span className="relative z-10 text-[#d4006e]">Policies</span>
               <span className="absolute bottom-1 left-0 right-0 h-3 bg-[#d4006e]/10 rounded" />
             </span>
           </motion.h1>
@@ -501,7 +523,8 @@ export default function Page() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 text-lg max-w-xl"
           >
-            Everything you need to know about how FirstSkout works with you — your rights, our responsibilities, and how we protect your data.
+            Everything you need to know about how FirstScout works with you —
+            your rights, our responsibilities, and how we protect your data.
           </motion.p>
 
           {/* Tab switcher */}
@@ -516,7 +539,9 @@ export default function Page() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`relative px-6 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 capitalize ${
-                  activeTab === tab ? "text-white" : "text-gray-500 hover:text-gray-800"
+                  activeTab === tab
+                    ? "text-white"
+                    : "text-gray-500 hover:text-gray-800"
                 }`}
               >
                 {activeTab === tab && (
@@ -527,7 +552,11 @@ export default function Page() {
                   />
                 )}
                 <span className="relative z-10 flex items-center gap-2">
-                  {tab === "terms" ? <FileText size={14} /> : <Shield size={14} />}
+                  {tab === "terms" ? (
+                    <FileText size={14} />
+                  ) : (
+                    <Shield size={14} />
+                  )}
                   {tab === "terms" ? "Terms & Conditions" : "Privacy Policy"}
                 </span>
               </button>
@@ -611,16 +640,22 @@ export default function Page() {
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-gray-900">
-                      {activeTab === "terms" ? "Terms & Conditions" : "Privacy Policy"}
+                      {activeTab === "terms"
+                        ? "Terms & Conditions"
+                        : "Privacy Policy"}
                     </h2>
                     <p className="text-sm text-gray-400">
-                      {sections.length} sections · FirstSkout, India
+                      {sections.length} sections · FirstScout, India
                     </p>
                   </div>
                 </div>
 
                 {sections.map((section, i) => (
-                  <SectionCard key={section.id} section={section as Section} index={i} />
+                  <SectionCard
+                    key={section.id}
+                    section={section as Section}
+                    index={i}
+                  />
                 ))}
 
                 {/* Footer note */}
@@ -631,12 +666,12 @@ export default function Page() {
                   className="mt-4 p-6 rounded-2xl bg-gradient-to-br from-[#d4006e]/5 to-[#ede8f5] border border-[#d4006e]/10 text-center"
                 >
                   <p className="text-sm text-gray-600">
-                    Questions about our legal documents?{" "}
+                    Questions about our Terms &amp; Policies?{" "}
                     <a
-                      href="mailto:hello@firstskout.com"
+                      href="mailto:hello@FirstScout.com"
                       className="text-[#d4006e] font-semibold hover:underline"
                     >
-                      hello@firstskout.com
+                      hello@FirstScout.com
                     </a>
                   </p>
                 </motion.div>
