@@ -124,10 +124,12 @@ export default function Header() {
           {/* ── CTA Button ── */}
           <div ref={btnRef} className="hidden md:flex opacity-0">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Button className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200">
-                Get in Touch
-                <ArrowUpRight size={15} strokeWidth={2.5} />
-              </Button>
+              <Link href="/appointment">
+  <Button className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200">
+    Get in Touch
+    <ArrowUpRight size={15} strokeWidth={2.5} />
+  </Button>
+</Link>
             </motion.div>
           </div>
 
@@ -177,13 +179,14 @@ export default function Header() {
                 transition={{ delay: navLinks.length * 0.06 + 0.05 }}
                 className="mt-3"
               >
-                <Button
-                  className="w-full rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold flex items-center justify-center gap-1.5 h-11"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Get in Touch
-                  <ArrowUpRight size={15} strokeWidth={2.5} />
-                </Button>
+                <Link href="/appointment" onClick={() => setMenuOpen(false)}>
+  <Button
+    className="w-full rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold flex items-center justify-center gap-1.5 h-11"
+  >
+    Get in Touch
+    <ArrowUpRight size={15} strokeWidth={2.5} />
+  </Button>
+</Link>
               </motion.div>
             </nav>
           </motion.div>

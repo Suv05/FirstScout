@@ -1,7 +1,10 @@
+import Booking from "@/components/appointment/Booking";
+
 const Page = () => {
   return (
     <>
-      page in maitanance
+      <Booking />
+
     </>
   );
 };
