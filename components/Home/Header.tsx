@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,15 +12,16 @@ const MotionLink = motion.create(Link); // ✅ wrap Next.js Link with motion
 
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/" },
-  { label: "Creators", href: "/" },
-  { label: "Tools", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Creators", href: "/creators" },
+  { label: "Tools", href: "/tools" },
   { label: "Blog", href: "/blog" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  //const [activeLink, setActiveLink] = useState("Home");
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -33,19 +35,19 @@ export default function Header() {
       tl.fromTo(
         logoRef.current,
         { opacity: 0, x: -30 },
-        { opacity: 1, x: 0, duration: 0.7 }
+        { opacity: 1, x: 0, duration: 0.7 },
       )
         .fromTo(
           navRef.current?.querySelectorAll("a") ?? [],
           { opacity: 0, y: -16 },
           { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
-          "-=0.3"
+          "-=0.3",
         )
         .fromTo(
           btnRef.current,
           { opacity: 0, x: 30 },
           { opacity: 1, x: 0, duration: 0.6 },
-          "-=0.4"
+          "-=0.4",
         );
     }, headerRef);
     return () => ctx.revert();
@@ -61,7 +63,9 @@ export default function Header() {
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   return (
@@ -78,7 +82,6 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between h-14 md:h-16">
-
           {/* ── Brand ── */}
           <div ref={logoRef} className="flex items-center gap-2 opacity-0">
             <motion.div
@@ -86,7 +89,9 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 300 }}
               className="w-8 h-8 rounded-full bg-black flex items-center justify-center"
             >
-              <span className="text-white text-xs font-black tracking-tight">FS</span>
+              <span className="text-white text-xs font-black tracking-tight">
+                FS
+              </span>
             </motion.div>
             <span className="text-black font-extrabold text-xl tracking-tight select-none">
               FirstScout
@@ -102,13 +107,12 @@ export default function Header() {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={() => setActiveLink(link.label)}
                 className="relative px-3 lg:px-4 py-2 text-sm font-medium text-gray-700 hover:text-black transition-colors duration-200 group opacity-0"
               >
                 {link.label}
                 <span
                   className={`absolute bottom-0.5 left-3 right-3 h-0.5 rounded-full bg-black origin-left transition-transform duration-300 ${
-                    activeLink === link.label
+                    pathname === link.href
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"
                   }`}
@@ -120,9 +124,7 @@ export default function Header() {
           {/* ── CTA Button ── */}
           <div ref={btnRef} className="hidden md:flex opacity-0">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Button
-                className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200"
-              >
+              <Button className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200">
                 Get in Touch
                 <ArrowUpRight size={15} strokeWidth={2.5} />
               </Button>
@@ -155,18 +157,12 @@ export default function Header() {
           >
             <nav className="flex flex-col px-5 py-4 gap-1">
               {navLinks.map((link, i) => (
-                <MotionLink               // ✅ use MotionLink instead of motion.link
+                <MotionLink
                   key={link.label}
                   href={link.href}
-                  initial={{ opacity: 0, x: -18 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.28 }}
-                  onClick={() => {
-                    setActiveLink(link.label);
-                    setMenuOpen(false);
-                  }}
+                  onClick={() => setMenuOpen(false)}
                   className={`px-3 py-3 rounded-xl text-sm font-medium transition-colors duration-200 ${
-                    activeLink === link.label
+                    pathname === link.href
                       ? "bg-black text-white"
                       : "text-gray-700 hover:bg-black/5 hover:text-black"
                   }`}
