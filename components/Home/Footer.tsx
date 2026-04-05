@@ -104,7 +104,7 @@ export default function Footer() {
           variants={itemVariants}
           className="flex items-start justify-between mb-12"
         >
-          <p className="text-[#1a1a1a] text-2xl font-semibold leading-tight max-w-[200px]">
+          <p className="text-[#1a1a1a] text-2xl font-semibold leading-tight max-w-[200px] font-body">
             Where Brands
             <br />
             Meet Creators
@@ -124,7 +124,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
           {/* Services */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide">
+            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide font-heading">
               Explore
             </h3>
             <ul className="space-y-2">
@@ -132,7 +132,7 @@ export default function Footer() {
                 <li key={s.label}>
                   <Link
                     href={s.href}
-                    className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200"
+                    className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200 font-body"
                   >
                     {s.label}
                   </Link>
@@ -143,7 +143,7 @@ export default function Footer() {
 
           {/* Explore */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide">
+            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide font-heading">
               Service
             </h3>
             <ul className="space-y-2">
@@ -151,7 +151,7 @@ export default function Footer() {
                 <li key={e.label}>
                   <Link
                     href={e.href}
-                    className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200"
+                    className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200 font-body"
                   >
                     {e.label}
                   </Link>
@@ -162,7 +162,7 @@ export default function Footer() {
 
           {/* Say hello */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide">
+            <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide font-heading">
               Say hello!
             </h3>
             <div className="grid grid-cols-2 gap-2">
@@ -186,7 +186,7 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <Link
               href="#"
-              className="inline-flex items-center gap-1 text-[#1a1a1a] font-semibold text-sm mb-4 hover:text-black transition-colors"
+              className="inline-flex items-center gap-1 text-[#1a1a1a] font-semibold text-sm mb-4 hover:text-black transition-colors font-body"
             >
               Creative tools <ArrowUpRight size={14} />
             </Link>
@@ -216,7 +216,7 @@ export default function Footer() {
       <div className="overflow-hidden py-2">
         <div ref={brandRef} className="whitespace-nowrap will-change-transform">
           <span
-            className="text-[#1a1a1a] font-black select-none"
+            className="text-[#1a1a1a] font-black select-none font-heading"
             style={{ fontSize: "clamp(80px, 18vw, 200px)", lineHeight: 1 }}
           >
             {/* Duplicate for seamless infinite loop */}
@@ -231,7 +231,7 @@ export default function Footer() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="flex items-center justify-between px-8 pb-6 pt-2 text-[#2a2a2a] text-xs"
+        className="flex items-center justify-between px-8 pb-6 pt-2 text-[#2a2a2a] text-xs font-body"
       >
         <span>
           © {new Date().getFullYear()} FirstScout. All rights reserved.

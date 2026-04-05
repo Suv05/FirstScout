@@ -74,14 +74,14 @@ bg-[size:6rem_4rem]"
                 <span className="text-[12px] font-bold text-white">2026</span>
               </div>
 
-              <span className="text-[16px] text-black/80">
+              <span className="text-[16px] text-black/80 font-body">
                 India&apos;s #1 Talent Management Company
               </span>
             </div>
 
             {/* Headings */}
             <div className="flex flex-wrap items-center justify-center gap-[10px] w-full max-w-[800px]">
-              <h1 className="text-black text-center text-[70px] tracking-[-3px] leading-[0.9em]">
+              <h1 className="text-black text-center text-[70px] tracking-[-3px] leading-[0.9em] font-heading">
                 We Are
               </h1>
 
@@ -89,25 +89,25 @@ bg-[size:6rem_4rem]"
                 className="text-[79px] tracking-[-3px] leading-[0.9em] 
     rotate-3 
     bg-gradient-to-b from-[#ec4899] to-[#be185d] 
-    text-white px-4 py-1 rounded-md inline-block"
+    text-white px-4 py-1 rounded-md inline-block font-heading"
               >
                 Talent
               </h1>
 
-              <h1 className="text-black text-[70px] tracking-[-3px] leading-[0.9em]">
+              <h1 className="text-black text-[70px] tracking-[-3px] leading-[0.9em] font-heading">
                 Crafting
               </h1>
 
-              <h1 className="text-black text-[60px] tracking-[-3px] leading-[0.9em]">
+              <h1 className="text-black text-[60px] tracking-[-3px] leading-[0.9em] font-heading">
                 Company.
               </h1>
             </div>
 
             {/* Subheading */}
-            <p className="w-full max-w-[600px] text-center text-black/60 text-[18px] leading-[1.5em]">
-              At FirstScout, we merge bold creativity, strategic execution,
-              and creator-first thinking to turn brand visions into powerful
-              digital realities.
+            <p className="w-full max-w-[600px] text-center text-black/60 text-[18px] leading-[1.5em] font-body">
+              At FirstScout, we merge bold creativity, strategic execution, and
+              creator-first thinking to turn brand visions into powerful digital
+              realities.
             </p>
           </div>
         </div>
@@ -120,7 +120,7 @@ bg-[size:6rem_4rem]"
 
       {/* Ask AI */}
       <div className="flex flex-wrap items-center justify-center gap-[10px] w-full pt-[10px]">
-        <h4 className="text-black text-[18px] font-medium">Ask AI About Us</h4>
+        <h4 className="text-black text-[18px] font-heading">Ask AI About Us</h4>
 
         <div className="flex gap-[7px]">
           {AI_LINKS.map(({ href, icon, alt, w, h }) => (

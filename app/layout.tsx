@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Figtree, Playfair_Display } from "next/font/google";
+import { Bodoni_Moda, Manrope } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Home/Header";
 import Footer from "@/components/Home/Footer";
 
-const figtreeHeading = Figtree({
+const bodoni = Bodoni_Moda({
   subsets: ["latin"],
   variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["300", "400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,19 +30,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full",
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        figtreeHeading.variable,
-      )}
+      className={cn("h-full", "antialiased", bodoni.variable, manrope.variable)}
     >
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
         <Footer />
-        </body>
+      </body>
     </html>
   );
 }

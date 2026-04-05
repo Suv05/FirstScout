@@ -74,7 +74,7 @@ const LaunchCampaign = () => {
           >
             {/* Badge */}
             <div
-              className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full"
+              className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full font-heading"
               style={{
                 background: "rgba(190,24,93,0.1)",
                 border: "1px solid rgba(190,24,93,0.25)",
@@ -108,6 +108,8 @@ const LaunchCampaign = () => {
                 lineHeight: 1.2,
                 marginBottom: "0.2rem",
               }}
+
+              className="font-heading"
             >
               Launch Your Campaign with{" "}
               <span style={{ color: "#0f0f0f" }}>FirstScout</span>
@@ -120,7 +122,7 @@ const LaunchCampaign = () => {
                 lineHeight: 1.2,
                 marginBottom: "1.2rem",
               }}
-              className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent"
+              className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent font-heading"
             >
               In a Minutes of Time!
             </h2>
@@ -145,6 +147,7 @@ const LaunchCampaign = () => {
                 maxWidth: "420px",
                 marginBottom: "1.8rem",
               }}
+              className="font-body"
             >
               Build your brand with CreatorsMela's expert team—effortless
               website creation, strategic content, and confidence-driven
@@ -152,7 +155,7 @@ const LaunchCampaign = () => {
             </p>
 
             {/* CTA row */}
-            <div className="flex items-center gap-6 flex-wrap">
+            <div className="flex items-center gap-6 flex-wrap font-body">
               <Link href={"/appointment"}>
                 <button
                   style={{
