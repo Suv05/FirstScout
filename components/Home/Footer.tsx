@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
@@ -15,6 +16,8 @@ import {
 } from "react-icons/fa6";
 import { CiMail as Mail } from "react-icons/ci";
 
+const MotionLink = motion.create(Link);
+
 gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
@@ -26,16 +29,17 @@ const socialLinks = [
 ];
 
 const services = [
-  { label: "Website Design", href: "#" },
-  { label: "Mobile App Design", href: "#" },
-  { label: "SaaS / Dashboard", href: "#" },
-  { label: "Consultant", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Creators", href: "/creators" },
+  { label: "Tools", href: "/tools" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const explore = [
-  { label: "All Projects", href: "#" },
-  { label: "Newsletter", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Terms & Conditions", href: "/terms-condition" },
+  { label: "Privacy Policy", href: "/terms-condition" },
+  { label: "Contact", href: "/creators#contact" },
 ];
 
 export default function Footer() {
@@ -57,7 +61,7 @@ export default function Footer() {
         duration: 12,
         ease: "none",
         repeat: -1, // infinite
-      }
+      },
     );
 
     return () => {
@@ -101,19 +105,19 @@ export default function Footer() {
           className="flex items-start justify-between mb-12"
         >
           <p className="text-[#1a1a1a] text-2xl font-semibold leading-tight max-w-[200px]">
-            Your product
+            Where Brands
             <br />
-            design partner
+            Meet Creators
           </p>
 
-          <motion.a
-            href="#"
+          <MotionLink
+            href="/creators#contact"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 border-2 border-[#1a1a1a] rounded-full px-7 py-3 text-[#1a1a1a] text-xl font-medium bg-transparent hover:bg-[#1a1a1a] hover:text-[#e5e5e5] transition-colors duration-300"
           >
             Contact
-          </motion.a>
+          </MotionLink>
         </motion.div>
 
         {/* Row 2 — Links grid */}
@@ -121,17 +125,17 @@ export default function Footer() {
           {/* Services */}
           <motion.div variants={itemVariants}>
             <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide">
-              Services
+              Explore
             </h3>
             <ul className="space-y-2">
               {services.map((s) => (
                 <li key={s.label}>
-                  <a
+                  <Link
                     href={s.href}
                     className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200"
                   >
                     {s.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -140,17 +144,17 @@ export default function Footer() {
           {/* Explore */}
           <motion.div variants={itemVariants}>
             <h3 className="text-[#1a1a1a] font-semibold text-sm mb-4 tracking-wide">
-              Explore
+              Service
             </h3>
             <ul className="space-y-2">
               {explore.map((e) => (
                 <li key={e.label}>
-                  <a
+                  <Link
                     href={e.href}
                     className="text-[#2a2a2a] text-sm hover:text-black transition-colors duration-200"
                   >
                     {e.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -163,7 +167,7 @@ export default function Footer() {
             </h3>
             <div className="grid grid-cols-2 gap-2">
               {socialLinks.map(({ icon: Icon, label, href }, i) => (
-                <motion.a
+                <MotionLink
                   key={i}
                   href={href}
                   whileHover={{ scale: 1.05, y: -2 }}
@@ -173,19 +177,19 @@ export default function Footer() {
                   <span className="text-[#1a1a1a] text-[11px] font-medium truncate">
                     {label}
                   </span>
-                </motion.a>
+                </MotionLink>
               ))}
             </div>
           </motion.div>
 
           {/* Creative tools */}
           <motion.div variants={itemVariants}>
-            <a
+            <Link
               href="#"
               className="inline-flex items-center gap-1 text-[#1a1a1a] font-semibold text-sm mb-4 hover:text-black transition-colors"
             >
               Creative tools <ArrowUpRight size={14} />
-            </a>
+            </Link>
             <motion.div
               whileHover={{ rotate: 2, scale: 1.03 }}
               className="bg-black/10 rounded-2xl p-3 w-fit"
@@ -213,7 +217,7 @@ export default function Footer() {
         <div ref={brandRef} className="whitespace-nowrap will-change-transform">
           <span
             className="text-[#1a1a1a] font-black select-none"
-                  style={{ fontSize: "clamp(80px, 18vw, 200px)", lineHeight: 1 }}
+            style={{ fontSize: "clamp(80px, 18vw, 200px)", lineHeight: 1 }}
           >
             {/* Duplicate for seamless infinite loop */}
             firstscout&nbsp;&nbsp;&nbsp;&nbsp;firstscout&nbsp;&nbsp;&nbsp;&nbsp;
