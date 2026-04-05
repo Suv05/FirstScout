@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Rocket } from "lucide-react";
+import Link from "next/link";
 
 const LaunchCampaign = () => {
   const [mounted, setMounted] = useState(false);
@@ -109,7 +110,7 @@ const LaunchCampaign = () => {
               }}
             >
               Launch Your Campaign with{" "}
-              <span style={{ color: "#0f0f0f" }}>Creatorsmela</span>
+              <span style={{ color: "#0f0f0f" }}>FirstScout</span>
             </h1>
             <h2
               style={{
@@ -119,7 +120,6 @@ const LaunchCampaign = () => {
                 lineHeight: 1.2,
                 marginBottom: "1.2rem",
               }}
-
               className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent"
             >
               In a Minutes of Time!
@@ -153,33 +153,34 @@ const LaunchCampaign = () => {
 
             {/* CTA row */}
             <div className="flex items-center gap-6 flex-wrap">
-              <button
-                style={{
-                  background: "#be185d",
-                  color: "#fff",
-                  fontWeight: 600,
-                  fontSize: "0.92rem",
-                  padding: "12px 26px",
-                  borderRadius: "10px",
-                  border: "none",
-                  cursor: "pointer",
-                  boxShadow: "0 4px 20px rgba(190,24,93,0.35)",
-                  transition: "transform 0.15s ease, box-shadow 0.15s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 28px rgba(190,24,93,0.45)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow =
-                    "0 4px 20px rgba(190,24,93,0.35)";
-                }}
-              >
-                Book an Appointment
-              </button>
-
+              <Link href={"/appointment"}>
+                <button
+                  style={{
+                    background: "#be185d",
+                    color: "#fff",
+                    fontWeight: 600,
+                    fontSize: "0.92rem",
+                    padding: "12px 26px",
+                    borderRadius: "10px",
+                    border: "none",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 20px rgba(190,24,93,0.35)",
+                    transition: "transform 0.15s ease, box-shadow 0.15s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                    e.currentTarget.style.boxShadow =
+                      "0 8px 28px rgba(190,24,93,0.45)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow =
+                      "0 4px 20px rgba(190,24,93,0.35)";
+                  }}
+                >
+                  Book an Appointment
+                </button>
+              </Link>
               <div className="flex items-center gap-2">
                 <div
                   style={{

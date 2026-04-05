@@ -6,7 +6,7 @@ import FloatingImage from "./FloatingImage";
 import { motion } from "framer-motion";
 
 const AI_QUERY = encodeURIComponent(
-  "Briefly explain CreatorsMela, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
+  "Briefly explain FirstScout, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
 );
 
 const AI_LINKS = [
@@ -105,7 +105,7 @@ bg-[size:6rem_4rem]"
 
             {/* Subheading */}
             <p className="w-full max-w-[600px] text-center text-black/60 text-[18px] leading-[1.5em]">
-              At CreatorsMela, we merge bold creativity, strategic execution,
+              At FirstScout, we merge bold creativity, strategic execution,
               and creator-first thinking to turn brand visions into powerful
               digital realities.
             </p>

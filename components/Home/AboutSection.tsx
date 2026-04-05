@@ -4,10 +4,11 @@ import { FingerprintPattern } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const lines = [
   "Fueled by creativity, collaboration, and excellence,",
-  "CreatorsMela is a premier talent management and",
+  "FirstScout is a premier talent management and",
   "influencer marketing agency crafting unmatched",
   "success for brands and creators alike.",
 ];
@@ -72,9 +73,11 @@ export default function AboutSection() {
 
         {/* Button */}
         <div>
-          <Button className="px-6 py-6 text-base rounded-xl bg-gradient-to-b from-[#ec4899] to-[#be185d] text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] active:scale-[0.98]">
-            Book an Appointment
-          </Button>
+          <Link href={"appointment"}>
+            <Button className="px-6 py-6 text-base rounded-xl bg-gradient-to-b from-[#ec4899] to-[#be185d] text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(236,72,153,0.6)] active:scale-[0.98]">
+              Book an Appointment
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
