@@ -43,10 +43,7 @@ const fade = (delay = 0) => ({
 
 function PillBadge({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4006e]/25 bg-[#d4006e]/6 text-[#d4006e] text-xs font-bold tracking-widest uppercase mb-6"
-      style={{ fontFamily: "system-ui,sans-serif" }}
-    >
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4006e]/25 bg-[#d4006e]/6 text-[#d4006e] text-xs font-bold tracking-widest uppercase mb-6 font-body">
       <span className="w-1.5 h-1.5 rounded-full bg-[#d4006e] animate-pulse" />
       {children}
     </div>
@@ -61,10 +58,7 @@ function SectionHeading({
   accent?: string;
 }) {
   return (
-    <h2
-      className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.08]"
-      style={{ fontFamily: "'Georgia',serif" }}
-    >
+    <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.08] font-heading">
       {children}
     </h2>
   );
@@ -112,10 +106,7 @@ function Hero() {
         </motion.div>
 
         <div className="max-w-4xl">
-          <h1
-            className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.04] mb-8"
-            style={{ fontFamily: "'Georgia',serif" }}
-          >
+          <h1 className="text-5xl md:text-7xl font-black text-gray-900 leading-[1.04] mb-8 font-heading">
             Built for{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-[#d4006e]">Campaigns</span>
@@ -131,8 +122,7 @@ function Hero() {
 
           <motion.p
             {...fade(0.2)}
-            className="text-xl text-gray-500 leading-relaxed max-w-2xl mb-4"
-            style={{ fontFamily: "system-ui,sans-serif", fontWeight: 400 }}
+            className="text-xl text-gray-500 leading-relaxed max-w-2xl mb-4 font-body"
           >
             FirstSkout is an execution-first influencer marketing agency focused
             on relevance, content quality, and real results — not outdated
@@ -140,8 +130,7 @@ function Hero() {
           </motion.p>
           <motion.p
             {...fade(0.3)}
-            className="text-base text-gray-400 mb-10"
-            style={{ fontFamily: "system-ui,sans-serif" }}
+            className="text-base text-gray-400 mb-10 font-body"
           >
             We scout influencers in real time, align them with your brand, and
             manage everything from strategy to execution to payments.
@@ -150,15 +139,13 @@ function Hero() {
           <motion.div {...fade(0.4)} className="flex flex-wrap gap-4">
             <Link
               href="/appointment"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#d4006e] text-white font-bold text-sm hover:bg-[#b0005a] transition-colors duration-200"
-              style={{ fontFamily: "system-ui,sans-serif" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#d4006e] text-white font-bold text-sm hover:bg-[#b0005a] transition-colors duration-200 font-body"
             >
               Start Your Campaign <ArrowRight size={15} />
             </Link>
             <Link
               href="#what-we-do"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-gray-200 text-gray-600 font-semibold text-sm hover:border-gray-400 transition-colors duration-200"
-              style={{ fontFamily: "system-ui,sans-serif" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-gray-200 text-gray-600 font-semibold text-sm hover:border-gray-400 transition-colors duration-200 font-body"
             >
               See What We Do
             </Link>
@@ -180,8 +167,7 @@ function Hero() {
           ].map(([label, Icon]: any, i) => (
             <div
               key={i}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-100 text-gray-600 text-xs font-semibold"
-              style={{ fontFamily: "system-ui,sans-serif" }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 border border-gray-100 text-gray-600 text-xs font-semibold font-body"
             >
               <Icon size={12} className="text-[#d4006e]" />
               {label}
@@ -215,26 +201,17 @@ function ShortAbout() {
             <SectionHeading>
               Beyond the <span className="text-[#d4006e]">Database.</span>
             </SectionHeading>
-            <p
-              className="mt-5 text-gray-500 text-lg leading-relaxed"
-              style={{ fontFamily: "system-ui,sans-serif", fontWeight: 400 }}
-            >
+            <p className="mt-5 text-gray-500 text-lg leading-relaxed font-body">
               Most agencies hand you a list. We hand you results. FirstSkout is
               a full-service influencer marketing agency that scouts the right
               creators in real time — no stale databases, no guesswork, no
               middlemen.
             </p>
-            <p
-              className="mt-4 text-gray-400 text-base leading-relaxed"
-              style={{ fontFamily: "system-ui,sans-serif" }}
-            >
+            <p className="mt-4 text-gray-400 text-base leading-relaxed font-body">
               We take full ownership of your campaign — from the first strategy
               call to the final payment to every creator.
             </p>
-            <div
-              className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#d4006e]/8 border border-[#d4006e]/20 text-[#d4006e] text-sm font-bold"
-              style={{ fontFamily: "system-ui,sans-serif" }}
-            >
+            <div className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#d4006e]/8 border border-[#d4006e]/20 text-[#d4006e] text-sm font-bold font-body">
               <Sparkles size={13} />
               Right creators. Strong content. Real results.
             </div>
@@ -261,15 +238,12 @@ function ShortAbout() {
                 className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
                 <p
-                  className="text-3xl font-black mb-1"
-                  style={{ color: s.color, fontFamily: "'Georgia',serif" }}
+                  className="text-3xl font-black mb-1 font-heading"
+                  style={{ color: s.color }}
                 >
                   {s.num}
                 </p>
-                <p
-                  className="text-xs text-gray-500 font-medium"
-                  style={{ fontFamily: "system-ui,sans-serif" }}
-                >
+                <p className="text-xs text-gray-500 font-medium font-body">
                   {s.label}
                 </p>
               </motion.div>
@@ -350,16 +324,10 @@ function CorePillars() {
                     strokeWidth={1.8}
                   />
                 </div>
-                <h3
-                  className="text-xl font-black text-gray-900 mb-3"
-                  style={{ fontFamily: "'Georgia',serif" }}
-                >
+                <h3 className="text-xl font-black text-gray-900 mb-3 font-heading">
                   {p.title}
                 </h3>
-                <p
-                  className="text-gray-500 text-sm leading-relaxed"
-                  style={{ fontFamily: "system-ui,sans-serif" }}
-                >
+                <p className="text-gray-500 text-sm leading-relaxed font-body">
                   {p.desc}
                 </p>
               </motion.div>
@@ -412,8 +380,7 @@ function AboutStory() {
           </motion.div>
           <motion.p
             {...fade(0.2)}
-            className="mt-5 text-gray-500 text-lg max-w-2xl mx-auto"
-            style={{ fontFamily: "system-ui,sans-serif" }}
+            className="mt-5 text-gray-500 text-lg max-w-2xl mx-auto font-body"
           >
             FirstSkout was created to fix what traditional agencies get
             fundamentally wrong. We took every broken pattern in the industry
@@ -431,10 +398,7 @@ function AboutStory() {
               <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center">
                 <X size={18} className="text-red-400" />
               </div>
-              <h3
-                className="text-lg font-black text-gray-800"
-                style={{ fontFamily: "'Georgia',serif" }}
-              >
+              <h3 className="text-lg font-black text-gray-800 font-heading">
                 Typical Agencies
               </h3>
             </div>
@@ -446,8 +410,7 @@ function AboutStory() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="flex items-start gap-3 text-sm text-gray-500"
-                  style={{ fontFamily: "system-ui,sans-serif" }}
+                  className="flex items-start gap-3 text-sm text-gray-500 font-body"
                 >
                   <span className="mt-0.5 w-5 h-5 rounded-full bg-red-50 border border-red-100 flex items-center justify-center flex-shrink-0">
                     <X size={10} className="text-red-400" />
@@ -468,10 +431,7 @@ function AboutStory() {
               <div className="w-9 h-9 rounded-xl bg-[#d4006e]/20 flex items-center justify-center">
                 <Check size={18} className="text-[#d4006e]" />
               </div>
-              <h3
-                className="text-lg font-black text-white"
-                style={{ fontFamily: "'Georgia',serif" }}
-              >
+              <h3 className="text-lg font-black text-white font-heading">
                 FirstSkout
               </h3>
             </div>
@@ -483,8 +443,7 @@ function AboutStory() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="flex items-start gap-3 text-sm text-gray-300"
-                  style={{ fontFamily: "system-ui,sans-serif" }}
+                  className="flex items-start gap-3 text-sm text-gray-300 font-body"
                 >
                   <span className="mt-0.5 w-5 h-5 rounded-full bg-[#d4006e]/20 border border-[#d4006e]/30 flex items-center justify-center flex-shrink-0">
                     <Check size={10} className="text-[#d4006e]" />
@@ -561,8 +520,7 @@ function WhatWeDo() {
           </motion.div>
           <motion.p
             {...fade(0.2)}
-            className="mt-4 text-gray-400 max-w-xl mx-auto"
-            style={{ fontFamily: "system-ui,sans-serif" }}
+            className="mt-4 text-gray-400 max-w-xl mx-auto font-body"
           >
             Six services. One team. Zero handoffs to outside vendors.
           </motion.p>
@@ -595,16 +553,10 @@ function WhatWeDo() {
                     strokeWidth={1.8}
                   />
                 </div>
-                <h3
-                  className="text-base font-black text-gray-900 mb-2"
-                  style={{ fontFamily: "'Georgia',serif" }}
-                >
+                <h3 className="text-base font-black text-gray-900 mb-2 font-heading">
                   {item.title}
                 </h3>
-                <p
-                  className="text-sm text-gray-500 leading-relaxed"
-                  style={{ fontFamily: "system-ui,sans-serif" }}
-                >
+                <p className="text-sm text-gray-500 leading-relaxed font-body">
                   {item.desc}
                 </p>
               </motion.div>
@@ -683,37 +635,24 @@ function OurApproach() {
                     }}
                   >
                     <Icon size={28} className="text-white" strokeWidth={1.6} />
-                    <span
-                      className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-white border border-gray-100 text-[10px] font-black flex items-center justify-center"
-                      style={{
-                        color: item.accent,
-                        fontFamily: "system-ui,sans-serif",
-                      }}
-                    >
+                    <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-white border border-gray-100 text-[10px] font-black flex items-center justify-center font-body">
                       {item.step}
                     </span>
                   </div>
 
                   <div className="bg-white rounded-2xl border border-gray-100 p-6 w-full shadow-sm hover:shadow-md transition-shadow duration-300">
-                    <h3
-                      className="text-xl font-black text-gray-900 mb-1"
-                      style={{ fontFamily: "'Georgia',serif" }}
-                    >
+                    <h3 className="text-xl font-black text-gray-900 mb-1 font-heading">
                       {item.title}
                     </h3>
                     <p
-                      className="text-xs font-bold mb-3 italic"
+                      className="text-xs font-bold mb-3 italic font-body"
                       style={{
                         color: item.accent,
-                        fontFamily: "system-ui,sans-serif",
                       }}
                     >
                       {item.sub}
                     </p>
-                    <p
-                      className="text-sm text-gray-500 leading-relaxed"
-                      style={{ fontFamily: "system-ui,sans-serif" }}
-                    >
+                    <p className="text-sm text-gray-500 leading-relaxed font-body">
                       {item.desc}
                     </p>
                   </div>
@@ -784,10 +723,7 @@ function Services() {
                     strokeWidth={1.8}
                   />
                 </div>
-                <p
-                  className="text-sm font-bold text-gray-800 leading-tight"
-                  style={{ fontFamily: "'Georgia',serif" }}
-                >
+                <p className="text-sm font-bold text-gray-800 leading-tight font-body">
                   {s.title}
                 </p>
               </motion.div>
@@ -826,18 +762,14 @@ function Credibility() {
         <div className="grid md:grid-cols-2 gap-14 items-center">
           <div>
             <motion.div {...fade(0)}>
-              <div
-                className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4006e]/30 bg-[#d4006e]/10 text-[#ff6eb4] text-xs font-bold tracking-widest uppercase mb-6"
-                style={{ fontFamily: "system-ui,sans-serif" }}
-              >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4006e]/30 bg-[#d4006e]/10 text-[#ff6eb4] text-xs font-bold tracking-widest uppercase mb-6 font-body">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#d4006e] animate-pulse" />
                 Credibility
               </div>
             </motion.div>
             <motion.h2
               {...fade(0.1)}
-              className="text-4xl md:text-5xl font-black text-white leading-[1.08] mb-5"
-              style={{ fontFamily: "'Georgia',serif" }}
+              className="text-4xl md:text-5xl font-black text-white leading-[1.08] mb-5 font-heading"
             >
               Built by Operators,
               <br />
@@ -845,8 +777,7 @@ function Credibility() {
             </motion.h2>
             <motion.p
               {...fade(0.2)}
-              className="text-gray-400 text-lg leading-relaxed mb-8"
-              style={{ fontFamily: "system-ui,sans-serif" }}
+              className="text-gray-400 text-lg leading-relaxed mb-8 font-body"
             >
               FirstSkout is built by a team with hands-on experience in
               influencer campaign execution. New brand. Proven mindset. The
@@ -856,8 +787,7 @@ function Credibility() {
             <motion.a
               {...fade(0.3)}
               href="#contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#d4006e] text-white font-bold text-sm hover:bg-[#b0005a] transition-colors duration-200"
-              style={{ fontFamily: "system-ui,sans-serif" }}
+              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#d4006e] text-white font-bold text-sm hover:bg-[#b0005a] transition-colors duration-200 font-body"
             >
               Work With Us <ArrowRight size={15} />
             </motion.a>
@@ -878,10 +808,7 @@ function Credibility() {
                   <div className="w-10 h-10 rounded-xl bg-[#d4006e]/20 flex items-center justify-center flex-shrink-0">
                     <Icon size={18} className="text-[#d4006e]" />
                   </div>
-                  <p
-                    className="text-white font-semibold"
-                    style={{ fontFamily: "system-ui,sans-serif" }}
-                  >
+                  <p className="text-white font-semibold font-body">
                     {item.label}
                   </p>
                 </motion.div>
@@ -895,10 +822,7 @@ function Credibility() {
               className="bg-[#d4006e]/10 border border-[#d4006e]/20 rounded-2xl p-5 flex items-center gap-3"
             >
               <Sparkles size={18} className="text-[#d4006e] flex-shrink-0" />
-              <p
-                className="text-[#ff6eb4] font-bold text-sm italic"
-                style={{ fontFamily: "system-ui,sans-serif" }}
-              >
+              <p className="text-[#ff6eb4] font-bold text-sm italic font-body">
                 "New identity. Proven execution mindset."
               </p>
             </motion.div>
@@ -961,8 +885,7 @@ function FAQ() {
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
-                style={{ fontFamily: "system-ui,sans-serif" }}
+                className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left font-body"
               >
                 <span className="font-bold text-gray-900 text-sm md:text-base">
                   {faq.q}
@@ -984,10 +907,7 @@ function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <div
-                      className="px-6 pb-6 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-4"
-                      style={{ fontFamily: "system-ui,sans-serif" }}
-                    >
+                    <div className="px-6 pb-6 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-4 font-body">
                       {faq.a}
                     </div>
                   </motion.div>
@@ -1014,8 +934,7 @@ function CTA() {
 
         <motion.h2
           {...fade(0.1)}
-          className="text-5xl md:text-6xl font-black text-gray-900 leading-[1.05] mb-6"
-          style={{ fontFamily: "'Georgia',serif" }}
+          className="text-5xl md:text-6xl font-black text-gray-900 leading-[1.05] mb-6 font-heading"
         >
           Start building{" "}
           <span className="relative inline-block">
@@ -1034,8 +953,7 @@ function CTA() {
 
         <motion.div
           {...fade(0.2)}
-          className="flex flex-wrap justify-center gap-6 mb-10"
-          style={{ fontFamily: "system-ui,sans-serif" }}
+          className="flex flex-wrap justify-center gap-6 mb-10 font-body"
         >
           {["Better creators", "Better content", "Better results"].map(
             (item, i) => (
@@ -1052,8 +970,7 @@ function CTA() {
 
         <motion.p
           {...fade(0.25)}
-          className="text-gray-400 text-lg mb-10 max-w-xl mx-auto"
-          style={{ fontFamily: "system-ui,sans-serif" }}
+          className="text-gray-400 text-lg mb-10 max-w-xl mx-auto font-body"
         >
           If you're looking for a partner who takes full ownership of your
           campaign and delivers, FirstSkout is built for you.
@@ -1065,8 +982,7 @@ function CTA() {
         >
           <Link
             href="/appointment"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#d4006e] text-white font-bold text-base hover:bg-[#b0005a] transition-all duration-200 shadow-lg shadow-[#d4006e]/25 hover:shadow-[#d4006e]/40"
-            style={{ fontFamily: "system-ui,sans-serif" }}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#d4006e] text-white font-bold text-base hover:bg-[#b0005a] transition-all duration-200 shadow-lg shadow-[#d4006e]/25 hover:shadow-[#d4006e]/40 font-body"
           >
             Start Your Campaign <ArrowRight size={16} />
           </Link>
