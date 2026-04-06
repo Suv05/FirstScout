@@ -291,7 +291,7 @@ function SidebarItem({
       >
         <Icon size={13} />
       </span>
-      <span className="text-sm font-medium leading-tight">
+      <span className="text-sm font-medium leading-tight font-body">
         {index + 1}. {section.title}
       </span>
       {isActive && (
@@ -337,18 +337,18 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
             </span>
             <div className="h-px flex-1 bg-gray-100" />
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-3">
+          <h3 className="text-lg font-bold text-gray-900 mb-3 font-heading">
             {section.title}
           </h3>
 
           {/* Main content */}
-          <p className="text-gray-600 text-sm leading-relaxed">
+          <p className="text-gray-600 text-sm leading-relaxed font-body">
             {section.content}
           </p>
 
           {/* Bullets */}
           {section.bulletsLabel && (
-            <p className="mt-3 text-sm font-semibold text-gray-700">
+            <p className="mt-3 text-sm font-semibold text-gray-700 font-body">
               {section.bulletsLabel}
             </p>
           )}
@@ -357,7 +357,7 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
               {section.bullets.map((b, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-2 text-sm text-gray-600"
+                  className="flex items-center gap-2 text-sm text-gray-600 font-body"
                 >
                   <span className="w-4 h-4 rounded-full bg-[#d4006e]/10 flex items-center justify-center flex-shrink-0">
                     <Check size={9} className="text-[#d4006e]" />
@@ -374,10 +374,10 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
               key={i}
               className="mt-4 p-4 rounded-xl bg-gray-50 border border-gray-100"
             >
-              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5">
+              <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1.5 font-body">
                 {sub.label}
               </p>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed font-body">
                 {sub.text}
               </p>
             </div>
@@ -391,14 +391,14 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
                   key={i}
                   className="p-3 rounded-xl bg-gray-50 border border-gray-100"
                 >
-                  <p className="text-xs font-bold text-[#d4006e] mb-2">
+                  <p className="text-xs font-bold text-[#d4006e] mb-2 font-body">
                     {group.label}
                   </p>
                   <ul className="space-y-1">
                     {group.items.map((item, j) => (
                       <li
                         key={j}
-                        className="text-xs text-gray-600 flex items-center gap-1.5"
+                        className="text-xs text-gray-600 flex items-center gap-1.5 font-body"
                       >
                         <span className="w-1 h-1 rounded-full bg-gray-400 flex-shrink-0" />
                         {item}
@@ -507,8 +507,7 @@ export default function Page() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-4"
-            style={{ fontFamily: "'Georgia', serif" }}
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-tight mb-4 font-heading"
           >
             Terms &amp;{" "}
             <span className="relative inline-block">
@@ -521,7 +520,7 @@ export default function Page() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-500 text-lg max-w-xl"
+            className="text-gray-500 text-lg max-w-xl font-body"
           >
             Everything you need to know about how FirstSkout works with you —
             your rights, our responsibilities, and how we protect your data.
@@ -568,7 +567,7 @@ export default function Page() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="mt-8 flex items-center gap-6 text-sm text-gray-400"
+            className="mt-8 flex items-center gap-6 text-sm text-gray-400 font-body"
           >
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -593,7 +592,7 @@ export default function Page() {
             className="hidden lg:block w-72 flex-shrink-0"
           >
             <div className="sticky top-24 bg-white rounded-2xl border border-gray-100 p-4 shadow-sm">
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 px-2">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 px-2 font-body">
                 {activeTab === "terms" ? "Contents" : "Privacy Policy"}
               </p>
               <AnimatePresence mode="wait">
@@ -639,12 +638,12 @@ export default function Page() {
                     )}
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-gray-900 font-heading">
                       {activeTab === "terms"
                         ? "Terms & Conditions"
                         : "Privacy Policy"}
                     </h2>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-400 font-body">
                       {sections.length} sections · FirstSkout, India
                     </p>
                   </div>
@@ -665,7 +664,7 @@ export default function Page() {
                   viewport={{ once: true }}
                   className="mt-4 p-6 rounded-2xl bg-gradient-to-br from-[#d4006e]/5 to-[#ede8f5] border border-[#d4006e]/10 text-center"
                 >
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-600 font-body">
                     Questions about our Terms &amp; Policies?{" "}
                     <a
                       href="mailto:hello@FirstSkout.com"
