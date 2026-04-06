@@ -135,7 +135,7 @@ function ContactCard({
         <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-1">
           {option.label}
         </p>
-        <p className="text-base font-semibold text-gray-800 font-mono">
+        <p className="text-base font-semibold text-gray-800 font-body">
           {option.value}
         </p>
         <p className="text-xs text-gray-500 mt-1">{option.description}</p>
@@ -175,7 +175,7 @@ function CalendlySection() {
           <div className="w-3 h-3 rounded-full bg-green-400" />
         </div>
         <div className="flex-1 flex justify-center">
-          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-500 font-mono shadow-sm">
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-500 font-body shadow-sm">
             <Video className="w-3 h-3 text-pink-500" />
             calendly.com/FirstSkout · 30 min call
           </div>
@@ -234,7 +234,6 @@ export default function AppointmentPage() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-
         {/* ══════════════════════════════════════
             HERO SECTION
         ══════════════════════════════════════ */}
@@ -245,8 +244,7 @@ export default function AppointmentPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight mb-6"
-            style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+            className="text-5xl md:text-7xl font-black text-gray-900 leading-tight tracking-tight mb-6 font-heading"
           >
             Let's Build{" "}
             <span
@@ -272,8 +270,7 @@ export default function AppointmentPage() {
                   transition={{ duration: 1, delay: 0.8, ease: "easeInOut" }}
                 />
               </svg>
-            </span>
-            {" "}
+            </span>{" "}
             <br />
             Together.
           </motion.h1>
@@ -323,7 +320,6 @@ export default function AppointmentPage() {
             MAIN CONTENT — two-column layout
         ══════════════════════════════════════ */}
         <div className="grid lg:grid-cols-5 gap-10 items-start">
-
           {/* LEFT — Calendly (wider) */}
           <div className="lg:col-span-3">
             <motion.div
@@ -349,7 +345,6 @@ export default function AppointmentPage() {
 
           {/* RIGHT — OR divider + Contact Options */}
           <div className="lg:col-span-2 flex flex-col gap-6">
-
             {/* OR divider */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -375,12 +370,8 @@ export default function AppointmentPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h2
-                className="text-2xl font-black text-gray-900 leading-snug"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-              >
-                Prefer a{" "}
-                <span style={{ color: "#e91e8c" }}>different way</span>{" "}
+              <h2 className="text-2xl font-black text-gray-900 leading-snug font-heading">
+                Prefer a <span style={{ color: "#e91e8c" }}>different way</span>{" "}
                 to connect?
               </h2>
               <p className="text-sm text-gray-500 mt-2">
@@ -430,11 +421,9 @@ export default function AppointmentPage() {
             {[...Array(6)].map((_, i) => (
               <span
                 key={i}
-                className="text-6xl md:text-8xl font-black text-[#e7e6e2] mr-12 tracking-tight"
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
+                className="text-6xl md:text-8xl font-black text-[#e7e6e2] mr-12 tracking-tight font-heading"
               >
-                FirstSkout{" "}
-                <span style={{ color: "#e91e8c" }}>✦</span>{" "}
+                FirstSkout <span style={{ color: "#e91e8c" }}>✦</span>{" "}
               </span>
             ))}
           </motion.div>
