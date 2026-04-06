@@ -101,14 +101,12 @@ const LaunchCampaign = () => {
             {/* Heading */}
             <h1
               style={{
-                fontFamily: "Georgia, 'Times New Roman', serif",
                 fontWeight: 700,
                 fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
                 color: "#0f0f0f",
                 lineHeight: 1.2,
                 marginBottom: "0.2rem",
               }}
-
               className="font-heading"
             >
               Launch Your Campaign with{" "}
@@ -116,7 +114,6 @@ const LaunchCampaign = () => {
             </h1>
             <h2
               style={{
-                fontFamily: "Georgia, 'Times New Roman', serif",
                 fontWeight: 700,
                 fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
                 lineHeight: 1.2,
@@ -158,6 +155,7 @@ const LaunchCampaign = () => {
             <div className="flex items-center gap-6 flex-wrap font-body">
               <Link href={"/appointment"}>
                 <button
+                  className="font-heading"
                   style={{
                     background: "#be185d",
                     color: "#fff",

@@ -104,7 +104,7 @@ export default function Footer() {
           variants={itemVariants}
           className="flex items-start justify-between mb-12"
         >
-          <p className="text-[#1a1a1a] text-2xl font-semibold leading-tight max-w-[200px] font-body">
+          <p className="text-[#1a1a1a] text-2xl font-semibold leading-tight max-w-[200px] font-heading">
             Where Brands
             <br />
             Meet Creators

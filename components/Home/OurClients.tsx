@@ -129,7 +129,7 @@ export default function OurClients() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="text-center text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4"
+          className="text-center text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4 font-heading"
         >
           Our Clients:Leading
           <p className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">
@@ -142,7 +142,7 @@ export default function OurClients() {
           initial={{ opacity: 0, y: 12 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-center text-gray-800 text-lg max-w-xl mx-auto mb-14 leading-relaxed"
+          className="text-center text-gray-800 text-lg max-w-xl mx-auto mb-14 leading-relaxed font-body"
         >
           Discover the top brands and businesses that choose us as their
           partner. We&apos;re proud to work with industry leaders across diverse

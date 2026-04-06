@@ -37,7 +37,7 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-gray-900 md:text-6xl"
+          className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-gray-900 md:text-6xl font-heading"
         >
           Ready to Elevate Your{" "}
           <span className="text-gray-900">Influence with</span>{" "}
@@ -51,7 +51,7 @@ export default function CTASection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-gray-500"
+          className="mt-6 max-w-xl text-base leading-relaxed text-gray-500 font-body"
         >
           Join the movement. Grow your brand, unlock powerful collaborations,
           and shape culture with our expert talent &amp; influencer solutions.
@@ -65,7 +65,7 @@ export default function CTASection() {
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="mt-10 rounded-full bg-[#be185d] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pink-200 transition-all duration-200 hover:bg-[#9d1550] hover:shadow-pink-300"
+            className="mt-10 rounded-full bg-[#be185d] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pink-200 transition-all duration-200 hover:bg-[#9d1550] hover:shadow-pink-300 font-heading"
           >
             Book an Appointment
           </motion.button>

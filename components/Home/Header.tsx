@@ -93,12 +93,11 @@ export default function Header() {
                 FS
               </span>
             </motion.div>
-            <span className="text-black font-extrabold text-xl tracking-tight select-none">
+            <span className="text-black font-extrabold text-xl tracking-tight select-none font-heading">
               FirstSkout
             </span>
           </div>
 
-          {/* ── Desktop Nav ── */}
           <nav
             ref={navRef}
             className="hidden md:flex items-center gap-1 lg:gap-2"
@@ -125,11 +124,11 @@ export default function Header() {
           <div ref={btnRef} className="hidden md:flex opacity-0">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link href="/appointment">
-  <Button className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200">
-    Get in Touch
-    <ArrowUpRight size={15} strokeWidth={2.5} />
-  </Button>
-</Link>
+                <Button className="rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold px-5 py-2 h-auto flex items-center gap-1.5 transition-colors duration-200 font-heading">
+                  Get in Touch
+                  <ArrowUpRight size={15} strokeWidth={2.5} />
+                </Button>
+              </Link>
             </motion.div>
           </div>
 
@@ -180,13 +179,11 @@ export default function Header() {
                 className="mt-3"
               >
                 <Link href="/appointment" onClick={() => setMenuOpen(false)}>
-  <Button
-    className="w-full rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold flex items-center justify-center gap-1.5 h-11"
-  >
-    Get in Touch
-    <ArrowUpRight size={15} strokeWidth={2.5} />
-  </Button>
-</Link>
+                  <Button className="w-full rounded-full bg-black text-white hover:bg-gray-800 text-sm font-semibold flex items-center justify-center gap-1.5 h-11">
+                    Get in Touch
+                    <ArrowUpRight size={15} strokeWidth={2.5} />
+                  </Button>
+                </Link>
               </motion.div>
             </nav>
           </motion.div>
