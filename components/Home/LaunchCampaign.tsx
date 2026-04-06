@@ -112,7 +112,7 @@ const LaunchCampaign = () => {
               className="font-heading"
             >
               Launch Your Campaign with{" "}
-              <span style={{ color: "#0f0f0f" }}>FirstScout</span>
+              <span style={{ color: "#0f0f0f" }}>FirstSkout</span>
             </h1>
             <h2
               style={{

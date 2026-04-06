@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const lines = [
   "Fueled by creativity, collaboration, and excellence,",
-  "FirstScout is a premier talent management and",
+  "FirstSkout is a premier talent management and",
   "influencer marketing agency crafting unmatched",
   "success for brands and creators alike.",
 ];

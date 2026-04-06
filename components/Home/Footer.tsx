@@ -21,11 +21,11 @@ const MotionLink = motion.create(Link);
 gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
-  { icon: Twitter, label: "@firstscout", href: "#" },
-  { icon: Instagram, label: "@firstscout", href: "#" },
-  { icon: Linkedin, label: "@firstscout", href: "#" },
-  { icon: Youtube, label: "@firstscout", href: "#" },
-  { icon: Facebook, label: "@firstscout", href: "#" },
+  { icon: Twitter, label: "@FirstSkout", href: "#" },
+  { icon: Instagram, label: "@FirstSkout", href: "#" },
+  { icon: Linkedin, label: "@FirstSkout", href: "#" },
+  { icon: Youtube, label: "@FirstSkout", href: "#" },
+  { icon: Facebook, label: "@FirstSkout", href: "#" },
 ];
 
 const services = [
@@ -220,7 +220,7 @@ export default function Footer() {
             style={{ fontSize: "clamp(80px, 18vw, 200px)", lineHeight: 1 }}
           >
             {/* Duplicate for seamless infinite loop */}
-            firstscout&nbsp;&nbsp;&nbsp;&nbsp;firstscout&nbsp;&nbsp;&nbsp;&nbsp;
+            FirstSkout&nbsp;&nbsp;&nbsp;&nbsp;FirstSkout&nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         </div>
       </div>
@@ -234,9 +234,9 @@ export default function Footer() {
         className="flex items-center justify-between px-8 pb-6 pt-2 text-[#2a2a2a] text-xs font-body"
       >
         <span>
-          © {new Date().getFullYear()} FirstScout. All rights reserved.
+          © {new Date().getFullYear()} FirstSkout. All rights reserved.
         </span>
-        <span>Made with ♥ by FirstScout</span>
+        <span>Made with ♥ by FirstSkout</span>
       </motion.div>
     </footer>
   );

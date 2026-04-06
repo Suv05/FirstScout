@@ -94,7 +94,7 @@ export default function Header() {
               </span>
             </motion.div>
             <span className="text-black font-extrabold text-xl tracking-tight select-none">
-              FirstScout
+              FirstSkout
             </span>
           </div>
 

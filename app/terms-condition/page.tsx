@@ -33,13 +33,13 @@ const TERMS_SECTIONS = [
     id: "t-intro",
     icon: FileText,
     title: "Introduction",
-    content: `Welcome to FirstScout. By accessing our website or engaging with our services, you agree to comply with these Terms & Conditions. FirstScout operates as an influencer marketing service unit under a registered entity in India and provides end-to-end campaign execution services.`,
+    content: `Welcome to FirstSkout. By accessing our website or engaging with our services, you agree to comply with these Terms & Conditions. FirstSkout operates as an influencer marketing service unit under a registered entity in India and provides end-to-end campaign execution services.`,
   },
   {
     id: "t-scope",
     icon: Users,
     title: "Scope of Services",
-    content: `FirstScout offers a full-service execution partner experience, managing campaigns from start to finish.`,
+    content: `FirstSkout offers a full-service execution partner experience, managing campaigns from start to finish.`,
     bullets: [
       "Influencer scouting and onboarding",
       "Campaign strategy and planning",
@@ -53,7 +53,7 @@ const TERMS_SECTIONS = [
     id: "t-nature",
     icon: AlertCircle,
     title: "Nature of Services & Performance",
-    content: `Influencer marketing outcomes depend on multiple external factors such as platform algorithms, audience behavior, and content performance. While FirstScout applies strategic and operational expertise, specific outcomes (sales, leads, conversions) are not guaranteed.`,
+    content: `Influencer marketing outcomes depend on multiple external factors such as platform algorithms, audience behavior, and content performance. While FirstSkout applies strategic and operational expertise, specific outcomes (sales, leads, conversions) are not guaranteed.`,
     bullets: [
       "Efficient coordination",
       "Timely execution",
@@ -69,7 +69,7 @@ const TERMS_SECTIONS = [
     subSections: [
       {
         label: "Refund Policy",
-        text: "Refunds are handled on a case-by-case basis. In case of creator-related issues, FirstScout will attempt reasonable resolution (replacement, adjustment, etc.). Any refund decision will consider campaign progress and deliverables. Refunds, if applicable, are at the discretion of FirstScout, ensuring fair handling for all parties.",
+        text: "Refunds are handled on a case-by-case basis. In case of creator-related issues, FirstSkout will attempt reasonable resolution (replacement, adjustment, etc.). Any refund decision will consider campaign progress and deliverables. Refunds, if applicable, are at the discretion of FirstSkout, ensuring fair handling for all parties.",
       },
     ],
   },
@@ -77,7 +77,7 @@ const TERMS_SECTIONS = [
     id: "t-creator-pay",
     icon: Check,
     title: "Creator Payments",
-    content: `FirstScout manages and facilitates payments to creators across all campaigns, regardless of geography.`,
+    content: `FirstSkout manages and facilitates payments to creators across all campaigns, regardless of geography.`,
     bullets: [
       "Smooth execution",
       "Standardized payment handling",
@@ -93,7 +93,7 @@ const TERMS_SECTIONS = [
     subSections: [
       {
         label: "Extended usage requiring explicit approval",
-        text: "Paid ads, whitelisting, and licensing must be explicitly approved in advance. FirstScout ensures creator rights are respected and content is not used beyond agreed terms without proper consent. FirstScout may use content for portfolio and marketing purposes.",
+        text: "Paid ads, whitelisting, and licensing must be explicitly approved in advance. FirstSkout ensures creator rights are respected and content is not used beyond agreed terms without proper consent. FirstSkout may use content for portfolio and marketing purposes.",
       },
     ],
   },
@@ -101,7 +101,7 @@ const TERMS_SECTIONS = [
     id: "t-role",
     icon: Shield,
     title: "Role & Responsibility",
-    content: `FirstScout acts as a campaign execution and coordination partner ensuring structured workflows, creator alignment, and smooth communication.`,
+    content: `FirstSkout acts as a campaign execution and coordination partner ensuring structured workflows, creator alignment, and smooth communication.`,
     subSections: [
       {
         label: "Not responsible for",
@@ -113,7 +113,7 @@ const TERMS_SECTIONS = [
     id: "t-liability",
     icon: Gavel,
     title: "Limitation of Liability",
-    content: `To the maximum extent permitted by law, FirstScout shall not be liable for campaign performance outcomes, indirect or consequential losses, or third-party/platform-related issues. Liability, if applicable, is limited to the value of services provided.`,
+    content: `To the maximum extent permitted by law, FirstSkout shall not be liable for campaign performance outcomes, indirect or consequential losses, or third-party/platform-related issues. Liability, if applicable, is limited to the value of services provided.`,
   },
   {
     id: "t-termination",
@@ -137,7 +137,7 @@ const TERMS_SECTIONS = [
     id: "t-updates",
     icon: RefreshCw,
     title: "Updates",
-    content: `FirstScout reserves the right to update these Terms at any time. Continued use implies acceptance.`,
+    content: `FirstSkout reserves the right to update these Terms at any time. Continued use implies acceptance.`,
   },
 ];
 
@@ -146,7 +146,7 @@ const PRIVACY_SECTIONS = [
     id: "p-intro",
     icon: Shield,
     title: "Introduction",
-    content: `FirstScout respects your privacy and is committed to protecting your data. This policy explains how we collect, use, and safeguard your information.`,
+    content: `FirstSkout respects your privacy and is committed to protecting your data. This policy explains how we collect, use, and safeguard your information.`,
   },
   {
     id: "p-collect",
@@ -233,7 +233,7 @@ const PRIVACY_SECTIONS = [
     id: "p-contact",
     icon: Mail,
     title: "Contact",
-    content: `For any queries regarding our privacy policy or your data, please reach out to us at hello@FirstScout.com`,
+    content: `For any queries regarding our privacy policy or your data, please reach out to us at hello@FirstSkout.com`,
     isContact: true,
   },
 ];
@@ -413,11 +413,11 @@ function SectionCard({ section, index }: { section: Section; index: number }) {
           {/* Contact */}
           {section.isContact && (
             <a
-              href="mailto:hello@FirstScout.com"
+              href="mailto:hello@FirstSkout.com"
               className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#d4006e] text-white text-sm font-semibold hover:bg-[#b0005a] transition-colors duration-200"
             >
               <Mail size={14} />
-              hello@FirstScout.com
+              hello@FirstSkout.com
             </a>
           )}
         </div>
@@ -523,7 +523,7 @@ export default function Page() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 text-lg max-w-xl"
           >
-            Everything you need to know about how FirstScout works with you —
+            Everything you need to know about how FirstSkout works with you —
             your rights, our responsibilities, and how we protect your data.
           </motion.p>
 
@@ -645,7 +645,7 @@ export default function Page() {
                         : "Privacy Policy"}
                     </h2>
                     <p className="text-sm text-gray-400">
-                      {sections.length} sections · FirstScout, India
+                      {sections.length} sections · FirstSkout, India
                     </p>
                   </div>
                 </div>
@@ -668,10 +668,10 @@ export default function Page() {
                   <p className="text-sm text-gray-600">
                     Questions about our Terms &amp; Policies?{" "}
                     <a
-                      href="mailto:hello@FirstScout.com"
+                      href="mailto:hello@FirstSkout.com"
                       className="text-[#d4006e] font-semibold hover:underline"
                     >
-                      hello@FirstScout.com
+                      hello@FirstSkout.com
                     </a>
                   </p>
                 </motion.div>

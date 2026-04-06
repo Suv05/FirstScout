@@ -177,7 +177,7 @@ function CalendlySection() {
         <div className="flex-1 flex justify-center">
           <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs text-gray-500 font-mono shadow-sm">
             <Video className="w-3 h-3 text-pink-500" />
-            calendly.com/firstscout · 30 min call
+            calendly.com/FirstSkout · 30 min call
           </div>
         </div>
         <div className="flex items-center gap-1.5 text-xs text-green-600 font-medium">
@@ -284,7 +284,7 @@ export default function AppointmentPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-gray-500 text-lg md:text-xl max-w-xl mx-auto mb-10 leading-relaxed"
           >
-            Schedule a 30-minute web conference with the FirstScout team — or
+            Schedule a 30-minute web conference with the FirstSkout team — or
             reach us the way that works best for you.
           </motion.p>
 
@@ -433,7 +433,7 @@ export default function AppointmentPage() {
                 className="text-6xl md:text-8xl font-black text-[#e7e6e2] mr-12 tracking-tight"
                 style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
               >
-                firstscout{" "}
+                FirstSkout{" "}
                 <span style={{ color: "#e91e8c" }}>✦</span>{" "}
               </span>
             ))}

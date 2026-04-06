@@ -252,7 +252,7 @@ export default function EmptyBlogState() {
                    whitespace-nowrap leading-none tracking-[-3px]"
         style={{ fontFamily: "'Playfair Display', serif" }}
       >
-        firstscout
+        FirstSkout
       </div>
 
       {/* ── Content ── */}

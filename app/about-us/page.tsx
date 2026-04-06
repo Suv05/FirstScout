@@ -108,7 +108,7 @@ function Hero() {
         className="relative z-10 max-w-6xl mx-auto px-6 py-24 md:py-32"
       >
         <motion.div {...fade(0)}>
-          <PillBadge>About FirstScout</PillBadge>
+          <PillBadge>About FirstSkout</PillBadge>
         </motion.div>
 
         <div className="max-w-4xl">
@@ -134,7 +134,7 @@ function Hero() {
             className="text-xl text-gray-500 leading-relaxed max-w-2xl mb-4"
             style={{ fontFamily: "system-ui,sans-serif", fontWeight: 400 }}
           >
-            FirstScout is an execution-first influencer marketing agency focused
+            FirstSkout is an execution-first influencer marketing agency focused
             on relevance, content quality, and real results — not outdated
             creator lists.
           </motion.p>
@@ -219,7 +219,7 @@ function ShortAbout() {
               className="mt-5 text-gray-500 text-lg leading-relaxed"
               style={{ fontFamily: "system-ui,sans-serif", fontWeight: 400 }}
             >
-              Most agencies hand you a list. We hand you results. FirstScout is
+              Most agencies hand you a list. We hand you results. FirstSkout is
               a full-service influencer marketing agency that scouts the right
               creators in real time — no stale databases, no guesswork, no
               middlemen.
@@ -415,7 +415,7 @@ function AboutStory() {
             className="mt-5 text-gray-500 text-lg max-w-2xl mx-auto"
             style={{ fontFamily: "system-ui,sans-serif" }}
           >
-            FirstScout was created to fix what traditional agencies get
+            FirstSkout was created to fix what traditional agencies get
             fundamentally wrong. We took every broken pattern in the industry
             and rebuilt it from scratch.
           </motion.p>
@@ -472,7 +472,7 @@ function AboutStory() {
                 className="text-lg font-black text-white"
                 style={{ fontFamily: "'Georgia',serif" }}
               >
-                FirstScout
+                FirstSkout
               </h3>
             </div>
             <ul className="space-y-3 relative">
@@ -848,7 +848,7 @@ function Credibility() {
               className="text-gray-400 text-lg leading-relaxed mb-8"
               style={{ fontFamily: "system-ui,sans-serif" }}
             >
-              FirstScout is built by a team with hands-on experience in
+              FirstSkout is built by a team with hands-on experience in
               influencer campaign execution. New brand. Proven mindset. The
               foundation is built on real campaigns, real creators, and real
               results.
@@ -914,7 +914,7 @@ function Credibility() {
 ══════════════════════════════════════════ */
 const FAQS = [
   {
-    q: "How is FirstScout different from other agencies?",
+    q: "How is FirstSkout different from other agencies?",
     a: "We don't rely on pre-built creator databases. Every campaign starts with real-time scouting based on current trends and your specific audience. We also own the full execution pipeline — from strategy to creator payments — instead of acting as a middleman.",
   },
   {
@@ -1056,7 +1056,7 @@ function CTA() {
           style={{ fontFamily: "system-ui,sans-serif" }}
         >
           If you're looking for a partner who takes full ownership of your
-          campaign and delivers, FirstScout is built for you.
+          campaign and delivers, FirstSkout is built for you.
         </motion.p>
 
         <motion.div
