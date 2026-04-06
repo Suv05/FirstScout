@@ -272,10 +272,9 @@ export default function Page() {
         aria-hidden
         className="pointer-events-none select-none absolute bottom-0 left-1/2
                                    -translate-x-1/2 font-black text-[clamp(90px,18vw,180px)]
-                                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px]"
-        style={{ fontFamily: "'Playfair Display', serif" }}
+                                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px] font-heading"
       >
-        firstscout
+        FirstSkout
       </div>
 
       {/* ── Content ── */}
@@ -295,7 +294,7 @@ export default function Page() {
         >
           <span
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em]
-                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5"
+                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5 font-body"
           >
             <span className="w-1 h-1 rounded-full bg-[#888780] inline-block" />
             Tools · Coming soon
@@ -307,8 +306,7 @@ export default function Page() {
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="text-[clamp(40px,6.5vw,76px)] font-black leading-[1.06] tracking-tight
-                     text-[#1a1a18] mb-6"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+                     text-[#1a1a18] mb-6 font-heading"
         >
           Built for creators,
           <br />
@@ -330,7 +328,7 @@ export default function Page() {
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg mb-10"
+          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg mb-10 font-body"
         >
           We're building a free toolkit designed specifically for creators and
           brands — from invoice generators to influencer finders. Everything in
@@ -392,7 +390,7 @@ export default function Page() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center gap-2 border border-[#D3D1C7] rounded-full px-4 py-2
                        text-[13px] text-[#5F5E5A] hover:border-[#B4B2A9] hover:text-[#2C2C2A]
-                       bg-white/30 transition-all duration-300"
+                       bg-white/30 transition-all duration-300 font-body"
           >
             <span className="w-1 h-1 rounded-full bg-[#B4B2A9]" />
             {p}
