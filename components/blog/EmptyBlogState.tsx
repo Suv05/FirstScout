@@ -249,8 +249,7 @@ export default function EmptyBlogState() {
         aria-hidden
         className="pointer-events-none select-none absolute bottom-0 left-1/2 -translate-x-1/2
                    font-black text-[clamp(90px,18vw,180px)] text-black/[0.04]
-                   whitespace-nowrap leading-none tracking-[-3px]"
-        style={{ fontFamily: "'Playfair Display', serif" }}
+                   whitespace-nowrap leading-none tracking-[-3px] font-heading"
       >
         FirstSkout
       </div>
@@ -267,7 +266,7 @@ export default function EmptyBlogState() {
         <motion.div variants={fadeUp} className="mb-6">
           <span
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em]
-                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5"
+                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5 font-body"
           >
             <span className="w-1 h-1 rounded-full bg-[#888780] inline-block animate-pulse" />
             Blog · Coming soon
@@ -278,8 +277,7 @@ export default function EmptyBlogState() {
         <h2
           ref={headlineRef}
           className="text-[clamp(42px,7vw,80px)] font-black leading-[1.06] tracking-tight
-                     text-[#1a1a18] mb-6 perspective-[600px]"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+                     text-[#1a1a18] mb-6 perspective-[600px] font-heading"
         >
           Good writing{" "}
           <em className="not-italic text-[#5F5E5A]">takes time.</em>
@@ -298,7 +296,7 @@ export default function EmptyBlogState() {
         {/* Sub copy */}
         <motion.p
           variants={fadeUp}
-          className="text-[#5F5E5A] text-base leading-relaxed max-w-md mb-12"
+          className="text-[#5F5E5A] text-base leading-relaxed max-w-md mb-12 font-body"
         >
           We're crafting our first articles — deep-dives on creator-led growth,
           product design, and the moves that actually matter. Worth the wait.
@@ -373,7 +371,7 @@ export default function EmptyBlogState() {
               key={text}
               className="flex items-center gap-2 border border-[#D3D1C7] rounded-full
                          px-4 py-2 text-[13px] text-[#5F5E5A] hover:border-[#B4B2A9]
-                         hover:text-[#2C2C2A] transition-all duration-300 bg-white/30"
+                         hover:text-[#2C2C2A] transition-all duration-300 bg-white/30 font-body"
             >
               <Icon className="w-3.5 h-3.5 text-[#888780]" />
               {text}
