@@ -37,8 +37,8 @@ const services = [
 ];
 
 const explore = [
-  { label: "Terms & Conditions", href: "/terms-condition" },
-  { label: "Privacy Policy", href: "/terms-condition" },
+  { label: "Terms & Conditions", href: "/legal" },
+  { label: "Privacy Policy", href: "/legal" },
   { label: "Contact", href: "/creators#contact" },
 ];
 
