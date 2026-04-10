@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -83,19 +84,21 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-14 md:h-16">
           {/* ── Brand ── */}
-          <div ref={logoRef} className="flex items-center gap-2 opacity-0">
+          <div ref={logoRef} className="flex items-center opacity-0">
             <motion.div
-              whileHover={{ rotate: 15, scale: 1.1 }}
+              whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300 }}
-              className="w-8 h-8 rounded-full bg-black flex items-center justify-center"
+              className="flex items-center"
             >
-              <span className="text-white text-xs font-black tracking-tight">
-                FS
-              </span>
+              <Image
+                src="/firstscout-logo.svg"
+                alt="FirstSkout Logo"
+                width={160} // adjust as needed
+                height={60} // adjust as needed
+                priority
+                className="object-contain"
+              />
             </motion.div>
-            <span className="text-black font-extrabold text-xl tracking-tight select-none font-heading">
-              FirstSkout
-            </span>
           </div>
 
           <nav

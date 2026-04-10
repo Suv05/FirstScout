@@ -1,0 +1,28 @@
+<svg width="1200" height="400" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+
+  <text x="80" y="120"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="80"
+        font-weight="700"
+        fill="#0f172a"
+        letter-spacing="1">
+    FirstSk
+  </text>
+
+  <!-- Target Icon (O) -->
+  <g transform="translate(389, 95)">
+    <circle r="28" fill="none" stroke="#3b82f6" stroke-width="8"/>
+    <circle r="16" fill="none" stroke="#60a5fa" stroke-width="6"/>
+    <circle r="5" fill="#93c5fd"/>
+  </g>
+
+  <!-- Remaining Text -->
+  <text x="423" y="120"
+        font-family="Arial, Helvetica, sans-serif"
+        font-size="80"
+        font-weight="700"
+        fill="#0f172a"
+        letter-spacing="1">
+    ut
+  </text>
+</svg>
