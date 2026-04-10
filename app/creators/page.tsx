@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { gsap } from "gsap";
+import { useRef, useState,useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -176,29 +177,32 @@ function PillBadge({ children }: { children: React.ReactNode }) {
 /* ══════════════════════════════════════════
    MARQUEE
 ══════════════════════════════════════════ */
-function Marquee() {
-  const items = CREATORS.map((c) => c.name);
-  const doubled = [...items, ...items];
+function Marquee({ items, duration = 24 }: { items: string[]; duration?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    const ctx = gsap.context(() =>
+      gsap.to(ref.current, { xPercent: -50, ease: "none", duration, repeat: -1 })
+    );
+    return () => ctx.revert();
+  }, [duration]);
   return (
-    <div className="overflow-hidden py-4 border-y border-gray-100 bg-white/60 backdrop-blur-sm">
-      <motion.div
-        className="flex gap-10 whitespace-nowrap"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-      >
-        {doubled.map((name, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-3 text-sm font-semibold text-gray-400 font-body"
-          >
-            <Instagram size={12} className="text-[#d4006e]" />
-            {name}
-          </span>
+    <div className="border-t border-b border-[#D3D1C7] py-3 overflow-hidden">
+      <div ref={ref} className="flex whitespace-nowrap w-max">
+        {[0, 1].map((ri) => (
+          <div key={ri} className="flex items-center">
+            {items.map((t) => (
+              <span key={t} className="flex items-center gap-4 px-8 text-[11px] uppercase tracking-[0.2em] text-[#B4B2A9] font-medium">
+                {t}<span className="w-1 h-1 rounded-full bg-[#D3D1C7] inline-block" />
+              </span>
+            ))}
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
+
 
 /* ══════════════════════════════════════════
    HERO
@@ -286,12 +290,12 @@ function Hero() {
               className="flex flex-wrap gap-6 mb-8"
             >
               {[
-                { num: `${CREATORS.length}+`, label: "Active Creators" },
-                { num: formatNum(totalFollowers), label: "Combined Reach" },
+                { num: "250+", label: "Active Creators" },
+                { num: "0", label: "Exclusive Creators" },
                 { num: "Real-Time", label: "Scouting Always On" },
               ].map((s, i) => (
                 <div key={i}>
-                  <p className="text-3xl font-black text-gray-900 font-heading">
+                  <p className="text-3xl font-black text-gray-900 font-heading text-center">
                     {s.num}
                   </p>
                   <p className="text-xs text-gray-400 font-body">{s.label}</p>
@@ -354,7 +358,7 @@ function Hero() {
         </div>
       </motion.div>
 
-      <Marquee />
+      <Marquee items={["Real Creators","Verified Reach","Multi-Platform","Authentic Content","No Databases","Hand-Picked","Audience Fit"]} />
     </div>
   );
 }
