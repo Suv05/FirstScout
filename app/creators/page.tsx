@@ -1,7 +1,11 @@
 "use client";
 
+import {
+  sendCreatorInquiryEmail,
+  type CreatorFormData,
+} from "@/server-act/creators-contact/actions";
 import { gsap } from "gsap";
-import { useRef, useState,useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -177,12 +181,23 @@ function PillBadge({ children }: { children: React.ReactNode }) {
 /* ══════════════════════════════════════════
    MARQUEE
 ══════════════════════════════════════════ */
-function Marquee({ items, duration = 24 }: { items: string[]; duration?: number }) {
+function Marquee({
+  items,
+  duration = 24,
+}: {
+  items: string[];
+  duration?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!ref.current) return;
     const ctx = gsap.context(() =>
-      gsap.to(ref.current, { xPercent: -50, ease: "none", duration, repeat: -1 })
+      gsap.to(ref.current, {
+        xPercent: -50,
+        ease: "none",
+        duration,
+        repeat: -1,
+      }),
     );
     return () => ctx.revert();
   }, [duration]);
@@ -192,8 +207,12 @@ function Marquee({ items, duration = 24 }: { items: string[]; duration?: number 
         {[0, 1].map((ri) => (
           <div key={ri} className="flex items-center">
             {items.map((t) => (
-              <span key={t} className="flex items-center gap-4 px-8 text-[11px] uppercase tracking-[0.2em] text-[#B4B2A9] font-medium">
-                {t}<span className="w-1 h-1 rounded-full bg-[#D3D1C7] inline-block" />
+              <span
+                key={t}
+                className="flex items-center gap-4 px-8 text-[11px] uppercase tracking-[0.2em] text-[#B4B2A9] font-medium"
+              >
+                {t}
+                <span className="w-1 h-1 rounded-full bg-[#D3D1C7] inline-block" />
               </span>
             ))}
           </div>
@@ -202,7 +221,6 @@ function Marquee({ items, duration = 24 }: { items: string[]; duration?: number 
     </div>
   );
 }
-
 
 /* ══════════════════════════════════════════
    HERO
@@ -358,7 +376,17 @@ function Hero() {
         </div>
       </motion.div>
 
-      <Marquee items={["Real Creators","Verified Reach","Multi-Platform","Authentic Content","No Databases","Hand-Picked","Audience Fit"]} />
+      <Marquee
+        items={[
+          "Real Creators",
+          "Verified Reach",
+          "Multi-Platform",
+          "Authentic Content",
+          "No Databases",
+          "Hand-Picked",
+          "Audience Fit",
+        ]}
+      />
     </div>
   );
 }
@@ -522,15 +550,15 @@ function CreatorsGrid() {
 /* ══════════════════════════════════════════
    FORM TYPES
 ══════════════════════════════════════════ */
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  platform: string;
-  companyType: string;
-  platformLink: string;
-  message: string;
-}
+// interface FormData {
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   platform: string;
+//   companyType: string;
+//   platformLink: string;
+//   message: string;
+// }
 
 /* ══════════════════════════════════════════
    CUSTOM SELECT
@@ -677,6 +705,8 @@ function InputField({
 ══════════════════════════════════════════ */
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [platform, setPlatform] = useState("");
   const [companyType, setCompanyType] = useState("");
 
@@ -685,12 +715,25 @@ function ContactForm() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>();
+  } = useForm<CreatorFormData>();
 
-  const onSubmit = (data: FormData) => {
-    const payload = { ...data, platform, companyType };
-    console.log("Form submitted:", payload);
-    setSubmitted(true);
+  const onSubmit = async (data: CreatorFormData) => {
+    setLoading(true);
+    setError(null);
+
+    const payload: CreatorFormData = { ...data, platform, companyType };
+    const result = await sendCreatorInquiryEmail(payload);
+
+    if (result.success) {
+      setSubmitted(true);
+      reset();
+      setPlatform("");
+      setCompanyType("");
+    } else {
+      setError(result.error ?? "Something went wrong. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -707,13 +750,12 @@ function ContactForm() {
           backgroundSize: "40px 40px",
         }}
       />
-      {/* blobs */}
       <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#ede8f5] opacity-40 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-[#d4006e]/5 blur-3xl pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
-          {/* left — info */}
+          {/* ── left info panel (unchanged) ── */}
           <div className="lg:sticky lg:top-28">
             <motion.div {...fade(0)}>
               <PillBadge>Join the Network</PillBadge>
@@ -743,7 +785,6 @@ function ContactForm() {
               to launch a campaign — reach out and let's start the conversation.
             </motion.p>
 
-            {/* why connect */}
             <motion.div {...fade(0.25)} className="space-y-4 mb-8">
               {[
                 {
@@ -775,22 +816,18 @@ function ContactForm() {
               ))}
             </motion.div>
 
-            {/* response promise */}
             <motion.div
               {...fade(0.3)}
               className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#d4006e]/5 border border-[#d4006e]/15"
             >
               <CheckCircle size={16} className="text-[#d4006e] flex-shrink-0" />
-              <p
-                className="text-xs text-gray-600 font-medium"
-                style={{ fontFamily: "system-ui,sans-serif" }}
-              >
+              <p className="text-xs text-gray-600 font-medium font-body">
                 We reply to every message within 24 hours.
               </p>
             </motion.div>
           </div>
 
-          {/* right — form */}
+          {/* ── right: form ── */}
           <motion.div {...fade(0.15)}>
             <AnimatePresence mode="wait">
               {!submitted ? (
@@ -802,6 +839,57 @@ function ContactForm() {
                   onSubmit={handleSubmit(onSubmit)}
                   className="bg-[#f7f6f3] rounded-3xl border border-gray-100 p-8 shadow-sm space-y-5"
                 >
+                  {/* ── Error banner ── */}
+                  <AnimatePresence>
+                    {error && (
+                      <motion.div
+                        key="error-banner"
+                        initial={{ opacity: 0, y: -8, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                        transition={{ duration: 0.22 }}
+                        className="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-red-50 border border-red-200"
+                      >
+                        <svg
+                          className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2}
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <path d="M12 8v4m0 4h.01" strokeLinecap="round" />
+                        </svg>
+                        <div className="flex-1">
+                          <p className="text-xs font-bold text-red-700 font-body mb-0.5">
+                            Failed to send message
+                          </p>
+                          <p className="text-xs text-red-600 font-body">
+                            {error}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setError(null)}
+                          className="text-red-400 hover:text-red-600 transition-colors"
+                        >
+                          <svg
+                            className="w-3.5 h-3.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path
+                              d="M6 18L18 6M6 6l12 12"
+                              strokeLinecap="round"
+                            />
+                          </svg>
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
                   {/* name row */}
                   <div className="grid grid-cols-2 gap-4">
                     <InputField
@@ -818,7 +906,6 @@ function ContactForm() {
                     />
                   </div>
 
-                  {/* email */}
                   <InputField
                     label="Email Address"
                     placeholder="you@example.com"
@@ -833,17 +920,14 @@ function ContactForm() {
                     })}
                   />
 
-                  {/* platform */}
                   <CustomSelect
                     label="Platform / Query Type"
                     placeholder="What best describes you?"
                     options={PLATFORM_OPTIONS}
                     value={platform}
                     onChange={setPlatform}
-                    error={!platform ? undefined : undefined}
                   />
 
-                  {/* company type */}
                   <CustomSelect
                     label="Company Type"
                     placeholder="What type of company are you?"
@@ -852,7 +936,6 @@ function ContactForm() {
                     onChange={setCompanyType}
                   />
 
-                  {/* platform link */}
                   <InputField
                     label="Your Profile / Platform Link"
                     placeholder="https://instagram.com/yourprofile"
@@ -860,7 +943,6 @@ function ContactForm() {
                     {...register("platformLink")}
                   />
 
-                  {/* message */}
                   <InputField
                     label="Message"
                     placeholder="Tell us about your campaign goals or collaboration idea..."
@@ -872,22 +954,51 @@ function ContactForm() {
                     })}
                   />
 
-                  {/* submit */}
+                  {/* ── Submit button ── */}
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-[#d4006e] text-white font-bold text-sm hover:bg-[#b0005a] transition-colors duration-200 shadow-lg shadow-[#d4006e]/25"
-                    style={{ fontFamily: "system-ui,sans-serif" }}
+                    disabled={loading}
+                    whileHover={!loading ? { scale: 1.02 } : {}}
+                    whileTap={!loading ? { scale: 0.98 } : {}}
+                    className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl text-white font-bold text-sm transition-all duration-200 shadow-lg font-body ${
+                      loading
+                        ? "bg-[#d4006e]/60 cursor-not-allowed shadow-none"
+                        : "bg-[#d4006e] hover:bg-[#b0005a] shadow-[#d4006e]/25"
+                    }`}
                   >
-                    <Send size={15} />
-                    Send Message
+                    {loading ? (
+                      <>
+                        {/* spinner */}
+                        <svg
+                          className="w-4 h-4 animate-spin"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="3"
+                          />
+                          <path
+                            className="opacity-80"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                          />
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={15} />
+                        Send Message
+                      </>
+                    )}
                   </motion.button>
 
-                  <p
-                    className="text-center text-xs text-gray-400"
-                    style={{ fontFamily: "system-ui,sans-serif" }}
-                  >
+                  <p className="text-center text-xs text-gray-400 font-body">
                     By submitting you agree to our{" "}
                     <a href="/legal" className="text-[#d4006e] hover:underline">
                       privacy policy
@@ -915,16 +1026,10 @@ function ContactForm() {
                   >
                     <CheckCircle size={36} className="text-[#d4006e]" />
                   </motion.div>
-                  <h3
-                    className="text-3xl font-black text-gray-900 mb-3"
-                    style={{ fontFamily: "'Georgia',serif" }}
-                  >
+                  <h3 className="text-3xl font-black text-gray-900 mb-3 font-heading">
                     Message Sent!
                   </h3>
-                  <p
-                    className="text-gray-500 text-base mb-8 max-w-xs"
-                    style={{ fontFamily: "system-ui,sans-serif" }}
-                  >
+                  <p className="text-gray-500 text-base mb-8 max-w-xs font-body">
                     We've received your message and will get back to you within
                     24 hours.
                   </p>
@@ -936,8 +1041,7 @@ function ContactForm() {
                       setPlatform("");
                       setCompanyType("");
                     }}
-                    className="px-6 py-3 rounded-xl bg-[#d4006e] text-white text-sm font-bold hover:bg-[#b0005a] transition-colors"
-                    style={{ fontFamily: "system-ui,sans-serif" }}
+                    className="px-6 py-3 rounded-xl bg-[#d4006e] text-white text-sm font-bold hover:bg-[#b0005a] transition-colors font-body"
                   >
                     Send Another Message
                   </motion.button>
