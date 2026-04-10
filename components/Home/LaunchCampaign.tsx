@@ -121,7 +121,7 @@ const LaunchCampaign = () => {
               }}
               className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent font-heading"
             >
-              In a Minutes of Time!
+              Fast & Done Right!
             </h2>
 
             {/* Divider */}
@@ -146,9 +146,7 @@ const LaunchCampaign = () => {
               }}
               className="font-body"
             >
-              Build your brand with CreatorsMela's expert team—effortless
-              website creation, strategic content, and confidence-driven
-              results. Ready to elevate your presence? Let's get started today!
+              No outdated lists. No guesswork. No middlemen. Our team scouts the right creators for your brand in real time, builds a tight strategy, and handles execution from start to finish. You focus on your brand — we handle the rest.
             </p>
 
             {/* CTA row */}

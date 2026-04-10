@@ -91,23 +91,21 @@ bg-[size:6rem_4rem]"
     bg-gradient-to-b from-[#ec4899] to-[#be185d] 
     text-white px-4 py-1 rounded-md inline-block font-heading"
               >
-                Talent
+                Creators
               </h1>
 
               <h1 className="text-black text-[70px] tracking-[-3px] leading-[0.9em] font-heading">
-                Crafting
+                Growth
               </h1>
 
               <h1 className="text-black text-[60px] tracking-[-3px] leading-[0.9em] font-heading">
-                Company.
+                Engine.
               </h1>
             </div>
 
             {/* Subheading */}
             <p className="w-full max-w-[600px] text-center text-black/60 text-[18px] leading-[1.5em] font-body">
-              At FirstSkout, we merge bold creativity, strategic execution, and
-              creator-first thinking to turn brand visions into powerful digital
-              realities.
+              At FirstSkout, we find the right creators, build the right campaigns, and execute everything — so your brand doesn't just show up online, it dominates.
             </p>
           </div>
         </div>
