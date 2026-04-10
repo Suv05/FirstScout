@@ -75,7 +75,7 @@ bg-[size:6rem_4rem]"
               </div>
 
               <span className="text-[16px] text-black/80 font-body">
-                India&apos;s #1 Talent Management Company
+                #1 Global Influencer Marketing Agency
               </span>
             </div>
 
