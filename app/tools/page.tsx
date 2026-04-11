@@ -101,7 +101,7 @@ function LiveToolCard() {
               Invoice Maker
             </h3>
             <p className="text-[#5F5E5A] text-[14px] leading-relaxed mb-6 font-body max-w-xs">
-              Generate professional invoices for India, Eurozone &amp; North America — no
+              Generate professional invoices In Seconds — no
               sign-up, no watermarks, PDF download in seconds.
             </p>
 
