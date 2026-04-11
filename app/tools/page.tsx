@@ -88,6 +88,9 @@ function LiveToolCard({
             src={img}
             alt={label}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
+            priority
             className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"
           />
           {/* subtle dark overlay on hover */}
@@ -124,10 +127,7 @@ function LiveToolCard({
             </div>
 
             {/* Label */}
-            <h3
-              className="text-[28px] font-black leading-tight text-[#1a1a18] mb-3 tracking-tight"
-              style={{ fontFamily: "'Playfair Display', serif" }}
-            >
+            <h3 className="text-[28px] font-black leading-tight text-[#1a1a18] mb-3 tracking-tight font-heading">
               {label}
             </h3>
 
@@ -135,7 +135,7 @@ function LiveToolCard({
             <div className="h-px bg-[#E8E6E0] w-full mb-5" />
 
             {/* Description */}
-            <p className="text-[14px] text-[#5F5E5A] leading-[1.85]">
+            <p className="text-[14px] text-[#5F5E5A] leading-[1.85] font-body">
               {description}
             </p>
 
@@ -161,7 +161,7 @@ function LiveToolCard({
             target="_blank"
             rel="noopener noreferrer"
             className="mt-8 inline-flex items-center gap-2 bg-[#2C2C2A] text-[#F1F0EC]
-                       rounded-sm px-6 py-3 text-[13px] font-medium self-start
+                       rounded-sm px-6 py-3 text-[13px] font-medium self-start font-body
                        hover:bg-[#444441] transition-all duration-300 group/btn"
           >
             Open Tool
@@ -239,10 +239,12 @@ function GhostCard({
       </div>
 
       <div className="flex items-end justify-between">
-        <span className="text-[13px] font-medium text-[#444441]">{label}</span>
+        <span className="text-[13px] font-medium text-[#444441] font-heading">
+          {label}
+        </span>
         <span
           className="text-[10px] uppercase tracking-[0.14em] text-[#B4B2A9]
-                         border border-[#E8E6E0] rounded-sm px-2 py-0.5"
+                         border border-[#E8E6E0] rounded-sm px-2 py-0.5 font-body"
         >
           {tag}
         </span>
@@ -378,8 +380,7 @@ export default function ToolsPage() {
         aria-hidden
         className="pointer-events-none select-none absolute bottom-0 left-1/2
                                    -translate-x-1/2 font-black text-[clamp(90px,18vw,180px)]
-                                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px]"
-        style={{ fontFamily: "'Playfair Display', serif" }}
+                                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px] font-heading"
       >
         FirstSkout
       </div>
@@ -404,8 +405,7 @@ export default function ToolsPage() {
 
         <motion.h2
           variants={fadeUp}
-          className="text-[clamp(40px,6.5vw,76px)] font-black leading-[1.06] tracking-tight text-[#1a1a18] mb-6"
-          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="text-[clamp(40px,6.5vw,76px)] font-black leading-[1.06] tracking-tight text-[#1a1a18] mb-6 font-heading"
         >
           Built for creators,
           <br />
@@ -423,7 +423,7 @@ export default function ToolsPage() {
 
         <motion.p
           variants={fadeUp}
-          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg"
+          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg font-body"
         >
           A growing toolkit designed specifically for creators and brands — from
           invoice generators to influencer finders. Everything in one place, no
@@ -457,7 +457,7 @@ export default function ToolsPage() {
             className="flex items-center gap-4 mb-8"
           >
             <div>
-              <p className="text-[10px] uppercase tracking-[0.22em] text-[#888780] font-medium mb-1">
+              <p className="text-[10px] uppercase tracking-[0.22em] text-[#888780] font-medium mb-1 font-body">
                 Available now
               </p>
               <div
@@ -465,7 +465,7 @@ export default function ToolsPage() {
                 className="draw-line h-px bg-[#2C2C2A] origin-left w-10"
               />
             </div>
-            <span className="flex items-center gap-1.5 text-[11px] text-[#3B6D11] font-medium">
+            <span className="flex items-center gap-1.5 text-[11px] text-[#3B6D11] font-medium font-body">
               <span className="w-1.5 h-1.5 rounded-full bg-[#3B6D11] animate-pulse" />
               {LIVE_TOOLS.length} tool live
             </span>
@@ -547,7 +547,7 @@ export default function ToolsPage() {
             variants={fadeUp}
             className="flex items-center gap-2 border border-[#D3D1C7] rounded-full px-4 py-2
                        text-[13px] text-[#5F5E5A] hover:border-[#B4B2A9] hover:text-[#2C2C2A]
-                       bg-white/30 transition-all duration-300"
+                       bg-white/30 transition-all duration-300 font-body"
           >
             <span className="w-1 h-1 rounded-full bg-[#B4B2A9]" />
             {p}
