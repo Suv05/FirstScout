@@ -26,60 +26,6 @@ const HINT_TOOLS = [
   { icon: PenTool, label: "Rate Card Maker", tag: "Finance" },
 ];
 
-// ── Notify form ───────────────────────────────────────────────────────────────
-// function NotifyForm() {
-//   const [email, setEmail] = useState("");
-//   const [submitted, setDone] = useState(false);
-//   const [invalid, setInvalid] = useState(false);
-
-//   function handle() {
-//     if (!email || !email.includes("@")) {
-//       setInvalid(true);
-//       setTimeout(() => setInvalid(false), 1500);
-//       return;
-//     }
-//     setDone(true);
-//   }
-
-//   return (
-//     <div className="flex w-full max-w-sm">
-//       <input
-//         type="email"
-//         value={email}
-//         onChange={(e) => setEmail(e.target.value)}
-//         onKeyDown={(e) => e.key === "Enter" && handle()}
-//         disabled={submitted}
-//         placeholder="your@email.com"
-//         className={[
-//           "flex-1 border-y border-l rounded-l-sm px-4 py-2.5 text-sm bg-transparent",
-//           "text-[#2C2C2A] placeholder:text-[#B4B2A9] focus:outline-none transition-colors duration-200",
-//           invalid
-//             ? "border-red-400"
-//             : "border-[#B4B2A9] focus:border-[#2C2C2A]",
-//         ].join(" ")}
-//       />
-//       <button
-//         onClick={handle}
-//         disabled={submitted}
-//         className={[
-//           "flex items-center gap-1.5 border rounded-r-sm px-4 py-2.5 text-sm font-medium transition-all duration-300 whitespace-nowrap",
-//           submitted
-//             ? "bg-[#3B6D11] border-[#3B6D11] text-white"
-//             : "bg-[#2C2C2A] border-[#2C2C2A] text-[#F1F0EC] hover:bg-[#444441]",
-//         ].join(" ")}
-//       >
-//         {submitted ? (
-//           "You're on the list!"
-//         ) : (
-//           <>
-//             Notify me <ArrowUpRight className="w-3.5 h-3.5" />
-//           </>
-//         )}
-//       </button>
-//     </div>
-//   );
-// }
-
 // ── Ghost tool card ───────────────────────────────────────────────────────────
 function GhostCard({
   icon: Icon,
@@ -249,7 +195,7 @@ export default function Page() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#F1F0EC] overflow-hidden py-20 px-4 md:px-8 mt-2"
+      className="relative w-full bg-[#F1F0EC] overflow-hidden py-20 px-4 md:px-8"
     >
       {/* ── Ambient dots ── */}
       {Array.from({ length: 8 }).map((_, i) => (
