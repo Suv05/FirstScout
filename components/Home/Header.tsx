@@ -9,7 +9,7 @@ import { gsap } from "gsap";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const MotionLink = motion.create(Link); // ✅ wrap Next.js Link with motion
+const MotionLink = motion.create(Link);
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -21,7 +21,6 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  //const [activeLink, setActiveLink] = useState("Home");
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -76,7 +75,7 @@ export default function Header() {
     >
       <div
         style={{ backgroundColor: "rgba(240,240,240,0.72)" }}
-        className={`mx-auto rounded-2xl px-4 sm:px-6 lg:px-10 transition-all duration-300 backdrop-blur-lg backdrop-saturate-150 ring-1 ring-black/8 ${
+        className={`mx-auto rounded-2xl pl-2 pr-4 sm:pl-4 sm:pr-6 lg:pl-6 lg:pr-10 transition-all duration-300 backdrop-blur-lg backdrop-saturate-150 ring-1 ring-black/8 ${
           scrolled
             ? "shadow-[0_8px_40px_rgba(0,0,0,0.18)]"
             : "shadow-[0_4px_28px_rgba(0,0,0,0.10)]"
@@ -84,7 +83,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-between h-14 md:h-16">
           {/* ── Brand ── */}
-          <div ref={logoRef} className="flex items-center opacity-0">
+          <div ref={logoRef} className="flex items-center opacity-0 -ml-2">
             <motion.div
               whileHover={{ scale: 1.08 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -93,14 +92,16 @@ export default function Header() {
               <Image
                 src="/logo-no-bg.png"
                 alt="FirstSkout Logo"
-                width={160} // adjust as needed
-                height={60} // adjust as needed
+                width={0}
+                height={0}
+                sizes="160px"
                 priority
-                className="object-contain"
+                className="w-[140px] h-auto object-contain"
               />
             </motion.div>
           </div>
 
+          {/* ── Desktop Nav ── */}
           <nav
             ref={navRef}
             className="hidden md:flex items-center gap-1 lg:gap-2"
@@ -160,7 +161,7 @@ export default function Header() {
             className="md:hidden overflow-hidden border-t border-black/10 rounded-2xl mt-2 mx-2"
           >
             <nav className="flex flex-col px-5 py-4 gap-1">
-              {navLinks.map((link, i) => (
+              {navLinks.map((link) => (
                 <MotionLink
                   key={link.label}
                   href={link.href}
