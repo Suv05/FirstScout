@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { Rocket } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const LaunchCampaign = () => {
   const [mounted, setMounted] = useState(false);
@@ -21,15 +22,13 @@ const LaunchCampaign = () => {
           className="relative md:w-2/5 w-full"
           style={{ minHeight: "340px" }}
         >
-          <img
+          <Image
             src="/logo.png"
             alt="CreatorsMela"
+            fill
             style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
+              objectFit: "contain",
+              padding: "24px",
             }}
           />
         </div>
@@ -146,7 +145,10 @@ const LaunchCampaign = () => {
               }}
               className="font-body"
             >
-              No outdated lists. No guesswork. No middlemen. Our team scouts the right creators for your brand in real time, builds a tight strategy, and handles execution from start to finish. You focus on your brand — we handle the rest.
+              No outdated lists. No guesswork. No middlemen. Our team scouts the
+              right creators for your brand in real time, builds a tight
+              strategy, and handles execution from start to finish. You focus on
+              your brand — we handle the rest.
             </p>
 
             {/* CTA row */}
