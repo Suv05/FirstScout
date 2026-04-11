@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
@@ -8,7 +9,7 @@ import {
   FileText,
   Search,
   BarChart2,
-  Link,
+  Link as Link2,
   Zap,
   PenTool,
   ArrowUpRight,
@@ -21,7 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 const HINT_TOOLS = [
   { icon: Search,    label: "Influencer Finder", tag: "Discovery" },
   { icon: BarChart2, label: "Campaign Tracker",  tag: "Analytics" },
-  { icon: Link,      label: "Link in Bio Builder",tag: "Utility"  },
+  { icon: Link2,      label: "Link in Bio Builder",tag: "Utility"  },
   { icon: Zap,       label: "Brief Generator",   tag: "Content"  },
   { icon: PenTool,   label: "Rate Card Maker",   tag: "Finance"  },
 ];
@@ -54,7 +55,7 @@ function LiveToolCard() {
         }}
       />
 
-      <a
+      <Link
         href="https://invoice-05.netlify.app"
         target="_blank"
         rel="noopener noreferrer"
@@ -185,7 +186,7 @@ function LiveToolCard() {
             Finance
           </div>
         </div>
-      </a>
+      </Link>
     </motion.div>
   );
 }
