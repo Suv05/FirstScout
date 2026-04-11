@@ -91,7 +91,7 @@ export default function Header() {
               className="flex items-center"
             >
               <Image
-                src="/firstscout-logo.svg"
+                src="/logo-no-bg.png"
                 alt="FirstSkout Logo"
                 width={160} // adjust as needed
                 height={60} // adjust as needed
