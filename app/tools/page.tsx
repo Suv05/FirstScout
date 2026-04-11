@@ -1,30 +1,194 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  ArrowUpRight,
   FileText,
   Search,
   BarChart2,
   Link,
   Zap,
   PenTool,
+  ArrowUpRight,
+  Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Hint tool cards ───────────────────────────────────────────────────────────
 const HINT_TOOLS = [
-  { icon: FileText, label: "Invoice Maker", tag: "Finance" },
-  { icon: Search, label: "Influencer Finder", tag: "Discovery" },
-  { icon: BarChart2, label: "Campaign Tracker", tag: "Analytics" },
-  { icon: Link, label: "Link in Bio Builder", tag: "Utility" },
-  { icon: Zap, label: "Brief Generator", tag: "Content" },
-  { icon: PenTool, label: "Rate Card Maker", tag: "Finance" },
+  { icon: Search,    label: "Influencer Finder", tag: "Discovery" },
+  { icon: BarChart2, label: "Campaign Tracker",  tag: "Analytics" },
+  { icon: Link,      label: "Link in Bio Builder",tag: "Utility"  },
+  { icon: Zap,       label: "Brief Generator",   tag: "Content"  },
+  { icon: PenTool,   label: "Rate Card Maker",   tag: "Finance"  },
 ];
+
+// ── Live tool card (Invoice Maker) ────────────────────────────────────────────
+function LiveToolCard() {
+  const ref = useRef<HTMLDivElement>(null);
+  const seen = useInView(ref, { once: true });
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 32 }}
+      animate={seen ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="relative col-span-2 md:col-span-3 mb-2"
+    >
+      {/* Glow ring */}
+      <motion.div
+        animate={{ opacity: hovered ? 1 : 0.5 }}
+        transition={{ duration: 0.4 }}
+        className="absolute -inset-px rounded-sm pointer-events-none z-0"
+        style={{
+          background:
+            "linear-gradient(135deg, #4a7c2f 0%, #8ab860 40%, #D3D1C7 100%)",
+          filter: "blur(0px)",
+        }}
+      />
+
+      <a
+        href="https://invoice-05.netlify.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-10 flex flex-col md:flex-row overflow-hidden rounded-sm
+                   bg-[#FAFAF7] border border-transparent"
+        style={{ borderRadius: "2px" }}
+      >
+        {/* ── Left: content panel ── */}
+        <div className="flex flex-col justify-between p-7 md:p-10 md:w-[42%] shrink-0">
+          {/* Header row */}
+          <div>
+            <div className="flex items-center justify-between mb-6">
+              {/* Live badge */}
+              <div className="flex items-center gap-2 bg-[#1a2e0f] text-[#8ab860] text-[10px]
+                              uppercase tracking-[0.2em] font-semibold px-3 py-1.5 rounded-sm">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full
+                                   rounded-full bg-[#8ab860] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#6db33f]" />
+                </span>
+                Live · Free
+              </div>
+
+              {/* Arrow */}
+              <motion.div
+                animate={{ x: hovered ? 3 : 0, y: hovered ? -3 : 0 }}
+                transition={{ duration: 0.25 }}
+                className="w-8 h-8 rounded-sm border border-[#D3D1C7] bg-white/60
+                           flex items-center justify-center"
+              >
+                <ArrowUpRight className="w-4 h-4 text-[#444441]" strokeWidth={1.5} />
+              </motion.div>
+            </div>
+
+            {/* Icon */}
+            <div className="w-12 h-12 rounded-sm bg-[#1a2e0f] flex items-center
+                            justify-center mb-5 shadow-md">
+              <FileText className="w-5 h-5 text-[#8ab860]" strokeWidth={1.5} />
+            </div>
+
+            {/* Title */}
+            <h3 className="text-[28px] md:text-[34px] font-black leading-tight tracking-tight
+                           text-[#1a1a18] mb-2 font-heading">
+              Invoice Maker
+            </h3>
+            <p className="text-[#5F5E5A] text-[14px] leading-relaxed mb-6 font-body max-w-xs">
+              Generate professional invoices for India, Eurozone &amp; North America — no
+              sign-up, no watermarks, PDF download in seconds.
+            </p>
+
+            {/* Feature pills */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {["INR · EUR · USD · CAD", "GST · VAT · EIN", "PDF Export", "No Login"].map((f) => (
+                <span
+                  key={f}
+                  className="text-[11px] tracking-wide text-[#5F5E5A] border border-[#D3D1C7]
+                             rounded-full px-3 py-1 bg-white/50 font-body"
+                >
+                  {f}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA */}
+          <motion.div
+            animate={{ gap: hovered ? "12px" : "8px" }}
+            className="flex items-center gap-2"
+          >
+            <span
+              className="text-[13px] font-semibold tracking-wide text-[#1a2e0f]
+                         border-b border-[#4a7c2f] pb-px font-body"
+            >
+              Open tool
+            </span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#4a7c2f]" strokeWidth={2} />
+          </motion.div>
+        </div>
+
+        {/* ── Right: screenshot panel ── */}
+        <div className="relative flex-1 min-h-[240px] md:min-h-[360px] bg-[#eeecea]
+                        overflow-hidden border-t md:border-t-0 md:border-l border-[#D3D1C7]">
+          {/* Grid overlay */}
+          <div
+            className="absolute inset-0 pointer-events-none z-10 opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(#D3D1C7 1px, transparent 1px), linear-gradient(90deg, #D3D1C7 1px, transparent 1px)",
+              backgroundSize: "32px 32px",
+            }}
+          />
+
+          {/* Subtle vignette */}
+          <div className="absolute inset-0 z-20 pointer-events-none"
+               style={{
+                 background:
+                   "radial-gradient(ellipse at 60% 50%, transparent 40%, rgba(238,236,234,0.7) 100%)",
+               }}
+          />
+
+          {/* Screenshot */}
+          <motion.div
+            animate={{ scale: hovered ? 1.02 : 1, y: hovered ? -4 : 0 }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 z-10 flex items-center justify-center p-4"
+          >
+            <div
+              className="relative w-full h-full rounded-sm overflow-hidden shadow-2xl
+                         border border-[#C8C6BC]"
+              style={{ maxWidth: "680px", margin: "0 auto" }}
+            >
+              <Image
+                src="/tool-img/invoice-img.png"
+                alt="Invoice Maker by FirstSkout"
+                fill
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 55vw"
+                priority
+              />
+            </div>
+          </motion.div>
+
+          {/* Finance tag */}
+          <div
+            className="absolute bottom-4 right-4 z-30 text-[10px] uppercase tracking-[0.18em]
+                          text-[#888780] border border-[#D3D1C7] rounded-sm px-2 py-0.5 bg-[#FAFAF7]/80"
+          >
+            Finance
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  );
+}
 
 // ── Ghost tool card ───────────────────────────────────────────────────────────
 function GhostCard({
@@ -55,66 +219,38 @@ function GhostCard({
                  hover:border-[#B4B2A9] hover:shadow-sm transition-all duration-500 p-6
                  flex flex-col gap-5 overflow-hidden cursor-not-allowed"
     >
-      {/* Coming soon badge */}
-      <div
-        className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.18em]
-                      text-[#B4B2A9] border border-[#E8E6E0] rounded-sm px-2 py-0.5"
-      >
+      <div className="absolute top-4 right-4 text-[9px] uppercase tracking-[0.18em]
+                      text-[#B4B2A9] border border-[#E8E6E0] rounded-sm px-2 py-0.5">
         Soon
       </div>
 
-      {/* Icon box */}
-      <div
-        className="w-10 h-10 rounded-sm border border-[#E8E6E0] bg-[#F1F0EC]
+      <div className="w-10 h-10 rounded-sm border border-[#E8E6E0] bg-[#F1F0EC]
                       flex items-center justify-center group-hover:border-[#D3D1C7]
-                      transition-all duration-300"
-      >
+                      transition-all duration-300">
         <Icon className="w-4.5 h-4.5 text-[#888780]" strokeWidth={1.5} />
       </div>
 
-      {/* Skeleton lines */}
       <div className="space-y-2 flex-1">
-        <motion.div
-          className="h-px bg-[#D3D1C7] rounded-full origin-left"
-          initial={{ scaleX: 0 }}
-          animate={seen ? { scaleX: 1 } : {}}
-          transition={{
-            duration: 0.8,
-            delay: index * 0.08 + 0.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
-        <motion.div
-          className="h-px bg-[#E8E6E0] rounded-full origin-left"
-          style={{ width: "72%" }}
-          initial={{ scaleX: 0 }}
-          animate={seen ? { scaleX: 1 } : {}}
-          transition={{
-            duration: 0.8,
-            delay: index * 0.08 + 0.3,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
-        <motion.div
-          className="h-px bg-[#E8E6E0] rounded-full origin-left"
-          style={{ width: "55%" }}
-          initial={{ scaleX: 0 }}
-          animate={seen ? { scaleX: 1 } : {}}
-          transition={{
-            duration: 0.8,
-            delay: index * 0.08 + 0.4,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-        />
+        {[1, 0.72, 0.55].map((w, si) => (
+          <motion.div
+            key={si}
+            className="h-px bg-[#D3D1C7] rounded-full origin-left"
+            style={{ width: si === 0 ? "100%" : `${w * 100}%` }}
+            initial={{ scaleX: 0 }}
+            animate={seen ? { scaleX: 1 } : {}}
+            transition={{
+              duration: 0.8,
+              delay: index * 0.08 + 0.2 + si * 0.1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+        ))}
       </div>
 
-      {/* Label + tag */}
       <div className="flex items-end justify-between">
         <span className="text-[13px] font-medium text-[#444441]">{label}</span>
-        <span
-          className="text-[10px] uppercase tracking-[0.14em] text-[#B4B2A9] border
-                         border-[#E8E6E0] rounded-sm px-2 py-0.5"
-        >
+        <span className="text-[10px] uppercase tracking-[0.14em] text-[#B4B2A9] border
+                         border-[#E8E6E0] rounded-sm px-2 py-0.5">
           {tag}
         </span>
       </div>
@@ -139,16 +275,28 @@ function Counter({ to }: { to: number }) {
   return <span ref={ref}>0%</span>;
 }
 
+// ── Section separator with label ─────────────────────────────────────────────
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative z-10 max-w-5xl mx-auto flex items-center gap-4 mb-4">
+      <div className="flex-1 h-px bg-[#D3D1C7]" />
+      <span className="text-[10px] uppercase tracking-[0.22em] text-[#888780] font-medium font-body whitespace-nowrap">
+        {children}
+      </span>
+      <div className="flex-1 h-px bg-[#D3D1C7]" />
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 export default function Page() {
   const sectionRef = useRef<HTMLElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
+  const lineRef    = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
     const ctx = gsap.context(() => {
-      // Marquee
       if (marqueeRef.current) {
         gsap.to(marqueeRef.current, {
           xPercent: -50,
@@ -157,20 +305,14 @@ export default function Page() {
           repeat: -1,
         });
       }
-      // Line draw
       if (lineRef.current) {
-        gsap.fromTo(
-          lineRef.current,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 1.2,
-            ease: "power3.out",
-            scrollTrigger: { trigger: lineRef.current, start: "top 88%" },
-          },
-        );
+        gsap.fromTo(lineRef.current, { scaleX: 0 }, {
+          scaleX: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: { trigger: lineRef.current, start: "top 88%" },
+        });
       }
-      // Floating dots
       gsap.utils.toArray<HTMLElement>(".tool-dot").forEach((dot, i) => {
         gsap.to(dot, {
           y: i % 2 === 0 ? -12 : 12,
@@ -186,18 +328,14 @@ export default function Page() {
     return () => ctx.revert();
   }, []);
 
-  const stagger = { hidden: {}, show: {} };
-  const fadeUp = {
-    hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0 },
-  };
+  const fadeUp = { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } };
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full bg-[#F1F0EC] overflow-hidden py-20 px-4 md:px-8"
     >
-      {/* ── Ambient dots ── */}
+      {/* Ambient dots */}
       {Array.from({ length: 8 }).map((_, i) => (
         <div
           key={i}
@@ -213,41 +351,37 @@ export default function Page() {
         />
       ))}
 
-      {/* ── BG wordmark ── */}
+      {/* BG wordmark */}
       <div
         aria-hidden
         className="pointer-events-none select-none absolute bottom-0 left-1/2
-                                   -translate-x-1/2 font-black text-[clamp(90px,18vw,180px)]
-                                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px] font-heading"
+                   -translate-x-1/2 font-black text-[clamp(90px,18vw,180px)]
+                   text-black/[0.04] whitespace-nowrap leading-none tracking-[-3px] font-heading"
       >
         FirstSkout
       </div>
 
-      {/* ── Content ── */}
+      {/* ── Hero text ── */}
       <motion.div
-        variants={stagger}
+        variants={{ hidden: {}, show: {} }}
         initial="hidden"
         whileInView="show"
         transition={{ staggerChildren: 0.1 }}
         viewport={{ once: true, margin: "-60px" }}
-        className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center"
+        className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center mb-14"
       >
-        {/* Eyebrow */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="mb-6"
         >
-          <span
-            className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em]
-                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5 font-body"
-          >
+          <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.22em]
+                           text-[#888780] font-medium border border-[#D3D1C7] rounded-sm px-3 py-1.5 font-body">
             <span className="w-1 h-1 rounded-full bg-[#888780] inline-block" />
-            Tools · Coming soon
+            Tools · Free Toolkit
           </span>
         </motion.div>
 
-        {/* Headline */}
         <motion.h2
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -256,10 +390,9 @@ export default function Page() {
         >
           Built for creators,
           <br />
-          <em className="not-italic text-[#5F5E5A]">shipping soon.</em>
+          <em className="not-italic text-[#5F5E5A]">shipping now.</em>
         </motion.h2>
 
-        {/* Divider */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -270,26 +403,35 @@ export default function Page() {
           <div className="flex-1 h-px bg-[#D3D1C7]" />
         </motion.div>
 
-        {/* Sub copy */}
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg mb-10 font-body"
+          className="text-[#5F5E5A] text-base leading-relaxed max-w-lg mb-4 font-body"
         >
           We're building a free toolkit designed specifically for creators and
           brands — from invoice generators to influencer finders. Everything in
           one place.
         </motion.p>
-
-        {/* Notify */}
-        <motion.div
-          variants={fadeUp}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-14"
-        >
-          {/* <NotifyForm /> */}
-        </motion.div>
       </motion.div>
+
+      {/* ── LIVE section label ── */}
+      <SectionLabel>
+        <span className="flex items-center gap-2">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#6db33f] opacity-75" />
+            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#6db33f]" />
+          </span>
+          Available now
+        </span>
+      </SectionLabel>
+
+      {/* ── LIVE tool grid ── */}
+      <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+        <LiveToolCard />
+      </div>
+
+      {/* ── COMING SOON section label ── */}
+      <SectionLabel>Coming soon</SectionLabel>
 
       {/* ── Ghost tool grid ── */}
       <div className="relative z-10 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-3 mb-14">
@@ -324,12 +466,7 @@ export default function Page() {
         transition={{ staggerChildren: 0.07 }}
         className="relative z-10 flex flex-wrap justify-center gap-2.5 max-w-2xl mx-auto mb-16"
       >
-        {[
-          "Free to use",
-          "No sign-up required",
-          "Creator-first",
-          "More tools dropping soon",
-        ].map((p) => (
+        {["Free to use", "No sign-up required", "Creator-first", "More tools dropping soon"].map((p) => (
           <motion.div
             key={p}
             variants={fadeUp}
@@ -349,20 +486,12 @@ export default function Page() {
         <div ref={marqueeRef} className="flex whitespace-nowrap w-max">
           {Array.from({ length: 2 }).map((_, ri) => (
             <div key={ri} className="flex items-center">
-              {[
-                "Invoice Maker",
-                "Influencer Finder",
-                "Campaign Tracker",
-                "Rate Card Maker",
-                "Link in Bio",
-                "Brief Generator",
-                "Analytics",
-                "Free Tools",
-              ].map((t) => (
+              {["Invoice Maker", "Influencer Finder", "Campaign Tracker", "Rate Card Maker",
+                "Link in Bio", "Brief Generator", "Analytics", "Free Tools"].map((t) => (
                 <span
                   key={t}
                   className="flex items-center gap-4 px-8 text-[11px] uppercase
-                                         tracking-[0.2em] text-[#B4B2A9] font-medium"
+                             tracking-[0.2em] text-[#B4B2A9] font-medium"
                 >
                   {t}
                   <span className="w-1 h-1 rounded-full bg-[#D3D1C7] inline-block" />
@@ -373,7 +502,7 @@ export default function Page() {
         </div>
       </div>
 
-      {/* ── Bottom border ── */}
+      {/* Bottom border */}
       <div className="absolute bottom-0 left-0 w-full h-px bg-[#B4B2A9]" />
     </section>
   );
