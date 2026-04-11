@@ -189,7 +189,7 @@ function CalendlySection() {
       {/* Calendly widget */}
       <div className="h-[680px]">
         <InlineWidget
-          url="https://calendly.com/alastaircook014"
+          url="https://calendly.com/hellofirstskout"
           styles={{ height: "100%", width: "100%" }}
         />
       </div>

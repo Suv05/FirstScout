@@ -23,7 +23,7 @@ export async function sendCreatorInquiryEmail(
     const html = await render(CreatorEmailTemplate({ ...data }));
 
     const { error } = await resend.emails.send({
-      from: "FirstSkout <onboarding@resend.dev>", // swap to noreply@firstskout.com after domain verification
+      from: "FirstSkout <noreply@contact.firstskout.com>",
       to: ["hellofirstskout@gmail.com"], // must match your Resend signup email until domain is verified
       subject: `New Creator Inquiry from ${data.firstName} ${data.lastName}`,
       html,
