@@ -21,11 +21,11 @@ const MotionLink = motion.create(Link);
 gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
-  { icon: Twitter, label: "@FirstSkout", href: "#" },
-  { icon: Instagram, label: "@FirstSkout", href: "#" },
-  { icon: Linkedin, label: "@FirstSkout", href: "#" },
-  { icon: Youtube, label: "@FirstSkout", href: "#" },
-  { icon: Facebook, label: "@FirstSkout", href: "#" },
+  { icon: Twitter, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
+  { icon: Instagram, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
+  { icon: Linkedin, label: "@FirstSkout", href: "https://www.linkedin.com/company/firstskout/" },
+  { icon: Youtube, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
+  { icon: Facebook, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
 ];
 
 const services = [
@@ -185,7 +185,7 @@ export default function Footer() {
           {/* Creative tools */}
           <motion.div variants={itemVariants}>
             <Link
-              href="#"
+              href="/tools"
               className="inline-flex items-center gap-1 text-[#1a1a1a] font-semibold text-sm mb-4 hover:text-black transition-colors font-body"
             >
               Creative tools <ArrowUpRight size={14} />
