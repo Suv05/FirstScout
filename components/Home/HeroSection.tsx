@@ -5,47 +5,47 @@ import Link from "next/link";
 import FloatingImage from "./FloatingImage";
 import { motion } from "framer-motion";
 
-const AI_QUERY = encodeURIComponent(
-  "Briefly explain FirstSkout, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
-);
+// const AI_QUERY = encodeURIComponent(
+//   "Briefly explain FirstSkout, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
+// );
 
-const AI_LINKS = [
-  {
-    href: `https://www.google.com/search?udm=50&aep=11&q=${AI_QUERY}`,
-    icon: "/hero-img/google.svg",
-    alt: "Google AI",
-    w: 33,
-    h: 33,
-  },
-  {
-    href: `https://chatgpt.com/?q=${AI_QUERY}`,
-    icon: "/hero-img/chatgpt.svg",
-    alt: "ChatGPT",
-    w: 28,
-    h: 30,
-  },
-  {
-    href: `https://grok.com/?q=${AI_QUERY}`,
-    icon: "/hero-img/grok.svg",
-    alt: "Grok",
-    w: 31,
-    h: 30,
-  },
-  {
-    href: `https://www.perplexity.ai/search?q=${AI_QUERY}`,
-    icon: "/hero-img/perplexity.svg",
-    alt: "Perplexity",
-    w: 31,
-    h: 35,
-  },
-  {
-    href: `https://claude.ai/new?q=${AI_QUERY}`,
-    icon: "/hero-img/claude.svg",
-    alt: "Claude",
-    w: 28,
-    h: 33,
-  },
-];
+// const AI_LINKS = [
+//   {
+//     href: `https://www.google.com/search?udm=50&aep=11&q=${AI_QUERY}`,
+//     icon: "/hero-img/google.svg",
+//     alt: "Google AI",
+//     w: 33,
+//     h: 33,
+//   },
+//   {
+//     href: `https://chatgpt.com/?q=${AI_QUERY}`,
+//     icon: "/hero-img/chatgpt.svg",
+//     alt: "ChatGPT",
+//     w: 28,
+//     h: 30,
+//   },
+//   {
+//     href: `https://grok.com/?q=${AI_QUERY}`,
+//     icon: "/hero-img/grok.svg",
+//     alt: "Grok",
+//     w: 31,
+//     h: 30,
+//   },
+//   {
+//     href: `https://www.perplexity.ai/search?q=${AI_QUERY}`,
+//     icon: "/hero-img/perplexity.svg",
+//     alt: "Perplexity",
+//     w: 31,
+//     h: 35,
+//   },
+//   {
+//     href: `https://claude.ai/new?q=${AI_QUERY}`,
+//     icon: "/hero-img/claude.svg",
+//     alt: "Claude",
+//     w: 28,
+//     h: 33,
+//   },
+// ];
 
 export default function HeroSection() {
   return (
@@ -75,7 +75,7 @@ bg-[size:6rem_4rem]"
               </div>
 
               <span className="text-[16px] text-black/80 font-body">
-                #1 Global Influencer Marketing Agency
+                Global Influencer Marketing Agency
               </span>
             </div>
 
@@ -105,7 +105,9 @@ bg-[size:6rem_4rem]"
 
             {/* Subheading */}
             <p className="w-full max-w-[600px] text-center text-black/60 text-[18px] leading-[1.5em] font-body">
-              At FirstSkout, we find the right creators, build the right campaigns, and execute everything — so your brand doesn't just show up online, it dominates.
+              At FirstSkout, we find the right creators, build the right
+              campaigns, and execute everything — so your brand doesn't just
+              show up online, it dominates.
             </p>
           </div>
         </div>
@@ -117,7 +119,7 @@ bg-[size:6rem_4rem]"
       </div>
 
       {/* Ask AI */}
-      <div className="flex flex-wrap items-center justify-center gap-[10px] w-full pt-[10px]">
+      {/* <div className="flex flex-wrap items-center justify-center gap-[10px] w-full pt-[10px]">
         <h4 className="text-black text-[18px] font-heading">Ask AI About Us</h4>
 
         <div className="flex gap-[7px]">
@@ -134,7 +136,7 @@ bg-[size:6rem_4rem]"
             </Link>
           ))}
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
