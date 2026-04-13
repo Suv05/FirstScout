@@ -1,6 +1,6 @@
 "use client";
 
-import { FingerprintPattern } from "lucide-react";
+import { BadgeInfo } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
@@ -31,7 +31,7 @@ export default function AboutSection() {
         {/* Badge */}
         <div className="inline-flex items-center px-2 py-1 rounded-full  border-x border-b-0 bg-[#f7f4ff] text-black/80 text-lg border-[#ec4899] shadow-[0_-4px_6px_-1px_rgba(236,72,153,0.3)] font-heading">
           <span className="inline-flex items-center justify-center w-6 h-6 bg-gradient-to-b from-[#ec4899] to-[#be185d] rounded-full mr-2">
-            <FingerprintPattern className="h-4 w-4 text-white" />
+            <BadgeInfo className="h-4 w-4 text-white" />
           </span>
           About Us
         </div>
