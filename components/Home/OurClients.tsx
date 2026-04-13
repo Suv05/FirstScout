@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
-import { Users } from "lucide-react";
+import { HeartHandshake } from "lucide-react";
 
 const clients = [
   { name: "Britannia", logo: "/brands/Britannia.svg" },
@@ -119,8 +119,8 @@ export default function OurClients() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-pink-700/30 bg-pink-700/10 px-4 py-1.5 text-sm text-pink-700">
             {/* 🔥 Replaced dot with Users icon */}
-            <Users className="w-4 h-4 text-pink-700 drop-shadow-[0_0_6px_rgba(190,24,93,0.6)] animate-pulse" />
-            Our Clients
+            <HeartHandshake className="w-5 h-5 text-pink-700 drop-shadow-[0_0_6px_rgba(190,24,93,0.6)] animate-pulse" />
+            Our Partners
           </span>
         </motion.div>
 
@@ -131,9 +131,9 @@ export default function OurClients() {
           transition={{ duration: 0.55, delay: 0.1 }}
           className="text-center text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4 font-heading"
         >
-          Our Clients:Leading
+          Our Partners: Driving
           <p className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">
-            Brands That Trust Us
+            Influence That Converts
           </p>
         </motion.h2>
 
@@ -144,9 +144,7 @@ export default function OurClients() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center text-gray-800 text-lg max-w-xl mx-auto mb-14 leading-relaxed font-body"
         >
-          Discover the top brands and businesses that choose us as their
-          partner. We&apos;re proud to work with industry leaders across diverse
-          sectors.
+          We work with forward-thinking brands to craft influencer campaigns that don&rsquo;t just reach audiences — they inspire action and deliver real results.
         </motion.p>
 
         {/* Marquee rows */}
