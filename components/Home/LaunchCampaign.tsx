@@ -197,7 +197,7 @@ const LaunchCampaign = () => {
                     color: "#6b7280",
                   }}
                 >
-                  200+ Agencies Rated
+                  2500+ Creators We Works with
                 </span>
               </div>
             </div>
