@@ -28,7 +28,7 @@ export default function CTASection() {
         >
           <BadgeCheck className="h-5 w-5 text-[#be185d] " strokeWidth={2} />
           <span className="text-sm font-medium text-gray-600">
-            Become a Part of Us
+            Start Your Growth Journey
           </span>
         </motion.div>
 
@@ -39,10 +39,10 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
           className="max-w-3xl text-5xl font-bold leading-tight tracking-tight text-gray-900 md:text-6xl font-heading"
         >
-          Ready to Elevate Your{" "}
-          <span className="text-gray-900">Influence with</span>{" "}
+          Ready to Transform Your{" "}
+          <span className="text-gray-900">Brand&rsquo;s Influence into</span>{" "}
           <span className="bg-gradient-to-r from-[#ec4899] to-[#be185d] bg-clip-text text-transparent">
-            India's Top Talent Network?
+            Real Impact?
           </span>
         </motion.h2>
 
@@ -53,8 +53,8 @@ export default function CTASection() {
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           className="mt-6 max-w-xl text-base leading-relaxed text-gray-500 font-body"
         >
-          Join the movement. Grow your brand, unlock powerful collaborations,
-          and shape culture with our expert talent &amp; influencer solutions.
+          Work with top creators to craft campaigns that don&rsquo;t just get
+          attention — they drive action, engagement, and measurable growth.
         </motion.p>
 
         {/* CTA Button */}
@@ -67,7 +67,7 @@ export default function CTASection() {
             whileTap={{ scale: 0.97 }}
             className="mt-10 rounded-full bg-[#be185d] px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-pink-200 transition-all duration-200 hover:bg-[#9d1550] hover:shadow-pink-300 font-heading"
           >
-            Book an Appointment
+            Grow Your Brand Today
           </motion.button>
         </Link>
       </div>
