@@ -308,8 +308,8 @@ function Hero() {
               className="flex flex-wrap gap-6 mb-8"
             >
               {[
-                { num: "250+", label: "Active Creators" },
-                { num: "0", label: "Exclusive Creators" },
+                { num: "20000+", label: "Active Creators" },
+                { num: "2500+", label: "Creators We Work With" },
                 { num: "Real-Time", label: "Scouting Always On" },
               ].map((s, i) => (
                 <div key={i}>
