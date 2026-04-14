@@ -20,7 +20,7 @@ import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 const HINT_TOOLS = [
-  { icon: Search,    label: "Influencer Finder", tag: "Discovery" },
+  { icon: Search,    label: "Content Calendar", tag: "Planning" },
   { icon: BarChart2, label: "Campaign Tracker",  tag: "Analytics" },
   { icon: Link2,      label: "Link in Bio Builder",tag: "Utility"  },
   { icon: Zap,       label: "Brief Generator",   tag: "Content"  },
@@ -91,9 +91,9 @@ function LiveToolCard() {
             </div>
 
             {/* Icon */}
-            <div className="w-12 h-12 rounded-sm bg-[#1a2e0f] flex items-center
+            <div className="w-10 h-10 rounded-sm bg-[#5a9600] flex items-center
                             justify-center mb-5 shadow-md">
-              <FileText className="w-5 h-5 text-[#8ab860]" strokeWidth={1.5} />
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 13L6 3l4 7 2-3.5L14 13" stroke="#111" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </div>
 
             {/* Title */}
@@ -168,7 +168,7 @@ function LiveToolCard() {
               style={{ maxWidth: "680px", margin: "0 auto" }}
             >
               <Image
-                src="/tool-img/invoice-img.png"
+                src="/tool-img/invoice-maker-img.png"
                 alt="Invoice Maker by FirstSkout"
                 fill
                 className="object-cover object-top"
