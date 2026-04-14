@@ -7,11 +7,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 const lines = [
-  "FirstSkout is a full-service influencer marketing",
-  "and creator scouting agency across Asia, Europe,",
-  "North America, and Africa.",
-  "We find the right creators, build sharp campaigns,",
-  "and own execution—no matter the market.",
+  "FirstSkout is a global influencer marketing agency",
+  "connecting brands with top creators worldwide.",
+  "From strategy to execution,",
+  "we build campaigns that deliver real impact.",
 ];
 
 export default function AboutSection() {

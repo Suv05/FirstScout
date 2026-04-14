@@ -82,7 +82,7 @@ bg-[size:6rem_4rem]"
             {/* Headings */}
             <div className="flex flex-wrap items-center justify-center gap-[10px] w-full max-w-[800px]">
               <h1 className="text-black text-center text-[70px] tracking-[-3px] leading-[0.9em] font-heading">
-                We Are
+                The
               </h1>
 
               <h1
@@ -91,15 +91,15 @@ bg-[size:6rem_4rem]"
     bg-gradient-to-b from-[#ec4899] to-[#be185d] 
     text-white px-4 py-1 rounded-md inline-block font-heading"
               >
-                Creators
+                Agency
               </h1>
 
               <h1 className="text-black text-[70px] tracking-[-3px] leading-[0.9em] font-heading">
-                Growth
+                That
               </h1>
 
               <h1 className="text-black text-[60px] tracking-[-3px] leading-[0.9em] font-heading">
-                Engine.
+                Delivers.
               </h1>
             </div>
 
