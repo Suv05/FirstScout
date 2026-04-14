@@ -23,7 +23,7 @@ gsap.registerPlugin(ScrollTrigger);
 const socialLinks = [
   { icon: Twitter, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
   { icon: Instagram, label: "@FirstSkout", href: "https://www.instagram.com/firstskout?igsh=MXgwbWI0dnY3YTZrbQ==" },
-  { icon: Linkedin, label: "@FirstSkout", href: "https://www.linkedin.com/company/firstskout/" },
+  { icon: Linkedin, label: "@FirstSkout", href: "https://www.linkedin.com/company/firstskout/" }, 
 ];
 
 const services = [
