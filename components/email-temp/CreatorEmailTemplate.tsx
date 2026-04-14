@@ -4,9 +4,10 @@ interface CreatorEmailTemplateProps {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
   platform: string;
   platformLink: string;
-  companyType: string;
+  genre: string;
   message: string;
 }
 
@@ -14,9 +15,10 @@ export function CreatorEmailTemplate({
   firstName,
   lastName,
   email,
+  phone,
   platform,
   platformLink,
-  companyType,
+  genre,
   message,
 }: CreatorEmailTemplateProps): React.ReactNode {
   const fullName = `${firstName} ${lastName}`;
@@ -37,6 +39,23 @@ export function CreatorEmailTemplate({
     Twitter: "✦",
     LinkedIn: "in",
   };
+
+  const genreEmoji: Record<string, string> = {
+  "beauty & fashion": "💄",
+  "entertainment & comedy": "🎭",
+  travel: "✈️",
+  technology: "💻",
+  motivational: "🔥",
+  food: "🍽️",
+  music: "🎵",
+  "business & finance": "📈",
+  "health & fitness": "💪",
+  gaming: "🎮",
+};
+
+const genreIcon = genre
+  ? genreEmoji[genre.trim().toLowerCase()] ?? "🎯"
+  : null;
 
   return (
     <html lang="en">
@@ -71,8 +90,8 @@ export function CreatorEmailTemplate({
                   border={0}
                   style={{ maxWidth: 600, width: "100%" }}
                 >
-                  {/* ── HEADER ── */}
                   <tbody>
+                    {/* ── HEADER ── */}
                     <tr>
                       <td
                         style={{
@@ -137,7 +156,6 @@ export function CreatorEmailTemplate({
                           </tbody>
                         </table>
 
-                        {/* Divider */}
                         <div
                           style={{
                             borderTop: "1px solid #1e1e1e",
@@ -145,7 +163,6 @@ export function CreatorEmailTemplate({
                           }}
                         />
 
-                        {/* Hero text */}
                         <p
                           style={{
                             margin: 0,
@@ -206,7 +223,6 @@ export function CreatorEmailTemplate({
                           <tbody>
                             <tr>
                               <td width={56} valign="top">
-                                {/* Avatar */}
                                 <div
                                   style={{
                                     width: 48,
@@ -214,9 +230,6 @@ export function CreatorEmailTemplate({
                                     borderRadius: "50%",
                                     backgroundColor: "#f0fdf4",
                                     border: "2px solid #a3e635",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
                                     fontSize: 16,
                                     fontWeight: 700,
                                     color: "#3f6212",
@@ -248,21 +261,36 @@ export function CreatorEmailTemplate({
                                 >
                                   {email}
                                 </p>
+                                {phone && (
+                                  <p
+                                    style={{
+                                      margin: "2px 0 0",
+                                      fontSize: 13,
+                                      color: "#6b7280",
+                                    }}
+                                  >
+                                    📞 {phone}
+                                  </p>
+                                )}
                               </td>
                               <td align="right" valign="middle">
                                 <span
                                   style={{
                                     display: "inline-block",
-                                    backgroundColor: "#f0fdf4",
-                                    border: "1px solid #bbf7d0",
+                                    backgroundColor: genre
+                                      ? "#f0fdf4"
+                                      : "#f9fafb",
+                                    border: `1px solid ${genre ? "#bbf7d0" : "#e5e7eb"}`,
                                     borderRadius: 999,
                                     padding: "5px 14px",
                                     fontSize: 12,
-                                    color: "#15803d",
+                                    color: genre ? "#15803d" : "#9ca3af",
                                     fontWeight: 600,
                                   }}
                                 >
-                                  {companyType}
+                                  {genre
+                                    ? `${genreIcon} ${genre.trim()}`
+                                    : "Genre not specified"}
                                 </span>
                               </td>
                             </tr>
@@ -321,7 +349,7 @@ export function CreatorEmailTemplate({
                                   </p>
                                 </div>
                               </td>
-                              {/* Type */}
+                              {/* Creator Genre */}
                               <td width="50%" style={{ paddingLeft: 8 }}>
                                 <div
                                   style={{
@@ -341,17 +369,19 @@ export function CreatorEmailTemplate({
                                       letterSpacing: "0.08em",
                                     }}
                                   >
-                                    Account Type
+                                    Creator Genre
                                   </p>
                                   <p
                                     style={{
                                       margin: 0,
                                       fontSize: 15,
                                       fontWeight: 700,
-                                      color: "#0a0a0a",
+                                      color: genre ? "#0a0a0a" : "#9ca3af",
                                     }}
                                   >
-                                    🏢 {companyType}
+                                    {genre
+                                      ? `${genreIcon} ${genre}`
+                                      : "Not specified"}
                                   </p>
                                 </div>
                               </td>
@@ -361,7 +391,51 @@ export function CreatorEmailTemplate({
                       </td>
                     </tr>
 
-                    {/* Platform Link */}
+                    {/* ── CONTACT INFO ROW (phone, only if provided) ── */}
+                    {phone && (
+                      <tr>
+                        <td
+                          style={{
+                            backgroundColor: "#ffffff",
+                            padding: "12px 40px 0",
+                          }}
+                        >
+                          <div
+                            style={{
+                              backgroundColor: "#fafafa",
+                              border: "1px solid #e5e7eb",
+                              borderRadius: 12,
+                              padding: "16px 18px",
+                            }}
+                          >
+                            <p
+                              style={{
+                                margin: "0 0 4px",
+                                fontSize: 11,
+                                color: "#9ca3af",
+                                fontWeight: 600,
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                              }}
+                            >
+                              Phone Number
+                            </p>
+                            <p
+                              style={{
+                                margin: 0,
+                                fontSize: 14,
+                                fontWeight: 600,
+                                color: "#0a0a0a",
+                              }}
+                            >
+                              📞 {phone}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+
+                    {/* ── PLATFORM LINK ── */}
                     <tr>
                       <td
                         style={{
@@ -375,8 +449,6 @@ export function CreatorEmailTemplate({
                             border: "1px solid #e5e7eb",
                             borderRadius: 12,
                             padding: "16px 18px",
-                            display: "flex",
-                            alignItems: "center",
                           }}
                         >
                           <table

@@ -245,8 +245,8 @@ function Hero() {
       style={{ position: "relative" }}
     >
       {/* blobs */}
-      <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-[#ede8f5] via-[#f5e8f0] to-transparent opacity-60 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 -left-20 w-[350px] h-[350px] rounded-full bg-[#d4006e]/5 blur-3xl pointer-events-none" />
+      <div className="absolute -top-40 -right-40 w-175 h-175 rounded-full bg-linear-to-br from-[#ede8f5] via-[#f5e8f0] to-transparent opacity-60 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 -left-20 w-87.5 h-87.5 rounded-full bg-[#d4006e]/5 blur-3xl pointer-events-none" />
       {/* grid */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -423,7 +423,7 @@ function CreatorCard({
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         />
         {/* gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
 
         {/* niche badge — top left */}
         <div
@@ -518,7 +518,7 @@ function CreatorsGrid() {
           {/* "More coming" card */}
           <motion.div
             {...fade(CREATORS.length * 0.06)}
-            className="relative bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden flex flex-col items-center justify-center p-8 text-center min-h-[320px]"
+            className="relative bg-gray-900 rounded-2xl border border-gray-800 overflow-hidden flex flex-col items-center justify-center p-8 text-center min-h-80"
           >
             <div className="absolute -top-8 -right-8 w-40 h-40 rounded-full bg-[#d4006e]/15 blur-2xl" />
             <motion.div
@@ -563,6 +563,8 @@ function CreatorsGrid() {
 /* ══════════════════════════════════════════
    CUSTOM SELECT
 ══════════════════════════════════════════ */
+type SelectOption = string | { label: string; value: string };
+
 function CustomSelect({
   label,
   options,
@@ -571,8 +573,8 @@ function CustomSelect({
   error,
   placeholder,
 }: {
-  label: string;
-  options: string[];
+  label: React.ReactNode;
+  options: SelectOption[];
   value: string;
   onChange: (v: string) => void;
   error?: string;
@@ -580,6 +582,11 @@ function CustomSelect({
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const selectedLabel =
+    options.find((opt) =>
+      typeof opt === "string" ? opt === value : opt.value === value,
+    ) ?? placeholder;
 
   return (
     <div className="relative" ref={ref}>
@@ -598,7 +605,9 @@ function CustomSelect({
         }`}
       >
         <span className={value ? "text-gray-900 font-medium" : "text-gray-400"}>
-          {value || placeholder}
+          {typeof selectedLabel === "string"
+            ? selectedLabel
+            : selectedLabel.label}
         </span>
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
@@ -617,26 +626,32 @@ function CustomSelect({
             transition={{ duration: 0.18 }}
             className="absolute z-50 top-full mt-2 left-0 right-0 bg-white rounded-xl border border-gray-100 shadow-xl overflow-hidden"
           >
-            {options.map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                onClick={() => {
-                  onChange(opt);
-                  setOpen(false);
-                }}
-                className={`w-full px-4 py-3 text-sm text-left transition-colors duration-150 flex items-center justify-between font-body ${
-                  value === opt
-                    ? "bg-[#d4006e]/6 text-[#d4006e] font-bold"
-                    : "text-gray-700 hover:bg-gray-50"
-                }`}
-              >
-                {opt}
-                {value === opt && (
-                  <CheckCircle size={14} className="text-[#d4006e]" />
-                )}
-              </button>
-            ))}
+            {options.map((opt) => {
+              const optionValue = typeof opt === "string" ? opt : opt.value;
+              const optionLabel = typeof opt === "string" ? opt : opt.label;
+              const selected = optionValue === value;
+
+              return (
+                <button
+                  key={optionValue}
+                  type="button"
+                  onClick={() => {
+                    onChange(optionValue);
+                    setOpen(false);
+                  }}
+                  className={`w-full px-4 py-3 text-sm text-left transition-colors duration-150 flex items-center justify-between font-body ${
+                    selected
+                      ? "bg-[#d4006e]/6 text-[#d4006e] font-bold"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`}
+                >
+                  {optionLabel}
+                  {selected && (
+                    <CheckCircle size={14} className="text-[#d4006e]" />
+                  )}
+                </button>
+              );
+            })}
           </motion.div>
         )}
       </AnimatePresence>
@@ -659,7 +674,7 @@ function InputField({
   rows = 4,
   ...rest
 }: {
-  label: string;
+  label: React.ReactNode;
   placeholder: string;
   error?: string;
   type?: string;
@@ -703,12 +718,28 @@ function InputField({
 /* ══════════════════════════════════════════
    CONTACT FORM SECTION
 ══════════════════════════════════════════ */
+// ── Genre options (new) ──────────────────────────────────────────────────────
+const GENRE_OPTIONS = [
+  { label: "Beauty & Fashion", value: "beauty_fashion" },
+  { label: "Entertainment & Comedy", value: "entertainment_comedy" },
+  { label: "Travel", value: "travel" },
+  { label: "Technology", value: "technology" },
+  { label: "Motivational", value: "motivational" },
+  { label: "Food", value: "food" },
+  { label: "Music", value: "music" },
+  { label: "Business & Finance", value: "business_finance" },
+  { label: "Health & Fitness", value: "health_fitness" },
+  { label: "Gaming", value: "gaming" },
+];
+
+// ── Component ────────────────────────────────────────────────────────────────
 function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [platform, setPlatform] = useState("");
-  const [companyType, setCompanyType] = useState("");
+  const [genre, setGenre] = useState(""); // new
+  // companyType state removed ✂️
 
   const {
     register,
@@ -721,19 +752,27 @@ function ContactForm() {
     setLoading(true);
     setError(null);
 
-    const payload: CreatorFormData = { ...data, platform, companyType };
+    // companyType removed from payload, genre added
+    const payload: CreatorFormData = { ...data, platform, genre };
     const result = await sendCreatorInquiryEmail(payload);
 
     if (result.success) {
       setSubmitted(true);
       reset();
       setPlatform("");
-      setCompanyType("");
+      setGenre(""); // reset genre
     } else {
       setError(result.error ?? "Something went wrong. Please try again.");
     }
 
     setLoading(false);
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    reset();
+    setPlatform("");
+    setGenre("");
   };
 
   return (
@@ -755,7 +794,7 @@ function ContactForm() {
 
       <div className="relative max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-14 items-start">
-          {/* ── left info panel (unchanged) ── */}
+          {/* ── left info panel ── */}
           <div className="lg:sticky lg:top-28">
             <motion.div {...fade(0)}>
               <PillBadge>Join the Network</PillBadge>
@@ -801,7 +840,7 @@ function ContactForm() {
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#d4006e]/10 flex items-center justify-center flex-shrink-0">
+                  <span className="mt-0.5 w-5 h-5 rounded-full bg-[#d4006e]/10 flex items-center justify-center shrink-0">
                     <Star size={10} className="text-[#d4006e]" />
                   </span>
                   <div>
@@ -820,7 +859,7 @@ function ContactForm() {
               {...fade(0.3)}
               className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#d4006e]/5 border border-[#d4006e]/15"
             >
-              <CheckCircle size={16} className="text-[#d4006e] flex-shrink-0" />
+              <CheckCircle size={16} className="text-[#d4006e] shrink-0" />
               <p className="text-xs text-gray-600 font-medium font-body">
                 We reply to every message within 24 hours.
               </p>
@@ -851,7 +890,7 @@ function ContactForm() {
                         className="flex items-start gap-3 px-4 py-3.5 rounded-xl bg-red-50 border border-red-200"
                       >
                         <svg
-                          className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0"
+                          className="w-4 h-4 text-red-500 mt-0.5 shrink-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -920,21 +959,45 @@ function ContactForm() {
                     })}
                   />
 
+                  {/* ── Phone Number (optional) ── */}
+                  <InputField
+                    label={
+                      <span className="flex items-center gap-1.5">
+                        Phone Number
+                        <span className="text-[10px] font-normal text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded-full">
+                          Optional
+                        </span>
+                      </span>
+                    }
+                    placeholder="+91 98765 43210"
+                    type="tel"
+                    error={errors.phone?.message}
+                    {...register("phone", {
+                      pattern: {
+                        value: /^[+]?[\d\s\-().]{7,15}$/,
+                        message: "Enter a valid phone number",
+                      },
+                    })}
+                  />
+
                   <CustomSelect
-                    label="Platform / Query Type"
+                    label="Platform Type"
                     placeholder="What best describes you?"
                     options={PLATFORM_OPTIONS}
                     value={platform}
                     onChange={setPlatform}
                   />
 
+                  {/* ── Creator Genre (new) ── */}
                   <CustomSelect
-                    label="Company Type"
-                    placeholder="What type of company are you?"
-                    options={COMPANY_OPTIONS}
-                    value={companyType}
-                    onChange={setCompanyType}
+                    label="Creator Genre"
+                    placeholder="Which industry do you create in?"
+                    options={GENRE_OPTIONS}
+                    value={genre}
+                    onChange={setGenre}
                   />
+
+                  {/* companyType <CustomSelect> removed ✂️ */}
 
                   <InputField
                     label="Your Profile / Platform Link"
@@ -968,7 +1031,6 @@ function ContactForm() {
                   >
                     {loading ? (
                       <>
-                        {/* spinner */}
                         <svg
                           className="w-4 h-4 animate-spin"
                           viewBox="0 0 24 24"
@@ -1035,12 +1097,7 @@ function ContactForm() {
                   </p>
                   <motion.button
                     whileHover={{ scale: 1.03 }}
-                    onClick={() => {
-                      setSubmitted(false);
-                      reset();
-                      setPlatform("");
-                      setCompanyType("");
-                    }}
+                    onClick={handleReset}
                     className="px-6 py-3 rounded-xl bg-[#d4006e] text-white text-sm font-bold hover:bg-[#b0005a] transition-colors font-body"
                   >
                     Send Another Message

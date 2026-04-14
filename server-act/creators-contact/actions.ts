@@ -10,9 +10,10 @@ export interface CreatorFormData {
   firstName: string;
   lastName: string;
   email: string;
+  phone?: string;
   platform: string;
   platformLink: string;
-  companyType: string;
+  genre: string;
   message: string;
 }
 
