@@ -20,7 +20,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "FirstSkout - #1 Global Influencer Marketing Agency",
+  title: "FirstSkout - A Global Influencer Marketing Agency",
   description:
     "FirstSkout is a leading influencer marketing agency that connects brands with the right creators in real time. No guesswork, no middlemen — just fast, results-driven campaigns handled end to end.",
   icons: {
