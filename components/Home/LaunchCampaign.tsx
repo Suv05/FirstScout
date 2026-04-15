@@ -12,7 +12,7 @@ const LaunchCampaign = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center bg-white p-4">
+    <div className="relative w-full flex items-center justify-center bg-white p-4">
       {/* ✅ Bottom fade — blends into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
       <div
