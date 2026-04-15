@@ -1,9 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import FloatingImage from "./FloatingImage";
-import { motion } from "framer-motion";
+import FloatingCards from "./FloatingCards";
 
 export default function HeroSection() {
   return (
@@ -71,8 +68,10 @@ bg-[size:6rem_4rem]"
         </div>
       </div>
 
-      {/* Floating Roi */}
-      <div>{/* Here bring the roi cards */}</div>
+      {/* Floating Cards — hidden below 760px */}
+      <div className="hidden [@media(min-width:760px)]:block w-full">
+        <FloatingCards />
+      </div>
     </section>
   );
 }
