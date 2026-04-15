@@ -72,18 +72,6 @@ const subServices = [
     number: "04",
   },
   {
-    icon: TrendingUp,
-    name: "Paid Amplification",
-    description:
-      "Boost top-performing creator content with paid media to extend reach beyond organic limits. Optional, but powerful.",
-    color: "#16a34a",
-    bg: "from-green-50 to-emerald-50/60",
-    border: "border-green-100",
-    iconBg: "bg-green-100",
-    number: "05",
-
-  },
-  {
     icon: MapPin,
     name: "Regional Campaigns",
     description:
@@ -274,7 +262,7 @@ export default function ServicesSection() {
   const inView = useInView(headingRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-28 overflow-hidden bg-[#f8f9fc]">
+    <section className="relative py-10 overflow-hidden bg-[#f8f9fc]">
       {/* Grid texture */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -378,61 +366,6 @@ export default function ServicesSection() {
             <ServiceCard key={service.name} service={service} index={i} />
           ))}
         </div>
-
-        {/* ── BOTTOM CTA STRIP ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.55 }}
-          className="relative rounded-2xl overflow-hidden"
-        >
-          {/* Subtle gradient background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-pink-50 via-white to-violet-50 border border-gray-100 rounded-2xl" />
-
-          <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 px-8 py-6">
-            {/* Left copy */}
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-pink-500 flex items-center justify-center flex-shrink-0 shadow-md shadow-pink-200">
-                <Sparkles className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p
-                  className="text-base font-black text-gray-900"
-                  style={{ fontFamily: "Georgia, serif" }}
-                >
-                  Ready to run your first campaign?
-                </p>
-                <p className="text-sm text-gray-400 mt-0.5">
-                  2500+ Creators We Works with · 150+ Brands Served
-                </p>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <Link href="/appointment">
-                <motion.div
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="group inline-flex items-center gap-2 bg-[#e91e8c] hover:bg-pink-600 text-white font-bold text-sm px-6 py-3.5 rounded-2xl shadow-lg shadow-pink-200 transition-colors cursor-pointer whitespace-nowrap"
-                >
-                  Book a Call
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </motion.div>
-              </Link>
-              <Link href="/creators">
-                <motion.div
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-700 font-bold text-sm px-6 py-3.5 rounded-2xl border border-gray-200 transition-colors cursor-pointer whitespace-nowrap shadow-sm"
-                >
-                  Meet Creators
-                </motion.div>
-              </Link>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
