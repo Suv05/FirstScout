@@ -24,7 +24,7 @@ export default function AboutSection() {
   return (
     <section
       ref={ref}
-      className="min-h-screen flex items-center justify-center bg-white px-6"
+      className="py-20 flex items-center justify-center bg-white px-6"
     >
       <div className="max-w-4xl text-center space-y-8">
         {/* Badge */}

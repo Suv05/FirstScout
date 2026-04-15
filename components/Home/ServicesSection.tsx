@@ -262,7 +262,10 @@ export default function ServicesSection() {
   const inView = useInView(headingRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative py-10 overflow-hidden bg-[#f8f9fc]">
+    <section className="relative pt-24 pb-3 overflow-hidden bg-[#f8f9fc]">
+      {/* ✅ Top fade — blends from About section white into this background */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+
       {/* Grid texture */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -367,6 +370,9 @@ export default function ServicesSection() {
           ))}
         </div>
       </div>
+
+      {/* ✅ Bottom fade — blends service section into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
     </section>
   );
 }
