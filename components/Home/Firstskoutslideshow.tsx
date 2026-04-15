@@ -174,14 +174,11 @@ export default function FirstSkoutSlideshow() {
         .fsk-wrap {
           position: relative;
           width: 100%;
-          max-width: 560px;
-          margin: 0 auto;
-          aspect-ratio: 16/10;
+          height: 100%;
+          min-height: 340px;
           overflow: hidden;
-          border-radius: 20px;
           background: #faf9f7;
           font-family: 'Outfit', sans-serif;
-          border: 1px solid rgba(0,0,0,0.06);
         }
 
         .fsk-scene {
@@ -273,7 +270,7 @@ export default function FirstSkoutSlideshow() {
 
         .fsk-sb {
           font-family: 'Playfair Display', serif;
-          font-size: 36px;
+          font-size: clamp(22px, 4vw, 36px);
           font-weight: 700;
           line-height: 1.15;
           opacity: 0;
@@ -281,7 +278,7 @@ export default function FirstSkoutSlideshow() {
         }
 
         .fsk-ss {
-          font-size: 14px;
+          font-size: clamp(11px, 1.5vw, 14px);
           color: rgba(0,0,0,0.4);
           margin-top: 12px;
           font-weight: 300;
@@ -304,6 +301,7 @@ export default function FirstSkoutSlideshow() {
           100% { opacity: 1; transform: scale(1); }
         }
 
+        /* Orbs — all with position:absolute and border-radius:50% here */
         .fsk-orb {
           position: absolute;
           border-radius: 50%;
@@ -311,28 +309,36 @@ export default function FirstSkoutSlideshow() {
         }
 
         .fsk-orb1 {
-          width: 280px; height: 280px;
+          width: 50%;
+          height: 50%;
           background: #c87adb;
-          top: -70px; right: -50px;
+          top: -15%;
+          right: -10%;
           animation: dr1 8s ease-in-out infinite;
         }
         .fsk-orb2 {
-          width: 200px; height: 200px;
+          width: 35%;
+          height: 35%;
           background: #c83c78;
-          bottom: -50px; left: -30px;
+          bottom: -10%;
+          left: -5%;
           animation: dr2 10s ease-in-out infinite;
         }
         .fsk-orb3 {
-          width: 130px; height: 130px;
+          width: 25%;
+          height: 25%;
           background: #1d9e75;
-          top: 50%; left: 50%;
-          transform: translate(-50%,-50%);
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
           animation: dr3 12s ease-in-out infinite;
         }
         .fsk-orb4 {
-          width: 240px; height: 240px;
+          width: 45%;
+          height: 45%;
           background: #c87adb;
-          top: -40px; left: 55%;
+          top: -10%;
+          left: 55%;
           animation: dr1 9s ease-in-out infinite;
         }
 
@@ -355,6 +361,7 @@ export default function FirstSkoutSlideshow() {
           gap: 10px;
           justify-content: center;
           margin-top: 22px;
+          flex-wrap: wrap;
         }
         .fsk-card {
           background: #fff;
@@ -362,7 +369,7 @@ export default function FirstSkoutSlideshow() {
           border-radius: 12px;
           padding: 12px;
           text-align: center;
-          width: 95px;
+          width: 80px;
           opacity: 0;
         }
         .fsk-card-ico {
@@ -385,6 +392,7 @@ export default function FirstSkoutSlideshow() {
           gap: 32px;
           justify-content: center;
           margin-top: 18px;
+          flex-wrap: wrap;
         }
         .fsk-stat {
           text-align: center;
@@ -392,7 +400,7 @@ export default function FirstSkoutSlideshow() {
         }
         .fsk-stat-n {
           font-family: 'Playfair Display', serif;
-          font-size: 34px;
+          font-size: clamp(24px, 4vw, 34px);
           font-weight: 700;
           color: #1a1a1a;
         }
@@ -407,7 +415,7 @@ export default function FirstSkoutSlideshow() {
         /* Scene 5 steps */
         .fsk-steps {
           display: flex;
-          gap: 7px;
+          gap: 6px;
           align-items: center;
           justify-content: center;
           margin-top: 22px;
@@ -417,8 +425,8 @@ export default function FirstSkoutSlideshow() {
           background: #fff;
           border: 1px solid rgba(0,0,0,0.07);
           border-radius: 9px;
-          padding: 7px 13px;
-          font-size: 12px;
+          padding: 6px 11px;
+          font-size: 11px;
           color: rgba(0,0,0,0.5);
           opacity: 0;
         }
@@ -434,9 +442,9 @@ export default function FirstSkoutSlideshow() {
           display: inline-block;
           background: linear-gradient(135deg, #c83c78, #a02060);
           color: #fff;
-          padding: 13px 30px;
+          padding: 12px 26px;
           border-radius: 50px;
-          font-size: 14px;
+          font-size: 13px;
           font-weight: 600;
           letter-spacing: 0.4px;
           font-family: 'Outfit', sans-serif;
@@ -454,20 +462,8 @@ export default function FirstSkoutSlideshow() {
           <span className="fsk-logo-txt">FirstSk</span>
           <span className="fsk-logo-icon">
             <svg viewBox="0 0 26 26" fill="none" width="20" height="20">
-              <circle
-                cx="13"
-                cy="13"
-                r="10.5"
-                stroke="#c87adb"
-                strokeWidth="2.2"
-              />
-              <circle
-                cx="13"
-                cy="13"
-                r="5.8"
-                stroke="#c87adb"
-                strokeWidth="2"
-              />
+              <circle cx="13" cy="13" r="10.5" stroke="#c87adb" strokeWidth="2.2" />
+              <circle cx="13" cy="13" r="5.8" stroke="#c87adb" strokeWidth="2" />
               <circle cx="13" cy="13" r="2" fill="#c87adb" />
             </svg>
           </span>
@@ -475,9 +471,7 @@ export default function FirstSkoutSlideshow() {
         </div>
 
         {/* Counter */}
-        <div className="fsk-cnt" ref={countRef}>
-          01 / 06
-        </div>
+        <div className="fsk-cnt" ref={countRef}>01 / 06</div>
 
         {/* Progress bar */}
         <div className="fsk-bar" ref={barRef} />
@@ -491,8 +485,7 @@ export default function FirstSkoutSlideshow() {
           </div>
           <div className="fsk-st">
             <div className="fsk-sb" data-id="a1">
-              Your brand deserves
-              <br />
+              Your brand deserves<br />
               <span className="fsk-ac">more than guesswork.</span>
             </div>
             <div className="fsk-ss" data-id="a2">
@@ -508,8 +501,7 @@ export default function FirstSkoutSlideshow() {
           </div>
           <div className="fsk-st">
             <div className="fsk-sb" data-id="b1">
-              We <span className="fsk-ac2">scout</span> creators
-              <br />
+              We <span className="fsk-ac2">scout</span> creators<br />
               who actually fit.
             </div>
             <div className="fsk-ss" data-id="b2">
@@ -522,44 +514,21 @@ export default function FirstSkoutSlideshow() {
         <div className="fsk-scene" data-id="sc3">
           <div className="fsk-st">
             <div className="fsk-sb" data-id="c1">
-              Strategy. Content.
-              <br />
+              Strategy. Content.<br />
               <span className="fsk-ac3">Execution.</span>
             </div>
             <div className="fsk-cards">
               <div className="fsk-card" data-id="c2">
-                <div
-                  className="fsk-card-ico"
-                  style={{ background: "rgba(200,60,120,0.08)" }}
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#c83c78"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
+                <div className="fsk-card-ico" style={{ background: "rgba(200,60,120,0.08)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c83c78" strokeWidth="2" strokeLinecap="round">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                   </svg>
                 </div>
                 <div className="fsk-card-lbl">Campaign</div>
               </div>
               <div className="fsk-card" data-id="c3">
-                <div
-                  className="fsk-card-ico"
-                  style={{ background: "rgba(200,122,219,0.08)" }}
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#c87adb"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
+                <div className="fsk-card-ico" style={{ background: "rgba(200,122,219,0.08)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c87adb" strokeWidth="2" strokeLinecap="round">
                     <path d="M23 7l-7 5 7 5V7z" />
                     <rect x="1" y="5" width="15" height="14" rx="2" />
                   </svg>
@@ -567,19 +536,8 @@ export default function FirstSkoutSlideshow() {
                 <div className="fsk-card-lbl">UGC</div>
               </div>
               <div className="fsk-card" data-id="c4">
-                <div
-                  className="fsk-card-ico"
-                  style={{ background: "rgba(29,158,117,0.08)" }}
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#1d9e75"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
+                <div className="fsk-card-ico" style={{ background: "rgba(29,158,117,0.08)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d9e75" strokeWidth="2" strokeLinecap="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                     <circle cx="9" cy="7" r="4" />
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
@@ -589,19 +547,8 @@ export default function FirstSkoutSlideshow() {
                 <div className="fsk-card-lbl">Creators</div>
               </div>
               <div className="fsk-card" data-id="c5">
-                <div
-                  className="fsk-card-ico"
-                  style={{ background: "rgba(239,159,39,0.08)" }}
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="#d48a15"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  >
+                <div className="fsk-card-ico" style={{ background: "rgba(239,159,39,0.08)" }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#d48a15" strokeWidth="2" strokeLinecap="round">
                     <path d="M18 20V10" />
                     <path d="M12 20V4" />
                     <path d="M6 20v-6" />
@@ -617,8 +564,7 @@ export default function FirstSkoutSlideshow() {
         <div className="fsk-scene" data-id="sc4">
           <div className="fsk-st">
             <div className="fsk-sb" data-id="d1">
-              The numbers
-              <br />
+              The numbers<br />
               <span className="fsk-ac">speak louder.</span>
             </div>
             <div className="fsk-stats">
@@ -628,9 +574,7 @@ export default function FirstSkoutSlideshow() {
               </div>
               <div className="fsk-stat" data-id="d3">
                 <div className="fsk-stat-n">1500+</div>
-                <div className="fsk-stat-l">
-                  Creators we&apos;ve worked with
-                </div>
+                <div className="fsk-stat-l">Creators we&apos;ve worked with</div>
               </div>
             </div>
           </div>
@@ -643,33 +587,15 @@ export default function FirstSkoutSlideshow() {
               How we <span className="fsk-ac2">work.</span>
             </div>
             <div className="fsk-steps">
-              <div className="fsk-step" data-id="e2">
-                Scout
-              </div>
-              <div className="fsk-arr" data-id="e3">
-                &rarr;
-              </div>
-              <div className="fsk-step" data-id="e4">
-                Strategize
-              </div>
-              <div className="fsk-arr" data-id="e5">
-                &rarr;
-              </div>
-              <div className="fsk-step" data-id="e6">
-                Brief
-              </div>
-              <div className="fsk-arr" data-id="e7">
-                &rarr;
-              </div>
-              <div className="fsk-step" data-id="e8">
-                Execute
-              </div>
-              <div className="fsk-arr" data-id="e9">
-                &rarr;
-              </div>
-              <div className="fsk-step" data-id="e10">
-                Deliver
-              </div>
+              <div className="fsk-step" data-id="e2">Scout</div>
+              <div className="fsk-arr" data-id="e3">&rarr;</div>
+              <div className="fsk-step" data-id="e4">Strategize</div>
+              <div className="fsk-arr" data-id="e5">&rarr;</div>
+              <div className="fsk-step" data-id="e6">Brief</div>
+              <div className="fsk-arr" data-id="e7">&rarr;</div>
+              <div className="fsk-step" data-id="e8">Execute</div>
+              <div className="fsk-arr" data-id="e9">&rarr;</div>
+              <div className="fsk-step" data-id="e10">Deliver</div>
             </div>
           </div>
         </div>
@@ -682,8 +608,7 @@ export default function FirstSkoutSlideshow() {
           </div>
           <div className="fsk-st">
             <div className="fsk-sb" data-id="f1">
-              Ready to
-              <br />
+              Ready to<br />
               <span className="fsk-ac">dominate?</span>
             </div>
             <div className="fsk-ss" data-id="f2">

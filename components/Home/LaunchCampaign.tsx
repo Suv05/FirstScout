@@ -17,9 +17,10 @@ const LaunchCampaign = () => {
         className="relative w-full max-w-6xl rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl md:shadow-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.08)]"
         style={{ minHeight: "340px" }}
       >
-        {/* LEFT SIDE — slideshow */}
-        <div className="md:w-2/5 w-full flex items-center justify-center">
-          <FirstSkoutSlideshow />
+        <div className="md:w-2/5 w-full" style={{ minHeight: "340px" }}>
+          <div style={{ width: "100%", height: "100%" }}>
+            <FirstSkoutSlideshow />
+          </div>
         </div>
 
         {/* RIGHT SIDE - Content panel (light with dotted bg + purple glow) */}
