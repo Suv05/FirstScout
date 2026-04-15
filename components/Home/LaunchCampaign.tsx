@@ -12,7 +12,10 @@ const LaunchCampaign = () => {
   }, []);
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-white p-4">
+    <div className="relative min-h-screen w-full flex items-center justify-center bg-white p-4">
+
+      {/* ✅ Bottom fade — blends into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
       <div
         className="relative w-full max-w-6xl rounded-2xl overflow-hidden flex flex-col md:flex-row shadow-2xl md:shadow-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.08)]"
         style={{ minHeight: "340px" }}

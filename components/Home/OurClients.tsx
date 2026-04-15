@@ -96,6 +96,10 @@ export default function OurClients() {
 
   return (
     <section className="relative overflow-hidden py-20 px-6">
+
+      {/* ✅ Top fade — blends into previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+      
       {/* Dot grid background */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]" />
 
@@ -144,7 +148,9 @@ export default function OurClients() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center text-gray-800 text-lg max-w-xl mx-auto mb-14 leading-relaxed font-body"
         >
-          We work with forward-thinking brands to craft influencer campaigns that don&rsquo;t just reach audiences — they inspire action and deliver real results.
+          We work with forward-thinking brands to craft influencer campaigns
+          that don&rsquo;t just reach audiences — they inspire action and
+          deliver real results.
         </motion.p>
 
         {/* Marquee rows */}
