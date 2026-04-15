@@ -5,48 +5,6 @@ import Link from "next/link";
 import FloatingImage from "./FloatingImage";
 import { motion } from "framer-motion";
 
-// const AI_QUERY = encodeURIComponent(
-//   "Briefly explain FirstSkout, what the company does, how it helps brands and creators through influencer marketing and talent management, what makes it unique, and how someone can collaborate or work with the company",
-// );
-
-// const AI_LINKS = [
-//   {
-//     href: `https://www.google.com/search?udm=50&aep=11&q=${AI_QUERY}`,
-//     icon: "/hero-img/google.svg",
-//     alt: "Google AI",
-//     w: 33,
-//     h: 33,
-//   },
-//   {
-//     href: `https://chatgpt.com/?q=${AI_QUERY}`,
-//     icon: "/hero-img/chatgpt.svg",
-//     alt: "ChatGPT",
-//     w: 28,
-//     h: 30,
-//   },
-//   {
-//     href: `https://grok.com/?q=${AI_QUERY}`,
-//     icon: "/hero-img/grok.svg",
-//     alt: "Grok",
-//     w: 31,
-//     h: 30,
-//   },
-//   {
-//     href: `https://www.perplexity.ai/search?q=${AI_QUERY}`,
-//     icon: "/hero-img/perplexity.svg",
-//     alt: "Perplexity",
-//     w: 31,
-//     h: 35,
-//   },
-//   {
-//     href: `https://claude.ai/new?q=${AI_QUERY}`,
-//     icon: "/hero-img/claude.svg",
-//     alt: "Claude",
-//     w: 28,
-//     h: 33,
-//   },
-// ];
-
 export default function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center gap-[50px] w-full py-[120px] overflow-visible">
@@ -113,30 +71,8 @@ bg-[size:6rem_4rem]"
         </div>
       </div>
 
-      {/* Floating Images */}
-      <div className="hidden lg:block">
-        <FloatingImage />
-      </div>
-
-      {/* Ask AI */}
-      {/* <div className="flex flex-wrap items-center justify-center gap-[10px] w-full pt-[10px]">
-        <h4 className="text-black text-[18px] font-heading">Ask AI About Us</h4>
-
-        <div className="flex gap-[7px]">
-          {AI_LINKS.map(({ href, icon, alt, w, h }) => (
-            <Link
-              key={alt}
-              href={href}
-              target="_blank"
-              className="flex items-center justify-center w-[48px] h-[46px] rounded-[10px] border border-[#4f1ad6] bg-white"
-            >
-              <div className="relative" style={{ width: w, height: h }}>
-                <Image src={icon} alt={alt} fill className="object-contain" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div> */}
+      {/* Floating Roi */}
+      <div>{/* Here bring the roi cards */}</div>
     </section>
   );
 }
