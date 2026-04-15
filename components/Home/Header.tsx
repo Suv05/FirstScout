@@ -71,7 +71,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-5 pt-4"
+      className="fixed top-0 left-0 right-0 z-[9999] px-3 sm:px-5 pt-4"
     >
       <div
         style={{ backgroundColor: "rgba(240,240,240,0.72)" }}
