@@ -4,7 +4,7 @@ import FloatingCards from "./FloatingCards";
 
 export default function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-center gap-[50px] w-full py-[120px] overflow-visible">
+    <section className=" min-h-screen relative flex flex-col items-center justify-center gap-12.5 w-full py-25 overflow-visible">
       {/* ✅ Light Grid Background */}
       <div
         className="absolute inset-0 -z-10 h-full w-full bg-white 
