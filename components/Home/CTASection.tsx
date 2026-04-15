@@ -7,6 +7,10 @@ import Link from "next/link";
 export default function CTASection() {
   return (
     <section className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-2xl mt-5">
+
+      {/* ✅ Top fade — blends into card from above */}
+      <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+      
       {/* Layer 1 — white base + radial blue glow */}
       <div className="absolute inset-0 -z-10 h-full w-full bg-white">
         <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]" />

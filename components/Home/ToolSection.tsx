@@ -144,6 +144,12 @@ export default function ToolsSection() {
 
   return (
     <section className="relative py-28 overflow-hidden bg-[#f8f9fc]">
+
+      {/* ✅ Top fade — blends from previous section */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
+
+      {/* ✅ Bottom fade — blends into next section */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20 pointer-events-none" />
       {/* Grid texture */}
       <div
         className="absolute inset-0 pointer-events-none"
