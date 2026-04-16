@@ -398,10 +398,10 @@ export default function AppointmentPage() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-gray-800">
-                  200+ Agencies Rated
+                  150+ Partners
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">
-                  Trusted by brands & creators across India. Our team responds
+                  Trusted by brands & creators across Globe. Our team responds
                   within minutes on WhatsApp.
                 </p>
               </div>
