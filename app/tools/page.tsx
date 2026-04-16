@@ -56,7 +56,7 @@ function LiveToolCard() {
       />
 
       <Link
-        href="https://invoice-05.netlify.app"
+        href="https://invoices.firstskout.com/"
         target="_blank"
         rel="noopener noreferrer"
         className="relative z-10 flex flex-col md:flex-row overflow-hidden rounded-sm
