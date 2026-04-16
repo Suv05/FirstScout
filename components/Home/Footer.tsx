@@ -109,7 +109,7 @@ export default function Footer() {
           </p>
 
           <MotionLink
-            href="/creators#contact"
+            href="/appointment"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2 border-2 border-[#1a1a1a] rounded-full px-7 py-3 text-[#1a1a1a] text-xl font-medium bg-transparent hover:bg-[#1a1a1a] hover:text-[#e5e5e5] transition-colors duration-300"
