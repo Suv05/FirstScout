@@ -20,6 +20,7 @@ const tools = [
   {
     icon: FileText,
     name: "Invoice Maker",
+    href: "https://invoices.firstskout.com/",
     description:
       "Generate clean, professional invoices for brand deals and collaborations in seconds.",
     tag: "Free",
@@ -70,13 +71,7 @@ const tools = [
 /* ─────────────────────────────────────────────
    TOOL CARD
 ───────────────────────────────────────────── */
-function ToolCard({
-  tool,
-  index,
-}: {
-  tool: (typeof tools)[0];
-  index: number;
-}) {
+function ToolCard({ tool, index }: { tool: (typeof tools)[0]; index: number }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const Icon = tool.icon;
@@ -124,13 +119,26 @@ function ToolCard({
       </div>
 
       {/* Hover arrow */}
-      <div
-        className="flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200 -mb-1"
-        style={{ color: tool.color }}
-      >
-        Try it free
-        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-      </div>
+      {tool.href ? (
+        <Link
+          href={tool.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200 -mb-1"
+          style={{ color: tool.color }}
+        >
+          Try it free
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        </Link>
+      ) : (
+        <div
+          className="flex items-center gap-1 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200 -mb-1"
+          style={{ color: tool.color }}
+        >
+          Try it free
+          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+        </div>
+      )}
     </motion.div>
   );
 }
@@ -144,7 +152,6 @@ export default function ToolsSection() {
 
   return (
     <section className="relative py-28 overflow-hidden bg-[#f8f9fc]">
-
       {/* ✅ Top fade — blends from previous section */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white to-transparent z-20 pointer-events-none" />
 
@@ -180,10 +187,11 @@ export default function ToolsSection() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* ── HEADER ── */}
-        <div ref={headingRef} className="flex flex-col items-center text-center mb-16">
-
+        <div
+          ref={headingRef}
+          className="flex flex-col items-center text-center mb-16"
+        >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -206,7 +214,10 @@ export default function ToolsSection() {
             style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
           >
             Free Tools to{" "}
-            <span className="relative inline-block" style={{ color: "#e91e8c" }}>
+            <span
+              className="relative inline-block"
+              style={{ color: "#e91e8c" }}
+            >
               Supercharge
               <svg
                 className="absolute -bottom-1 left-0 w-full"
