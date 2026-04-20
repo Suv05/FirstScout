@@ -37,7 +37,7 @@ const services = [
 const explore = [
   { label: "Terms & Conditions", href: "/legal" },
   { label: "Privacy Policy", href: "/legal" },
-  { label: "Contact", href: "/creators#contact" },
+  { label: "Contact", href: "/appointment" },
 ];
 
 export default function Footer() {
